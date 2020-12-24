@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import * as FaIcons from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import './App.css'
+import '../../App.css'
 import { IconContext } from 'react-icons'
-import { success, failure} from './Redux/Actions'
+import { success, failure} from '../../Redux/Actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 function Header() {
@@ -25,9 +25,7 @@ function Header() {
             <IconContext.Provider value={{ color: '#fff' }} >
                 <div className="navbar" >
                     <div className="col-md-6">
-                        <Link to="#" className="menu-bars" >
-                            <FaIcons.FaBars />
-                        </Link>
+                        
                     </div>
                     <div className="col-md-6 menu">
                         <Link to="/" className="menu-bars2" >

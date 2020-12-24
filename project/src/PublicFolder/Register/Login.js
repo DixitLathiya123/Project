@@ -9,6 +9,7 @@ import { userGoingForLogin } from '../../Redux/Actions'
 import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from './Header'
 
 function Login() {
 
@@ -29,12 +30,14 @@ function Login() {
         setTimeout(() => {
             console.log("form data", values);
             dispatch(userGoingForLogin(values))
+            history.push('/dash')
         }, 1000);
         toast.success("Login Sucesss!");
     }
 
     return (
         <div >
+            <Header />
             <ToastContainer />
             <Card className="card">
                 <Card.Body className="cardbody">

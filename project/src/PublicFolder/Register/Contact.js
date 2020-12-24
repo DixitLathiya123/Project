@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import FormikControl from '../Pages/FormikControl'
 import { Button } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card'
+import Header from './Header'
 
 function Contact() {
     const initialValues = {
@@ -25,6 +26,7 @@ function Contact() {
     }
     return (
         <div>
+            <Header />
             <Card className="card">
                 <Card.Body className="cardbody">
                     <div className="row">

@@ -1,6 +1,7 @@
 import './App.css';
 import Routing from './Routing';
 import store from './Redux/Store'
+import 'antd/dist/antd.css'
 import { Provider } from 'react-redux';
 
 function App() {

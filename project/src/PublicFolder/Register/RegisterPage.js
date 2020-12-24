@@ -10,6 +10,7 @@ import { useHistory } from 'react-router-dom'
 import Recaptcha from 'react-google-recaptcha'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from './Header'
 
 
 function Register() {
@@ -18,8 +19,8 @@ function Register() {
     const dispatch = useDispatch()
     const [captcha, setCaptcha] = useState('')
 
-    const state = useSelector(state => state.register.allUser.map((item)=>item.email ))
-    console.log(state);
+    const Emails = useSelector(state => state.register.allUser.map((item)=>item.email ))
+    console.log(Emails);
 
     const initialValues = {
         Name: '',
@@ -42,7 +43,7 @@ function Register() {
     })
 
     const onSubmit = values => {
-        if(state.includes(values.email) === true){
+        if(Emails.includes(values.email) === true){
             toast.error("Email Already Exist!")
         }
         else{
@@ -50,7 +51,7 @@ function Register() {
                 console.log("form data", values);
                 dispatch(userGoingForRegister(values))
                 history.push("/login")
-            }, 1000);
+            }, 2000);
             toast.success("Register Sucesss!");
         }
     }
@@ -59,9 +60,11 @@ function Register() {
 
     return (
         <div >
+            <Header/>
             <ToastContainer />
             <Card className="card">
                 <Card.Body className="cardbody">
+                <Button className="webButton" onClick={() => { history.push(`/login`); }}>Back To Login</Button >
                     <div className="row">
                         <div className="form col-6" >
                             <Formik
