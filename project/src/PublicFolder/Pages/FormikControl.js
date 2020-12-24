@@ -5,6 +5,7 @@ import Select from './Select'
 import Radio from './Radio'
 import Checkbox from './Checkbox'
 import Datepicker from './Datepicker'
+import  Maps  from './Map'
 
 function FormikControl(props) {
     const { control , ...rest} = props
@@ -15,8 +16,8 @@ function FormikControl(props) {
         case 'radio': return <Radio {...rest} />
         case 'checkbox': return <Checkbox {...rest}/>
         case 'date': return <Datepicker {...rest} />
+        case 'map': return <Maps {...rest} />
         default: return null
     }
 }
-
 export default FormikControl
