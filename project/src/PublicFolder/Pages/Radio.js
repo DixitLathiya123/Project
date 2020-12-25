@@ -6,7 +6,7 @@ import TextError from '../Pages/TextError'
 function Radio(props) {
     const { lable, name, option, ...rest } = props
     return (
-        <div className="form-control">
+        <div className="form-group">
             <label htmlFor={name}>{lable}</label>
             <Field name={name} {...rest} >
                 {

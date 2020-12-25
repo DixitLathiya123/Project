@@ -8,18 +8,6 @@ import { success, failure} from '../../Redux/Actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 function Header() {
-    const dispatch = useDispatch()
-    useEffect(() => {
-        axios.get('https://node-demox.herokuapp.com/login/loginrecord/')
-            .then(Response => {
-                const allUser = Response.data
-                dispatch(success(allUser))
-            })
-            .catch(error => {
-                const errorMsg = error.message
-                dispatch(failure(errorMsg))
-            })
-    }, [])
     return (
         <div>
             <IconContext.Provider value={{ color: '#fff' }} >

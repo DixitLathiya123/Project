@@ -8,7 +8,7 @@ import TextError from '../Pages/TextError'
 function Datepicker(props) {
     const { lable, name, ...rest } = props
     return (
-        <div className="form-control">
+        <div className="form-group">
             <label htmlFor={name}>{lable}</label>
             <Field name={name}>
                 {

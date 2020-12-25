@@ -1,7 +1,7 @@
 export const Register = {
     loading : false,
-    registerStatus : '',
-    allUser:[],
+    ResponseStatus :'',
+    message:'',
     error : ''
 }
 
@@ -12,3 +12,14 @@ export const Login = {
     error : ''
 }
 
+export const Country ={
+    loading : false,
+    CountryData:[],
+    error:''
+}
+
+export const States ={
+    loading : false,
+    StateData:[],
+    error:''
+}

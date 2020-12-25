@@ -3,17 +3,17 @@ import { Field, ErrorMessage } from 'formik'
 import TextError from '../Pages/TextError'
 
 
-function Select(props) {
+function States(props) {
     const { lable, name, option, ...rest } = props
     return (
         <div className="form-group">
             <label htmlFor={name}>{lable}</label>
             <Field as="select" id={name} name={name} {...rest} >
                 {
-                    option.map((item)=>{
+                    option && option.map((item) => {
                         return (
-                            <option key={item.key} value={item.value}>
-                                {item.key}
+                            <option key={item.Id} value={item.Id}>
+                                {item.State}
                             </option>
                         )
                     })
@@ -24,4 +24,4 @@ function Select(props) {
     )
 }
 
-export default Select
+export default States

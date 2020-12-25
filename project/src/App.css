@@ -12,6 +12,8 @@ input::-webkit-inner-spin-button {
 
 .image {
   background: none;
+  margin-top: 10%;
+  margin-right: 0px;
 }
 .error {
   color: red;
@@ -21,8 +23,19 @@ input::-webkit-inner-spin-button {
 .card {
   margin: 165px;
   margin-top: 75px;
-  border-radius: 20px;
+  border-radius: 10px;
   width: 80%;
+}
+
+.cardLogin {
+  margin-top: 10%;
+  width: 28%;
+  margin-left: 37%;
+}
+
+.display {
+  display: flex;
+  margin-top: 3.5%;
 }
 
 .inputbox {
@@ -49,6 +62,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"],
+input[type="select"],
 textarea,
 select {
   display: block;
@@ -61,10 +75,6 @@ select {
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-.form-control {
-  margin-bottom: 20px;
 }
 
 .error {
@@ -88,15 +98,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.navbar {
-  background-color: #060b26;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  margin-bottom: auto;
-}
 
 .menu-bars {
   margin-left: 2rem;
@@ -107,11 +108,18 @@ code {
   font-size: 20px;
   background: none;
   display: flex;
+  color: azure;
   justify-content: flex-end;
   margin: 1rem;
 }
+.menu-bars2:hover {
+  color: white;
+}
 .button {
   margin: 1rem;
+}
+.btndiv{
+  margin-left: 20%;
 }
 
 .menu {
@@ -120,9 +128,10 @@ code {
 }
 
 .navbar {
-  background-color: #060b26;
+  background-color: #4ea6ba;
   width: 100%;
   height: 80px;
+
   display: flex;
   justify-content: start;
   align-items: center;
@@ -195,4 +204,8 @@ span {
 }
 .slider {
   height: 100%;
+}
+
+.cardbody {
+  padding: 0px !important;
 }

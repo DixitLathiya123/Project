@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Layout, Menu, Card } from 'antd';
+import { Layout, Menu } from 'antd';
 
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
+import { Navbar, Nav} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData'
 import Slider from './Slider';
@@ -9,7 +9,6 @@ import Slider from './Slider';
 const { Sider } = Layout;
 
 export const HeaderAndSidebar = ({ children }) => {
-    console.log(children);
     const [state, setState] = useState(false)
     const onCollapse = () => setState(!state);
 

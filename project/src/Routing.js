@@ -20,13 +20,10 @@ function Routing() {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/contact" component={Contact} />
-
                     <Route exact path="/dash" component={Dashbord} />
                     <Route exact path="/update" component={UpdateProfile} />
                     <Route exact path="/table" component={TableView} />
                     <Route exact path="/info" component={Contact2} />
-
-
                     <Route exact path="*" component={Error404} />
                 </Switch>
             </Router>

@@ -76,7 +76,7 @@ function Contact() {
                                 }
                             </Formik>
                         </div>
-                        <div className="image col-4" align="left">
+                        <div className="col-4" align="left">
                             <h1>About Company</h1>
                             <div>
                                 <h5><b>Contact-No:</b></h5>
@@ -97,7 +97,7 @@ function Contact() {
                                 San Diego, CA 92101</h6>
                             </div>
                         </div>
-                        <div className="image col-4" align="left">
+                        <div className="col-4" align="left">
                             <h1>Our Location</h1>
                             <FormikControl
                                 control='map'

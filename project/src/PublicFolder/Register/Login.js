@@ -28,7 +28,6 @@ function Login() {
 
     const onSubmit = values => {
         setTimeout(() => {
-            console.log("form data", values);
             dispatch(userGoingForLogin(values))
             history.push('/dash')
         }, 1000);
@@ -36,13 +35,12 @@ function Login() {
     }
 
     return (
-        <div >
+        <div>
             <Header />
             <ToastContainer />
-            <Card className="card">
-                <Card.Body className="cardbody">
-                    <Button className="webButton" onClick={() => { history.push(`/`); }}>Back To WebSite</Button >
-                    <div className="row">
+            <Card className="cardLogin">
+                <Card.Body className="cardLoginBody">
+                    <div className="row" style={{ "justify-content": "center" }}>
                         <div className="form col-6" >
                             <Formik
                                 initialValues={initialValues}
@@ -67,18 +65,15 @@ function Login() {
                                                     lable="Password*"
                                                     name="password"
                                                 />
-
-                                                <Button className="button" type="submit">Login</Button>
-                                                <Button className="button" onClick={() => { history.push(`/register`); }}>Register</Button >
-
+                                                <div className="btndiv">
+                                                    <Button className="button" type="submit" variant="info">Login</Button>
+                                                    <Button className="button" variant="info" onClick={() => { history.push(`/register`); }}>Register</Button >
+                                                </div>
                                             </Form>
                                         )
                                     }
                                 }
                             </Formik>
-                        </div>
-                        <div className="image col-6" align="left">
-                            <img src="https://symbiotics.co.za/wp-content/uploads/2016/01/Social-login.png" height="100%" width="99%" alt="Login With Social Media" />
                         </div>
                     </div>
                 </Card.Body>

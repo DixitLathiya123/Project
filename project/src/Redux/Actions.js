@@ -1,4 +1,9 @@
+import React from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
+
+
 //register
 export const REQUEST = "REQUEST"
 export const SUCCESS = "SUCCESS"
@@ -7,6 +12,83 @@ export const FAILURE = "FAILURE"
 export const LOGIN_REQUEST = "LOGIN_REQUEST"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const LOGIN_FAILURE = "LOGIN_FAILURE"
+//country
+export const COUNTRY_REQUEST = "COUNTRY_REQUEST"
+export const COUNTRY_SUCCESS = "COUNTRY_SUCCESS"
+export const COUNTRY_FAILURE = "COUNTRY_FAILURE"
+//state
+export const STATE_REQUEST = "STATE_REQUEST"
+export const STATE_SUCCESS = "STATE_SUCCESS"
+export const STATE_FAILURE = "STATE_FAILURE"
+
+//state
+export const stateRequest = () => {
+    return {
+        type: STATE_REQUEST
+    }
+}
+export const stateSuccess = (state) => {
+    return {
+        type: STATE_SUCCESS,
+        payload: state,
+    }
+}
+export const stateFailure = (error) => {
+    return {
+        type: STATE_FAILURE,
+        stateData: [],
+        payload: error
+    }
+}
+export const getAllstate = (countryId) => {
+    return (dispatch) => {
+        dispatch(stateRequest())
+        axios.get(`${process.env.REACT_APP_API}/api/getStateById/${countryId}`)
+            .then((Response) => {
+                const state = Response.data.stateList
+                dispatch(stateSuccess(state))
+            })
+            .catch((error) => {
+                const errors = error.message
+                dispatch(stateFailure(errors))
+            })
+    }
+}
+
+//country
+export const countryRequest = () => {
+    return {
+        type: COUNTRY_REQUEST
+    }
+}
+export const countrySuccess = (country) => {
+    return {
+        type: COUNTRY_SUCCESS,
+        payload: country,
+
+    }
+}
+export const countryFailure = (error) => {
+    return {
+        type: COUNTRY_FAILURE,
+        CountryData: [],
+        payload: error
+    }
+}
+export const getAllCountry = () => {
+    return (dispatch) => {
+        dispatch(countryRequest())
+        axios.get(`${process.env.REACT_APP_API}/api/getAllCountry`)
+            .then((Response) => {
+                const country = Response.data.countryList
+                dispatch(countrySuccess(country))
+            })
+            .catch((error) => {
+                const errors = error.message
+                dispatch(countryFailure(errors))
+            })
+    }
+}
 
 
 //register
@@ -15,11 +97,10 @@ export const request = () => {
         type: REQUEST
     }
 }
-export const success = (allUser) => {
+export const success = (data) => {
     return {
         type: SUCCESS,
-        payload: allUser,
-
+        payload: data,
     }
 }
 export const failure = (error) => {
@@ -32,17 +113,18 @@ export const failure = (error) => {
 export const userGoingForRegister = (values) => {
     return (dispatch) => {
         dispatch(request)
-        axios.post('https://node-demox.herokuapp.com/login/signin', values)
+        axios.post(`${process.env.REACT_APP_API}/api/signin`, values)
             .then(Response => {
-                axios.get('https://node-demox.herokuapp.com/login/loginrecord/')
-                    .then(Response => {
-                        const allUser = Response.data
-                        dispatch(success(allUser))
-                    })
-                    .catch(error => {
-                        const errorMsg = error.message
-                        dispatch(failure(errorMsg))
-                    })
+                const data = Response.data
+                dispatch(success(data))
+                if (data.ResponseStatus !== 0) {
+                    if (data.message !== '') {
+                        toast.error(data.message)
+                    }
+                }
+                else {
+                    toast.success("Register Successfully!!")
+                }
             })
             .catch(error => {
                 const errorMsg = error.message
@@ -55,7 +137,6 @@ export const userGoingForRegister = (values) => {
 
 //login
 export const loginrequest = () => {
-    console.log("request");
     return {
         type: LOGIN_REQUEST
     }
@@ -69,7 +150,6 @@ export const loginsuccess = (token) => {
     }
 }
 export const loginfailure = (error) => {
-    console.log("eror");
     return {
         type: LOGIN_FAILURE,
         registerStatus: '',
@@ -79,19 +159,18 @@ export const loginfailure = (error) => {
 export const userGoingForLogin = (values) => {
     return (dispatch) => {
         dispatch(loginrequest)
-        axios.post('https://node-demox.herokuapp.com/login/login/', values)
+        axios.post(`${process.env.REACT_APP_API}/api/login`, values)
             .then(Response => {
                 const token = Response.data
                 dispatch(loginsuccess(token))
-                console.log(Response);
             })
             .catch(error => {
                 const errorMsg = error.message
                 dispatch(loginfailure(errorMsg))
-                console.log(error);
             })
     }
 }
+
 
 
 
