@@ -1,12 +1,20 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
+import { isAuthenticated } from '../../PrivateRouter/Auth'
 
 function Dashbord() {
+    // useEffect(() => {
+    //     window.location.reload(true);
+    // }, [])
     return (
-        <HeaderAndSidebar title="Home">
+        < div >
+        <HeaderAndSidebar title="dashbord">
             Home123
-        </HeaderAndSidebar>
+                </HeaderAndSidebar>
+        </div >
+
     )
 }
+
 
 export default Dashbord

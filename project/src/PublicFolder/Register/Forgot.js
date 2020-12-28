@@ -1,46 +1,16 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
-import * as Yup from 'yup'
 import { Button } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify';
-import { Link, useHistory } from 'react-router-dom';
-
 
 import Card from 'react-bootstrap/Card'
 import FormikControl from '../Pages/FormikControl'
-import { userGoingForLogin } from '../../Redux/Actions'
 
 import 'react-toastify/dist/ReactToastify.css';
-import Header from './Header'
-import { isAuthenticated } from '../../PrivateRouter/Auth'
 
-function Login(props) {
-    const history = useHistory();
-    if (isAuthenticated() !== false) {
-        history.push("/")
-    }
-
-    const dispatch = useDispatch()
-    const loginTokenFromlocalStorage = localStorage.getItem('loginTokenFromApi')
-
-    const initialValues = {
-        email: '',
-        password: '',
-    }
-
-    const validationSchema = Yup.object({
-        email: Yup.string().email('Invalid Format*').required('Email Required*'),
-        password: Yup.string().length(6).required('Password Required*')
-    })
-
-    const onSubmit = values => {
-        dispatch(userGoingForLogin(values, props))
-    }
-
+function Forgot() {
     return (
         <div>
-            <Header />
             <ToastContainer />
             <Card className="cardLogin">
                 <Card.Body className="cardLoginBody">
@@ -63,17 +33,9 @@ function Login(props) {
                                                     name="email"
                                                 />
 
-                                                <FormikControl
-                                                    control="input"
-                                                    type="password"
-                                                    lable="Password*"
-                                                    name="password"
-                                                />
                                                 <div className="btndiv">
-                                                    <Button className="button" type="submit" variant="info">Login</Button>
-                                                    <Button className="button" variant="info" onClick={() => { history.push(`/register`); }}>Register</Button >
+                                                    <Button className="button" type="submit" variant="info">Send Password Reset Email</Button>
                                                 </div>
-                                                <div className="forgot"><Link to="forgot">Forgot password?</Link></div>
                                             </Form>
                                         )
                                     }
@@ -87,4 +49,4 @@ function Login(props) {
     )
 }
 
-export default Login
+export default Forgot

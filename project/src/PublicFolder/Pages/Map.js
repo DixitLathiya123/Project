@@ -16,7 +16,7 @@ function Maps(props) {
                 style={mapStyles}
                 initialCenter={{ lat: 47.444, lng: -122.176 }}
             >
-                <Marker position={{ lat: 21.23, lng: 72.90 }} />
+                <Marker position={{ lat: 21.170240, lng: 72.831062 }} />
             </Map>
         </div>
     )

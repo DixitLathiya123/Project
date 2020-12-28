@@ -5,8 +5,8 @@ function TableView() {
     return (
         <div>
             <HeaderAndSidebar title="table">
-            table
-        </HeaderAndSidebar>
+                table 123
+            </HeaderAndSidebar>
         </div>
     )
 }

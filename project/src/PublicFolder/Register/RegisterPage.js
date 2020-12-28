@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
+
 import Card from "react-bootstrap/Card";
 import Recaptcha from "react-google-recaptcha";
 import * as Yup from "yup";
-import axios from 'axios'
 
-import TextError from '../Pages/TextError'
 import FormikControl from "../Pages/FormikControl";
 import Header from "./Header";
+import { isAuthenticated } from '../../PrivateRouter/Auth'
 import { userGoingForRegister, getAllCountry, getAllstate } from "../../Redux/Actions";
 
 const option = [
@@ -26,8 +26,12 @@ const checkBoxOptions = [
     { key: "Reading", value: "reading" },
 ];
 
-function Register() {
-    const history = useHistory();
+function Register(props) {
+    const history = useHistory()
+
+    if(isAuthenticated() !== false){
+         history.push("/")
+    }
     const dispatch = useDispatch();
     const [captcha, setCaptcha] = useState("");
     
@@ -109,8 +113,7 @@ function Register() {
     };
 
     const onSubmit = (values) => {
-        dispatch(userGoingForRegister(values));
-        
+        dispatch(userGoingForRegister(values,props));
     };
 
     const handlecaptcha = (e) => setCaptcha(e);
@@ -172,21 +175,6 @@ function Register() {
                                                         option={StatesData}
                                                         validate={validateState}
                                                     />
-                                                    {/* <div className="form-group">
-                                                        <label htmlFor="state">Select State*</label>
-                                                        <Field as="select" name="state" >
-                                                            {
-                                                                StatesData && StatesData.map((item) => {
-                                                                    return (
-                                                                        <option key={item.Id} value={item.Id}>
-                                                                            {item.State}
-                                                                        </option>
-                                                                    )
-                                                                })
-                                                            }
-                                                        </Field>
-                                                        <ErrorMessage name="state" component={TextError} />
-                                                    </div> */}
                                                     <FormikControl
                                                         control="input"
                                                         type="text"

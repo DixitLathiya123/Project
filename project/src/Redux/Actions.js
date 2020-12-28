@@ -1,8 +1,5 @@
-import React from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import { useHistory } from 'react-router-dom';
-
 
 //register
 export const REQUEST = "REQUEST"
@@ -20,6 +17,54 @@ export const COUNTRY_FAILURE = "COUNTRY_FAILURE"
 export const STATE_REQUEST = "STATE_REQUEST"
 export const STATE_SUCCESS = "STATE_SUCCESS"
 export const STATE_FAILURE = "STATE_FAILURE"
+//message
+export const MESSAGE_REQUEST = "MESSAGE_REQUEST"
+export const MESSAGE_SUCCESS = "MESSAGE_SUCCESS"
+export const MESSAGE_FAILURE = "MESSAGE_FAILURE"
+//forgetPassword
+export const PASSWORD_REQUEST = "PASSWORD_REQUEST"
+export const PASSWORD_SUCCESS = "PASSWORD_SUCCESS"
+export const PASSWORD_FAILURE = "PASSWORD_FAILURE"
+
+//message
+export const messageRequest = () => {
+    return {
+        type: MESSAGE_REQUEST
+    }
+}
+export const messageSuccess = (message) => {
+    return {
+        type: MESSAGE_SUCCESS,
+        payload: message,
+    }
+}
+export const messageFailure = (error) => {
+    return {
+        type: MESSAGE_FAILURE,
+        ResponseStatus: '',
+        payload: error
+    }
+}
+export const userSendContact = (message) => {
+    return (dispatch) => {
+        dispatch(messageRequest())
+        axios.post(`${process.env.REACT_APP_API}/api/contactUs`, message)
+            .then((Response) => {
+                const message = Response.data
+                dispatch(messageSuccess(message))
+                if (message.ResponseStatus == 0) {
+                    if (message.message !== "") {
+                        toast.success(message.message)
+                    }
+                }
+            })
+            .catch((error) => {
+                const errors = error.message
+                dispatch(messageFailure(errors))
+            })
+    }
+}
+
 
 //state
 export const stateRequest = () => {
@@ -110,7 +155,7 @@ export const failure = (error) => {
         payload: error
     }
 }
-export const userGoingForRegister = (values) => {
+export const userGoingForRegister = (values, props) => {
     return (dispatch) => {
         dispatch(request)
         axios.post(`${process.env.REACT_APP_API}/api/signin`, values)
@@ -124,6 +169,9 @@ export const userGoingForRegister = (values) => {
                 }
                 else {
                     toast.success("Register Successfully!!")
+                    setTimeout(() => {
+                        props.history.push("/login")
+                    }, 1000);
                 }
             })
             .catch(error => {
@@ -132,7 +180,6 @@ export const userGoingForRegister = (values) => {
             })
     }
 }
-
 
 
 //login
@@ -152,17 +199,31 @@ export const loginsuccess = (token) => {
 export const loginfailure = (error) => {
     return {
         type: LOGIN_FAILURE,
-        registerStatus: '',
-        payload: error
+        LoginStatus: '',
+        payload: error,
+        LoginToken: '',
+
     }
 }
-export const userGoingForLogin = (values) => {
+export const userGoingForLogin = (values, props) => {
     return (dispatch) => {
         dispatch(loginrequest)
         axios.post(`${process.env.REACT_APP_API}/api/login`, values)
             .then(Response => {
                 const token = Response.data
                 dispatch(loginsuccess(token))
+                if (token.ResponseStatus !== 0) {
+                    localStorage.clear()
+                    if (token.message !== '') {
+                        toast.error(token.message)
+                    }
+                }
+                else {
+                    toast.success("Login Successfully!!")
+                    setTimeout(() => {
+                        props.history.push("/dash")
+                    }, 2000);
+                }
             })
             .catch(error => {
                 const errorMsg = error.message

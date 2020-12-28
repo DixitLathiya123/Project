@@ -1,19 +1,52 @@
-import { REQUEST,
-     SUCCESS,
-     FAILURE ,
+import {
+    REQUEST,
+    SUCCESS,
+    FAILURE,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
-    LOGIN_FAILURE ,
+    LOGIN_FAILURE,
     COUNTRY_FAILURE,
     COUNTRY_REQUEST,
     COUNTRY_SUCCESS,
     STATE_FAILURE,
     STATE_SUCCESS,
-    STATE_REQUEST
+    STATE_REQUEST,
+    MESSAGE_FAILURE,
+    MESSAGE_SUCCESS,
+    MESSAGE_REQUEST,
 } from './Actions'
-import { Register,
-     Login ,Country,States} from './State'
+import {
+    Register,
+    Login, Country, States ,Message
+} from './State'
 
+
+//State
+export const MessageReducer = (state = Message, action) => {
+    switch (action.type) {
+        case STATE_FAILURE: return {
+            ...state,
+            loading: true
+        }
+
+        case STATE_SUCCESS: return {
+
+            ...state,
+            loading: false,
+            ResponseStatus: action.payload,
+            error: ''
+        }
+
+        case STATE_REQUEST: return {
+            ...state,
+            loading: false,
+            ResponseStatus: '',
+            error: action.payload
+        }
+        default:
+            return state;
+    }
+}
 
 //State
 export const StateReducer = (state = States, action) => {
@@ -24,17 +57,17 @@ export const StateReducer = (state = States, action) => {
         }
 
         case STATE_SUCCESS: return {
-            
+
             ...state,
             loading: false,
-            StateData:action.payload,
-            error: ''            
+            StateData: action.payload,
+            error: ''
         }
 
         case STATE_REQUEST: return {
             ...state,
             loading: false,
-            StateData:[],
+            StateData: [],
             error: action.payload
         }
         default:
@@ -52,17 +85,17 @@ export const CountryReducer = (state = Country, action) => {
         }
 
         case COUNTRY_SUCCESS: return {
-            
+
             ...state,
             loading: false,
-            CountryData:action.payload,
-            error: ''            
+            CountryData: action.payload,
+            error: ''
         }
 
         case COUNTRY_FAILURE: return {
             ...state,
             loading: false,
-            CountryData:[],
+            CountryData: [],
             error: action.payload
         }
         default:
@@ -106,11 +139,15 @@ export const loginReducer = (state = Login, action) => {
             loading: true
         }
 
-        case LOGIN_SUCCESS: return {
-            ...state,
-            loading: false,
-            LoginToken: action.payload
-        }
+        case LOGIN_SUCCESS:
+            state = {
+                ...state,
+                loading: false,
+                LoginToken: action.payload,
+            }
+            localStorage.setItem('loginTokenFromApi', JSON.stringify(action.payload !== undefined && action.payload.token !== false && action.payload.token))
+
+            return state
 
         case LOGIN_FAILURE: return {
             ...state,

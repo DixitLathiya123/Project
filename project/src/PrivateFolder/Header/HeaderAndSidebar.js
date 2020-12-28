@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
 import { Layout, Menu } from 'antd';
 
-import { Navbar, Nav} from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap'
+import { Link, useHistory } from 'react-router-dom';
 import { SidebarData } from './SidebarData'
-import Slider from './Slider';
 
 const { Sider } = Layout;
 
-export const HeaderAndSidebar = ({ children }) => {
+export const HeaderAndSidebar = ({ children },props) => {
     const [state, setState] = useState(false)
     const onCollapse = () => setState(!state);
+
+    const history = useHistory()
+
+    const logout = () => {
+        localStorage.clear()
+        history.push("/login")
+    }
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
@@ -37,17 +43,15 @@ export const HeaderAndSidebar = ({ children }) => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link href="/dash">Home</Nav.Link>
-                            <Nav.Link href="/info">Contact</Nav.Link>
+                            <Nav.Link><Link to="/dash" >Home</Link></Nav.Link>
                         </Nav>
                         <div>
                             <Nav className="mr-auto">
-                                <Nav.Link href="/login">Log Out</Nav.Link>
+                                <Nav.Link onClick={()=>logout()}>Log Out</Nav.Link>
                             </Nav>
                         </div>
                     </Navbar.Collapse>
                 </Navbar>
-                <Slider />
                 {children}
             </Layout>
         </Layout>

@@ -2,10 +2,12 @@ import React from 'react'
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
 
 function UpdateProfile() {
-        return (
-        <HeaderAndSidebar title="About">
-            About123
-        </HeaderAndSidebar>
+    return (
+        <div>
+            <HeaderAndSidebar title="update">
+                update 123
+            </HeaderAndSidebar>
+        </div>
     )
 }
 

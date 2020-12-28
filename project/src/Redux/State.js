@@ -8,7 +8,8 @@ export const Register = {
 export const Login = {
     loading : false,
     LoginToken : '',
-    allUser:[],
+    LoginStatus:'',
+    message:'',
     error : ''
 }
 
@@ -23,3 +24,11 @@ export const States ={
     StateData:[],
     error:''
 }
+
+export const Message ={
+    loading : false,
+    ResponseStatus :'',
+    message:'',
+    error : ''
+}
+

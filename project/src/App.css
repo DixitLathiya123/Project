@@ -131,11 +131,9 @@ code {
   background-color: #4ea6ba;
   width: 100%;
   height: 80px;
-
   display: flex;
   justify-content: start;
   align-items: center;
-  margin-bottom: auto;
 }
 
 .menu-bars {
@@ -208,4 +206,9 @@ span {
 
 .cardbody {
   padding: 0px !important;
+}
+.forgot{
+  display: flex;
+  justify-content: center;
+  color: darkblue;
 }
