@@ -119,7 +119,8 @@ code {
   margin: 1rem;
 }
 .btndiv {
-  margin-left: 20%;
+  display: flex;
+  justify-content: center;
 }
 
 .menu {
@@ -212,4 +213,21 @@ span {
 .btndivforgot {
   justify-content: center;
   display: flex;
+}
+.blogbutton{
+  margin: 10px;
+  margin-right: 2%;
+  display: flex;
+  justify-content: flex-end;
+}
+.blogbutton2{
+  margin-right: 2%;
+}
+.allblog{
+  margin: 10px;
+  display: flex;
+  
+}
+.blogcard{
+  margin:2px !important;
 }

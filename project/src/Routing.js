@@ -12,6 +12,7 @@ import PrivateRouter from './PrivateRouter/PrivateRouter'
 import { isAuthenticated } from './PrivateRouter/Auth'
 import Forgot from './PublicFolder/Register/Forgot'
 import ForgetToNew from './PublicFolder/Register/ForgetToNew'
+import CreateBlog from './PrivateFolder/Pages/CreateBlog'
 
 function Routing() {
     if(isAuthenticated() !== false){
@@ -35,6 +36,7 @@ function Routing() {
                         <PrivateRouter exact path="/dash" component={Dashbord} />
                         <PrivateRouter exact path="/update" component={UpdateProfile} />
                         <PrivateRouter exact path="/table" component={TableView} />
+                        <PrivateRouter exact path="/createBlog" component={CreateBlog} />
                     </Switch>
                 </BrowserRouter>
 

@@ -46,3 +46,18 @@ export const ForgetToNew ={
     error : ''
 }
 
+export const getAllBlog ={
+    loading : false,
+    Blogs: [],
+    message:'',
+    error : ''
+}
+
+export const createBlog ={
+    loading : false,
+    ResponseStatus :'',
+    message:'',
+    error : ''
+}
+
+

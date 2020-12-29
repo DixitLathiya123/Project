@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { Link, useHistory } from 'react-router-dom';
 
 
@@ -43,7 +43,7 @@ function Login(props) {
             <ToastContainer />
             <Card className="cardLogin">
                 <Card.Body className="cardLoginBody">
-                    <div className="row" style={{ "justify-content": "center" }}>
+                    <div className="row" style={{ "justifyContent": "center" }}>
                         <div className="form col-6" >
                             <Formik
                                 initialValues={initialValues}

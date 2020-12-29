@@ -35,7 +35,7 @@ function Forgot() {
             <ToastContainer />
             <Card className="cardLogin">
                 <Card.Body className="cardLoginBody">
-                    <div className="row" style={{ "justify-content": "center" }}>
+                    <div className="row" style={{ "justifyContent": "center" }}>
                         <div className="form col-6" >
                             <Formik
                                 initialValues={initialValues}

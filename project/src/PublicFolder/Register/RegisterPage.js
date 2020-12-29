@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Formik, Form} from "formik";
+import { Formik, Form } from "formik";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+
 
 
 import Card from "react-bootstrap/Card";
@@ -29,20 +30,20 @@ const checkBoxOptions = [
 function Register(props) {
     const history = useHistory()
 
-    if(isAuthenticated() !== false){
-         history.push("/")
+    if (isAuthenticated() !== false) {
+        history.push("/")
     }
     const dispatch = useDispatch();
     const [captcha, setCaptcha] = useState("");
-    
+
     const CountryData = useSelector(state => state.country.CountryData)
     const StatesData = useSelector(state => state.states.StateData)
-    
-    
+
+
     useEffect(() => {
         dispatch(getAllCountry())
     }, [])
-    
+
     const initialValues = {
         name: "",
         phoneNo: "",
@@ -88,7 +89,7 @@ function Register(props) {
         if (values === '') {
             error = "Required!";
         }
-        else{
+        else {
             dispatch(getAllstate(values));
         }
         return error;
@@ -102,7 +103,7 @@ function Register(props) {
     };
 
     const onSubmit = (values) => {
-        dispatch(userGoingForRegister(values,props));
+        dispatch(userGoingForRegister(values, props));
     };
 
     const handlecaptcha = (e) => setCaptcha(e);
@@ -245,4 +246,4 @@ function Register(props) {
     );
 }
 
-export default Register;
+export default Register

@@ -20,10 +20,70 @@ import {
     FORGET_TO_NEWFAILURE,
     FORGET_TO_NEWSUCCESS,
     FORGET_TO_NEWREQUEST,
+    GET_ALL_BLOG_FAILURE,
+    GET_ALL_BLOG_SUCCESS,
+    GET_ALL_BLOG_REQUEST,
+    CREATE_BLOG_FAILURE,
+    CREATE_BLOG_SUCCESS,
+    CREATE_BLOG_REQUEST,
 } from './Actions'
 import {
-    Register, Login, Country, States, Message, Forget, ForgetToNew
+    Register, Login, Country, States, Message, Forget, ForgetToNew ,getAllBlog,createBlog
 } from './State'
+
+//create blog
+export const CreateBlogReducer = (state = createBlog, action) => {
+    switch (action.type) {
+        case CREATE_BLOG_FAILURE: return {
+            ...state,
+            loading: true
+        }
+
+        case CREATE_BLOG_SUCCESS: return {
+
+            ...state,
+            loading: false,
+            ResponseStatus: action.payload,
+            error: ''
+        }
+
+        case CREATE_BLOG_REQUEST: return {
+            ...state,
+            loading: false,
+            ResponseStatus: '',
+            error: action.payload
+        }
+        default:
+            return state;
+    }
+}
+
+//getAllBlog
+export const getAllBlogReducer = (state = getAllBlog, action) => {
+    switch (action.type) {
+        case GET_ALL_BLOG_FAILURE: return {
+            ...state,
+            loading: true
+        }
+
+        case GET_ALL_BLOG_SUCCESS: return {
+
+            ...state,
+            loading: false,
+            Blogs: action.payload,
+            error: ''
+        }
+
+        case GET_ALL_BLOG_REQUEST: return {
+            ...state,
+            loading: false,
+            Blogs: [],
+            error: action.payload
+        }
+        default:
+            return state;
+    }
+}
 
 
 //forgetToNEW

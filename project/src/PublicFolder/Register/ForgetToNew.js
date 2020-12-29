@@ -25,7 +25,7 @@ function ForgetToNew() {
 
     const initialValues = {
         password: '',
-        Token: url
+        Token: ''
     }
 
     const validationSchema = Yup.object({
@@ -42,7 +42,7 @@ function ForgetToNew() {
             <ToastContainer />
             <Card className="cardLogin">
                 <Card.Body className="cardLoginBody">
-                    <div className="row" style={{ "justify-content": "center" }}>
+                    <div className="row" style={{ "justifyContent": "center" }}>
                         <div className="form col-6" >
                             <Formik
                                 initialValues={initialValues}
@@ -59,6 +59,13 @@ function ForgetToNew() {
                                                     type="password"
                                                     lable="Password*"
                                                     name="password"
+                                                />
+                                                <FormikControl
+                                                    control="hidden"
+                                                    type="text"
+                                                    lable="Token*"
+                                                    name="Token"
+                                                    value={url}
                                                 />
 
                                                 <div className="btndivforgot">

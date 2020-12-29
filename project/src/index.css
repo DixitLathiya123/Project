@@ -5,9 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: rgb(114, 182, 255); */
-  /* background-image: url('./PublicFolder/Image/loginImage2'); */
-  background-image: url('./PublicFolder/Image/loginImage.png');
+  /* background-image: url('./PublicFolder/Image/loginImage.png'); */
 }
 
 code {
