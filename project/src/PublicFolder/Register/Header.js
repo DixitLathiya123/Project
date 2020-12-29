@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react'
-import axios from 'axios'
-import * as FaIcons from 'react-icons/fa'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import '../../App.css'
 import { IconContext } from 'react-icons'
-import { success, failure} from '../../Redux/Actions'
-import { useDispatch, useSelector } from 'react-redux'
 
 function Header() {
     return (

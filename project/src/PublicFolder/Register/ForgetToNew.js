@@ -1,40 +1,39 @@
-import React from 'react'
-import { Formik, Form } from 'formik'
+import React, { useEffect, useState } from 'react'
 import * as Yup from 'yup'
+import { Formik, Form } from 'formik'
 import { Button } from 'react-bootstrap'
+import { ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux'
-import { ToastContainer} from 'react-toastify';
-import { Link, useHistory } from 'react-router-dom';
 
-
+import { forgetToNewPassword } from '../../Redux/Actions'
 import Card from 'react-bootstrap/Card'
 import FormikControl from '../Pages/FormikControl'
-import { userGoingForLogin } from '../../Redux/Actions'
 
 import 'react-toastify/dist/ReactToastify.css';
-import Header from './Header'
-import { isAuthenticated } from '../../PrivateRouter/Auth'
+import Header from './Header';
 
-function Login(props) {
-    const history = useHistory();
-    if (isAuthenticated() !== false) {
-        history.push("/")
-    }
+function ForgetToNew() {
 
     const dispatch = useDispatch()
+    const [url, setUrl] = useState()
+
+    useEffect(() => {
+        let url = window.location.pathname.split('/')
+        let urlToken = url[url.length - 1]
+        setUrl(urlToken)
+    }, [])
 
     const initialValues = {
-        email: '',
         password: '',
+        Token: url
     }
 
     const validationSchema = Yup.object({
-        email: Yup.string().email('Invalid Format*').required('Email Required*'),
         password: Yup.string().length(6).required('Password Required*')
     })
 
     const onSubmit = values => {
-        dispatch(userGoingForLogin(values, props))
+        dispatch(forgetToNewPassword(values))
     }
 
     return (
@@ -54,25 +53,17 @@ function Login(props) {
                                     (formik) => {
                                         return (
                                             <Form>
-                                                <h1 align="center">Sign In</h1>
-                                                <FormikControl
-                                                    control="input"
-                                                    type="email"
-                                                    lable="Email*"
-                                                    name="email"
-                                                />
-
+                                                <h1 align="center">New Password</h1>
                                                 <FormikControl
                                                     control="input"
                                                     type="password"
                                                     lable="Password*"
                                                     name="password"
                                                 />
-                                                <div className="btndiv">
-                                                    <Button className="button" type="submit" variant="info">Login</Button>
-                                                    <Button className="button" variant="info" onClick={() => { history.push(`/register`); }}>Register</Button >
+
+                                                <div className="btndivforgot">
+                                                    <Button className="button" type="submit" variant="info">Change Password</Button>
                                                 </div>
-                                                <div className="forgot"><Link to="forgot">Forgot password?</Link></div>
                                             </Form>
                                         )
                                     }
@@ -86,4 +77,5 @@ function Login(props) {
     )
 }
 
-export default Login
+export default ForgetToNew
+

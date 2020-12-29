@@ -32,3 +32,17 @@ export const Message ={
     error : ''
 }
 
+export const Forget ={
+    loading : false,
+    ReturnCode :'',
+    message:'',
+    error : ''
+}
+
+export const ForgetToNew ={
+    loading : false,
+    ReturnCode :'',
+    message:'',
+    error : ''
+}
+

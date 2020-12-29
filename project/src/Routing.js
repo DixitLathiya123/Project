@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, BrowserRouter, useHistory } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, BrowserRouter} from 'react-router-dom'
 import Contact from './PublicFolder/Register/Contact'
 import Home from './PublicFolder/Register/Home'
 import Login from './PublicFolder/Register/Login'
@@ -11,9 +11,9 @@ import TableView from './PrivateFolder/Pages/TableView'
 import PrivateRouter from './PrivateRouter/PrivateRouter'
 import { isAuthenticated } from './PrivateRouter/Auth'
 import Forgot from './PublicFolder/Register/Forgot'
+import ForgetToNew from './PublicFolder/Register/ForgetToNew'
 
 function Routing() {
-    const history = useHistory()
     if(isAuthenticated() !== false){
         <Route exact path="/" component={Dashbord} />
     }
@@ -23,11 +23,15 @@ function Routing() {
                 <BrowserRouter>
                     <Switch>
                         {(isAuthenticated() )? <Route exact path="/" component={Dashbord} /> : <Route exact path="/" component={Home} />}
+
                         <Route exact path="/home" component={Home} />
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/contact" component={Contact} />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/forgot" component={Forgot} />
+                        <Route exact path="/forget-password/link/" component={Error404} />
+                        <Route path="/forget-password/link/" component={ForgetToNew} />
+
                         <PrivateRouter exact path="/dash" component={Dashbord} />
                         <PrivateRouter exact path="/update" component={UpdateProfile} />
                         <PrivateRouter exact path="/table" component={TableView} />

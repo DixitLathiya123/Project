@@ -22,9 +22,94 @@ export const MESSAGE_REQUEST = "MESSAGE_REQUEST"
 export const MESSAGE_SUCCESS = "MESSAGE_SUCCESS"
 export const MESSAGE_FAILURE = "MESSAGE_FAILURE"
 //forgetPassword
-export const PASSWORD_REQUEST = "PASSWORD_REQUEST"
-export const PASSWORD_SUCCESS = "PASSWORD_SUCCESS"
-export const PASSWORD_FAILURE = "PASSWORD_FAILURE"
+export const FORGET_REQUEST = "FORGET_REQUEST"
+export const FORGET_SUCCESS = "FORGET_SUCCESS"
+export const FORGET_FAILURE = "FORGET_FAILURE"
+//newPassword
+export const FORGET_TO_NEWREQUEST = "FORGET_TO_NEWREQUEST"
+export const FORGET_TO_NEWSUCCESS = "FORGET_TO_NEWSUCCESS"
+export const FORGET_TO_NEWFAILURE = "FORGET_TO_NEWFAILURE"
+
+//forget
+export const forgetToNewRequest = () => {
+    return {
+        type: FORGET_TO_NEWREQUEST
+    }
+}
+export const forgetToNewSuccess = (data) => {
+    return {
+        type: FORGET_TO_NEWSUCCESS,
+        payload: data,
+    }
+}
+export const forgetToNewFailure = (error) => {
+    return {
+        type: FORGET_TO_NEWFAILURE,
+        ReturnCode: '',
+        payload: error
+    }
+}
+export const forgetToNewPassword = (data) => {
+    return (dispatch) => {
+        dispatch(forgetToNewRequest())
+        axios.post(`${process.env.REACT_APP_API}/api/resetPassword`, data)
+            .then((Response) => {
+                const data = Response.data
+                dispatch(forgetToNewSuccess(data))
+                console.log(data);
+                if (data.ReturnCode === 1) {
+                    if (data.message !== "") {
+                        toast.success(data.message)
+                    }
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                const errors = error.message
+                dispatch(forgetToNewFailure(errors))
+            })
+    }
+}
+
+
+//forget
+export const forgetRequest = () => {
+    return {
+        type: FORGET_REQUEST
+    }
+}
+export const forgetSuccess = (email) => {
+    return {
+        type: FORGET_SUCCESS,
+        payload: email,
+    }
+}
+export const forgetFailure = (error) => {
+    return {
+        type: FORGET_FAILURE,
+        ReturnCode: '',
+        payload: error
+    }
+}
+export const forgetPassword = (email) => {
+    return (dispatch) => {
+        dispatch(forgetRequest())
+        axios.post(`${process.env.REACT_APP_API}/api/forgetPassword`, email)
+            .then((Response) => {
+                const email = Response.data
+                dispatch(forgetSuccess(email))
+                if (email.ReturnCode === 1) {
+                    if (email.message !== "") {
+                        toast.success(email.message)
+                    }
+                }
+            })
+            .catch((error) => {
+                const errors = error.message
+                dispatch(forgetFailure(errors))
+            })
+    }
+}
 
 //message
 export const messageRequest = () => {
@@ -52,7 +137,7 @@ export const userSendContact = (message) => {
             .then((Response) => {
                 const message = Response.data
                 dispatch(messageSuccess(message))
-                if (message.ResponseStatus == 0) {
+                if (message.ResponseStatus === 0) {
                     if (message.message !== "") {
                         toast.success(message.message)
                     }

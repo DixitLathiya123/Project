@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form} from "formik";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 
 import Card from "react-bootstrap/Card";
@@ -35,7 +35,6 @@ function Register(props) {
     const dispatch = useDispatch();
     const [captcha, setCaptcha] = useState("");
     
-    const stateData = useSelector((state) => state.register);
     const CountryData = useSelector(state => state.country.CountryData)
     const StatesData = useSelector(state => state.states.StateData)
     
@@ -58,16 +57,6 @@ function Register(props) {
         address: "",
         skill: [],
     };
-    const optionCountry = [
-        { key: "Select Country", value: "" },
-        { key: "India", value: "india" },
-        { key: "USA", value: "usa" },
-    ];
-    const optionState = [
-        { key: "Select State", value: "" },
-        { key: "Gujarat", value: "gujarat" },
-        { key: "Texas", value: "texas" },
-    ];
 
     const validationSchema = Yup.object({
         name: Yup.string().required("Name required *"),

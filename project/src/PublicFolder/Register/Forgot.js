@@ -1,16 +1,37 @@
 import React from 'react'
+import * as Yup from 'yup'
 import { Formik, Form } from 'formik'
 import { Button } from 'react-bootstrap'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import { useDispatch } from 'react-redux'
+import { forgetPassword } from '../../Redux/Actions'
+
 
 import Card from 'react-bootstrap/Card'
 import FormikControl from '../Pages/FormikControl'
 
 import 'react-toastify/dist/ReactToastify.css';
+import Header from './Header';
 
 function Forgot() {
+
+    const dispatch = useDispatch()
+
+    const initialValues = {
+        email: '',
+    }
+
+    const validationSchema = Yup.object({
+        email: Yup.string().email('Invalid Format*').required('Email Required*'),
+    })
+
+    const onSubmit = values => {
+        dispatch(forgetPassword(values))
+    }
+
     return (
         <div>
+            <Header />
             <ToastContainer />
             <Card className="cardLogin">
                 <Card.Body className="cardLoginBody">
@@ -25,7 +46,7 @@ function Forgot() {
                                     (formik) => {
                                         return (
                                             <Form>
-                                                <h1 align="center">Sign In</h1>
+                                                <h1 align="center">Forgot Password</h1>
                                                 <FormikControl
                                                     control="input"
                                                     type="email"
@@ -33,7 +54,7 @@ function Forgot() {
                                                     name="email"
                                                 />
 
-                                                <div className="btndiv">
+                                                <div className="btndivforgot">
                                                     <Button className="button" type="submit" variant="info">Send Password Reset Email</Button>
                                                 </div>
                                             </Form>

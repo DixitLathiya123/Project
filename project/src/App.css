@@ -118,7 +118,7 @@ code {
 .button {
   margin: 1rem;
 }
-.btndiv{
+.btndiv {
   margin-left: 20%;
 }
 
@@ -200,15 +200,16 @@ code {
 span {
   margin-left: 16px;
 }
-.slider {
-  height: 100%;
-}
 
 .cardbody {
   padding: 0px !important;
 }
-.forgot{
+.forgot {
   display: flex;
   justify-content: center;
   color: darkblue;
+}
+.btndivforgot {
+  justify-content: center;
+  display: flex;
 }

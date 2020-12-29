@@ -14,22 +14,81 @@ import {
     MESSAGE_FAILURE,
     MESSAGE_SUCCESS,
     MESSAGE_REQUEST,
+    FORGET_FAILURE,
+    FORGET_SUCCESS,
+    FORGET_REQUEST,
+    FORGET_TO_NEWFAILURE,
+    FORGET_TO_NEWSUCCESS,
+    FORGET_TO_NEWREQUEST,
 } from './Actions'
 import {
-    Register,
-    Login, Country, States ,Message
+    Register, Login, Country, States, Message, Forget, ForgetToNew
 } from './State'
 
 
-//State
-export const MessageReducer = (state = Message, action) => {
+//forgetToNEW
+export const ForgetToNewReducer = (state = ForgetToNew, action) => {
     switch (action.type) {
-        case STATE_FAILURE: return {
+        case FORGET_TO_NEWREQUEST: return {
             ...state,
             loading: true
         }
 
-        case STATE_SUCCESS: return {
+        case FORGET_TO_NEWSUCCESS: return {
+
+            ...state,
+            loading: false,
+            ReturnCode: action.payload,
+            error: ''
+        }
+
+        case FORGET_TO_NEWFAILURE: return {
+            ...state,
+            loading: false,
+            ReturnCode: '',
+            error: action.payload
+        }
+        default:
+            return state;
+    }
+}
+
+//forget
+export const ForgetReducer = (state = Forget, action) => {
+    switch (action.type) {
+        case FORGET_REQUEST: return {
+            ...state,
+            loading: true
+        }
+
+        case FORGET_SUCCESS: return {
+
+            ...state,
+            loading: false,
+            ReturnCode: action.payload,
+            error: ''
+        }
+
+        case FORGET_FAILURE: return {
+            ...state,
+            loading: false,
+            ReturnCode: '',
+            error: action.payload
+        }
+        default:
+            return state;
+    }
+}
+
+//message
+export const MessageReducer = (state = Message, action) => {
+    switch (action.type) {
+        case MESSAGE_FAILURE: return {
+            ...state,
+            loading: true
+        }
+
+        case MESSAGE_SUCCESS: return {
 
             ...state,
             loading: false,
@@ -37,7 +96,7 @@ export const MessageReducer = (state = Message, action) => {
             error: ''
         }
 
-        case STATE_REQUEST: return {
+        case MESSAGE_REQUEST: return {
             ...state,
             loading: false,
             ResponseStatus: '',
