@@ -4,16 +4,23 @@ import { Formik, Form } from 'formik'
 import { Button } from 'react-bootstrap'
 import { ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { forgetToNewPassword } from '../../Redux/Actions'
 import Card from 'react-bootstrap/Card'
 import FormikControl from '../Pages/FormikControl'
 
 import 'react-toastify/dist/ReactToastify.css';
+import { isAuthenticated } from '../../PrivateRouter/Auth'
 import Header from './Header';
 
 function ForgetToNew() {
 
+    const history = useHistory()
+
+    if (isAuthenticated() !== false) {
+        history.push("/")
+    }
     const dispatch = useDispatch()
     const [url, setUrl] = useState()
 

@@ -4,35 +4,36 @@ import * as Yup from 'yup'
 import { Button } from 'react-bootstrap'
 import { ToastContainer } from 'react-toastify';
 import FormikControl from '../../PublicFolder/Pages/FormikControl'
-import { useDispatch } from "react-redux";
-
-
-import { createBlog } from '../../Redux/Actions';
-import Card from 'react-bootstrap/Card'
-import 'react-toastify/dist/ReactToastify.css';
-import HeaderAndSidebar from '../Header/HeaderAndSidebar'
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
+import Card from 'react-bootstrap/Card'
 
-function CreateBlog() {
+import { changePassword } from '../../Redux/Actions';
+import HeaderAndSidebar from '../Header/HeaderAndSidebar'
 
+function ResetPassword() {
     const history = useHistory()
     const dispatch = useDispatch();
 
     const initialValues = {
-        blogTitle: '',
-        blogContent: '',
+        newPassword: '',
+        oldPassword: '',
     }
 
+    const changePasswordStatus = useSelector(state => state.changePassword.ReturnCode.ReturnCode)
+
     const validationSchema = Yup.object({
-        blogTitle: Yup.string().required('Blog Title Required*'),
-        blogContent: Yup.string().required('Blog Content Required*')
+        newPassword: Yup.string().length(6).required("New Password required *"),
+        oldPassword: Yup.string().length(6).required("Old Password required *"),
     })
 
-    const onSubmit = (values,onSubmitProps) => {
-        dispatch(createBlog(values,onSubmitProps))
-        setTimeout(() => {
-            history.push("/dash")
-        }, 2000);
+    const onSubmit = (values, onSubmitProps) => {
+        dispatch(changePassword(values, onSubmitProps))
+        if (changePasswordStatus !== "" && changePasswordStatus === 0) {
+            setTimeout(() => {
+                history.push("/dash")
+            }, 5000);
+        }
     }
 
     return (
@@ -52,22 +53,24 @@ function CreateBlog() {
                                         (formik) => {
                                             return (
                                                 <Form>
-                                                    <h1 align="center">Create Blog</h1>
+                                                    <h1 align="center">Reset Password</h1>
+
                                                     <FormikControl
                                                         control="input"
                                                         type="text"
-                                                        lable="Blog Title*"
-                                                        name="blogTitle"
+                                                        lable="Old Password*"
+                                                        name="oldPassword"
                                                     />
 
                                                     <FormikControl
                                                         control="input"
                                                         type="text"
-                                                        lable="Blog Content*"
-                                                        name="blogContent"
+                                                        lable="New Password*"
+                                                        name="newPassword"
                                                     />
+
                                                     <div className="btndiv">
-                                                        <Button className="button" type="submit" variant="info">Create</Button>
+                                                        <Button className="button" type="submit" variant="info">Change Password</Button>
                                                     </div>
                                                 </Form>
                                             )
@@ -85,4 +88,4 @@ function CreateBlog() {
 }
 
 
-export default CreateBlog
+export default ResetPassword

@@ -26,10 +26,133 @@ import {
     CREATE_BLOG_FAILURE,
     CREATE_BLOG_SUCCESS,
     CREATE_BLOG_REQUEST,
+    GET_BLOG_BY_ID_REQUEST,
+    GET_BLOG_BY_ID_SUCCESS,
+    GET_BLOG_BY_ID_FAILURE,
+    DELETE_BLOG_REQUEST,
+    DELETE_BLOG_SUCCESS,
+    DELETE_BLOG_FAILURE,
+    GET_USER_BY_ID_REQUEST,
+    GET_USER_BY_ID_SUCCESS,
+    GET_USER_BY_ID_FAILURE,
+    CHANGE_PASSWORD_REQUEST,
+    CHANGE_PASSWORD_SUCCESS,
+    CHANGE_PASSWORD_FAILURE,
 } from './Actions'
 import {
-    Register, Login, Country, States, Message, Forget, ForgetToNew ,getAllBlog,createBlog
+    Register, Login, Country, States, Message, Forget, ForgetToNew ,getAllBlog,createBlog,getBlogById,deleteBlog,getUserById,ChangePassword
 } from './State'
+
+
+
+//change password
+export const changePasswordReducer = (state = ChangePassword, action) => {
+    switch (action.type) {
+        case CHANGE_PASSWORD_REQUEST: return {
+            ...state,
+            loading: true
+        }
+
+        case CHANGE_PASSWORD_SUCCESS: return {
+
+            ...state,
+            loading: false,
+            ReturnCode: action.payload,
+            error: ''
+        }
+
+        case CHANGE_PASSWORD_FAILURE: return {
+            ...state,
+            loading: false,
+            ReturnCode: '',
+            error: action.payload
+        }
+        default:
+            return state;
+    }
+}
+
+
+//get User by id
+export const getUserByIdReducer = (state = getUserById, action) => {
+    switch (action.type) {
+        case GET_USER_BY_ID_REQUEST: return {
+            ...state,
+            loading: true
+        }
+
+        case GET_USER_BY_ID_SUCCESS: return {
+
+            ...state,
+            loading: false,
+            blogById: action.payload,
+            error: ''
+        }
+
+        case GET_USER_BY_ID_FAILURE: return {
+            ...state,
+            loading: false,
+            UserById: [],
+            error: action.payload
+        }
+        default:
+            return state;
+    }
+}
+
+//delete blog 
+export const deleteBlogReducer = (state = deleteBlog, action) => {
+    switch (action.type) {
+        case DELETE_BLOG_REQUEST: return {
+            ...state,
+            loading: true
+        }
+
+        case DELETE_BLOG_SUCCESS: return {
+
+            ...state,
+            loading: false,
+            ResponseStatus: action.payload,
+            error: ''
+        }
+
+        case DELETE_BLOG_FAILURE: return {
+            ...state,
+            loading: false,
+            ResponseStatus: '',
+            error: action.payload
+        }
+        default:
+            return state;
+    }
+}
+
+//get blog by id
+export const getBlogByIdReducer = (state = getBlogById, action) => {
+    switch (action.type) {
+        case GET_BLOG_BY_ID_REQUEST: return {
+            ...state,
+            loading: true
+        }
+
+        case GET_BLOG_BY_ID_SUCCESS: return {
+
+            ...state,
+            loading: false,
+            blogById: action.payload,
+            error: ''
+        }
+
+        case GET_BLOG_BY_ID_FAILURE: return {
+            ...state,
+            loading: false,
+            blogById: [],
+            error: action.payload
+        }
+        default:
+            return state;
+    }
+}
 
 //create blog
 export const CreateBlogReducer = (state = createBlog, action) => {

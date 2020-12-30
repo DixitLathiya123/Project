@@ -60,4 +60,31 @@ export const createBlog ={
     error : ''
 }
 
+export const getBlogById ={
+    loading : false,
+    blogById :[],
+    message:'',
+    error : ''
+}
+
+export const deleteBlog ={
+    loading : false,
+    ResponseStatus :'',
+    message:'',
+    error : ''
+}
+
+export const getUserById ={
+    loading : false,
+    UserById :[],
+    message:'',
+    error : ''
+}
+
+export const ChangePassword ={
+    loading : false,
+    ReturnCode :'',
+    message:'',
+    error : ''
+}
 

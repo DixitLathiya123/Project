@@ -37,8 +37,210 @@ export const GET_ALL_BLOG_FAILURE = "GET_ALL_BLOG_FAILURE"
 export const CREATE_BLOG_REQUEST = "CREATE_BLOG_REQUEST"
 export const CREATE_BLOG_SUCCESS = "CREATE_BLOG_SUCCESS"
 export const CREATE_BLOG_FAILURE = "CREATE_BLOG_FAILURE"
+//get blog by id
+export const GET_BLOG_BY_ID_REQUEST = "GET_BLOG_BY_ID_REQUEST"
+export const GET_BLOG_BY_ID_SUCCESS = "GET_BLOG_BY_ID_SUCCESS"
+export const GET_BLOG_BY_ID_FAILURE = "GET_BLOG_BY_ID_FAILURE"
+//delete blog 
+export const DELETE_BLOG_REQUEST = "DELETE_BLOG_REQUEST"
+export const DELETE_BLOG_SUCCESS = "DELETE_BLOG_SUCCESS"
+export const DELETE_BLOG_FAILURE = "DELETE_BLOG_FAILURE"
+//get user by id
+export const GET_USER_BY_ID_REQUEST = "GET_USER_BY_ID_REQUEST"
+export const GET_USER_BY_ID_SUCCESS = "GET_USER_BY_ID_SUCCESS"
+export const GET_USER_BY_ID_FAILURE = "GET_USER_BY_ID_FAILURE"
+//change password
+export const CHANGE_PASSWORD_REQUEST = "CHANGE_PASSWORD_REQUEST"
+export const CHANGE_PASSWORD_SUCCESS = "CHANGE_PASSWORD_SUCCESS"
+export const CHANGE_PASSWORD_FAILURE = "CHANGE_PASSWORD_FAILURE"
+
+//change password
+export const changePasswordRequest = () => {
+    return {
+        type: CHANGE_PASSWORD_REQUEST
+    }
+}
+export const changePasswordSuccess = (change) => {
+    return {
+        type: CHANGE_PASSWORD_SUCCESS,
+        payload: change,
+    }
+}
+export const changePasswordFailure = (error) => {
+    return {
+        type: CHANGE_PASSWORD_FAILURE,
+        ReturnCode: '',
+        payload: error
+    }
+}
+export const changePassword = (change, onSubmitProps) => {
+    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
+
+    return (dispatch) => {
+        dispatch(changePasswordRequest())
+        axios.put(`${process.env.REACT_APP_API}/api/changePassword`, change,
+            {
+                headers: {
+                    'Authorization': token,
+                    'content-type': "application/json"
+                }
+            })
+            .then((Response) => {
+                const change = Response.data
+                dispatch(changePasswordSuccess(change))
+                onSubmitProps.resetForm();
+                if (change.ReturnCode !== 0) {
+                    if (change.message !== "") {
+                        toast.error(change.message)
+                    }
+                }
+                else {
+                    toast.success(change.message)
+                }
+            })
+            .catch((error) => {
+                const errors = error.message
+                dispatch(changePasswordFailure(errors))
+            })
+
+    }
+}
 
 
+//get user by id
+export const getUserByIdRequest = () => {
+    return {
+        type: GET_USER_BY_ID_REQUEST
+    }
+}
+export const getUserByIdSuccess = (UserById) => {
+    return {
+        type: GET_USER_BY_ID_SUCCESS,
+        payload: UserById,
+    }
+}
+export const getUserByIdFailure = (error) => {
+    return {
+        type: GET_USER_BY_ID_FAILURE,
+        ReturnCode: '',
+        payload: error
+    }
+}
+export const getUserById = () => {
+    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
+    return (dispatch) => {
+        dispatch(getUserByIdRequest())
+        axios.get(`${process.env.REACT_APP_API}/api/getUserById`,
+            {
+                headers: {
+                    'Authorization': token,
+                    'content-type': "application/json"
+                }
+            })
+            .then((Response) => {
+                const UserById = Response.data
+                dispatch(getUserByIdSuccess(UserById))
+            })
+            .catch((error) => {
+                const errors = error.message
+                dispatch(getUserByIdFailure(errors))
+            })
+
+    }
+}
+
+
+//delete blog
+export const deleteBlogRequest = () => {
+    return {
+        type: DELETE_BLOG_REQUEST
+    }
+}
+export const deleteBlogSuccess = (data) => {
+    return {
+        type: DELETE_BLOG_SUCCESS,
+        payload: data,
+    }
+}
+export const deleteBlogFailure = (error) => {
+    return {
+        type: DELETE_BLOG_FAILURE,
+        ReturnCode: '',
+        payload: error
+    }
+}
+export const deleteBlog = (deleteId) => {
+    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
+    return (dispatch) => {
+        dispatch(deleteBlogRequest())
+        axios.delete(`${process.env.REACT_APP_API}/api/deleteBlog/${deleteId}`,
+            {
+                headers: {
+                    'Authorization': token,
+                    'content-type': "application/json"
+                }
+            })
+            .then((Response) => {
+                const deleteBlog = Response.data
+                dispatch(deleteBlogSuccess(deleteBlog))
+                if (deleteBlog.ResponseStatus === 0) {
+                    if (deleteBlog.message !== "") {
+                        toast.success(deleteBlog.message)
+                        setTimeout(() => {
+                            dispatch(getBlogById())
+                        }, 2000);
+                    }
+                }
+            })
+            .catch((error) => {
+                const errors = error.message
+                dispatch(deleteBlogFailure(errors))
+            })
+
+    }
+}
+
+//get blog by id
+export const getBlogByIdRequest = () => {
+    return {
+        type: GET_BLOG_BY_ID_REQUEST
+    }
+}
+export const getBlogByIdSuccess = (blogById) => {
+    return {
+        type: GET_BLOG_BY_ID_SUCCESS,
+        payload: blogById,
+    }
+}
+export const getBlogByIdFailure = (error) => {
+    return {
+        type: GET_BLOG_BY_ID_FAILURE,
+        ReturnCode: '',
+        payload: error
+    }
+}
+export const getBlogById = () => {
+    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
+    return (dispatch) => {
+        dispatch(getBlogByIdRequest())
+        axios.get(`${process.env.REACT_APP_API}/api/getBlogById`,
+            {
+                headers: {
+                    'Authorization': token,
+                    'content-type': "application/json"
+                }
+            })
+            .then((Response) => {
+                const blogById = Response.data
+                dispatch(getBlogByIdSuccess(blogById))
+            })
+            .catch((error) => {
+                const errors = error.message
+                dispatch(getBlogByIdFailure(errors))
+            })
+
+    }
+}
 
 //create blog
 export const createBlogRequest = () => {
@@ -61,7 +263,6 @@ export const createBlogFailure = (error) => {
 }
 export const createBlog = (blog, onSubmitProps) => {
     let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
-    console.log("token", token);
     return (dispatch) => {
         dispatch(createBlogRequest())
         axios.post(`${process.env.REACT_APP_API}/api/createBlog`, blog,
@@ -348,7 +549,7 @@ export const userGoingForRegister = (values, props) => {
                     toast.success("Register Successfully!!")
                     setTimeout(() => {
                         props.history.push("/login")
-                    }, 1000);
+                    }, 2000);
                 }
             })
             .catch(error => {
@@ -408,8 +609,3 @@ export const userGoingForLogin = (values, props) => {
             })
     }
 }
-
-
-
-
-

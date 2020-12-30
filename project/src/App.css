@@ -226,8 +226,24 @@ span {
 .allblog{
   margin: 10px;
   display: flex;
-  
 }
 .blogcard{
-  margin:2px !important;
+  margin:8px !important;
+}
+.deleteButton{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.blogimage{
+  margin: 10px !important;
+}
+.likeDislikeButton{
+  width: 23%;
+  background-color: white;
+  margin: 4px;
+  border-radius: 15px;
+}
+.social{
+  display: inline-flex;
 }
