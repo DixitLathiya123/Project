@@ -9,7 +9,6 @@ const { Sider } = Layout;
 
 export const HeaderAndSidebar = ({ children },props) => {
     const [state, setState] = useState(false)
-    const onCollapse = () => setState(!state);
 
     const history = useHistory()
 
@@ -19,15 +18,15 @@ export const HeaderAndSidebar = ({ children },props) => {
     }
 
     return (
-        <Layout style={{ minHeight: '100vh' }}>
-            <Sider collapsible collapsed={state} onCollapse={() => { onCollapse() }} >
+        <Layout style={{ minHeight: '100vh' }} >
+            <Sider collapsible collapsed={state} onCollapse={() => { setState(!state) }} >
 
                 <Menu theme="dark" s mode="inline" >
                     {
                         SidebarData() && SidebarData().map((item, index) => {
                             return (
                                 <>
-                                    <Menu.Item key={index + 1} icon={item.icon} >
+                                    <Menu.Item key={index + 1} icon={item.icon} className="sidebar" >
                                         <Link to={item.path} >
                                             <span>{item.title}</span>
                                         </Link>
@@ -38,8 +37,8 @@ export const HeaderAndSidebar = ({ children },props) => {
                     }
                 </Menu>
             </Sider>
-            <Layout>
-                <Navbar bg="light" >
+            <Layout >
+                <Navbar bg="light" className="sticky">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">

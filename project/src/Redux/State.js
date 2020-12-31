@@ -88,3 +88,9 @@ export const ChangePassword ={
     error : ''
 }
 
+export const updateProfile ={
+    loading : false,
+    ResponseStatus :'',
+    message:'',
+    error : ''
+}

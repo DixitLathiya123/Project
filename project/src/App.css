@@ -193,6 +193,7 @@ code {
   background-color: #060b26;
   width: 100%;
   height: 80px;
+  position: fixed;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -214,36 +215,92 @@ span {
   justify-content: center;
   display: flex;
 }
-.blogbutton{
+.blogbutton {
   margin: 10px;
   margin-right: 2%;
   display: flex;
   justify-content: flex-end;
 }
-.blogbutton2{
+.blogbutton2 {
   margin-right: 2%;
 }
-.allblog{
+.allblog {
   margin: 10px;
   display: flex;
 }
-.blogcard{
-  margin:8px !important;
+.blogcard {
+  margin: 8px !important;
 }
-.deleteButton{
+.deleteButton {
   display: flex;
   justify-content: flex-end;
   width: 100%;
 }
-.blogimage{
+.blogimage {
   margin: 10px !important;
 }
-.likeDislikeButton{
+.likeDislikeButton {
   width: 23%;
   background-color: white;
   margin: 4px;
   border-radius: 15px;
 }
-.social{
+.social {
   display: inline-flex;
 }
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.sidebar {
+  width: 186px !important;
+}
+.inputComment {
+  width: 100% !important;
+}
+.formUpdate {
+  display: flex;
+  justify-content: center;
+}
+.singleBlog1  {
+  display: flex;
+  justify-content: center;
+}
+.singleBlog2 {
+  width: 440px !important;
+}
+.commentLable{
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

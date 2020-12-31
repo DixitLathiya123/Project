@@ -38,12 +38,40 @@ import {
     CHANGE_PASSWORD_REQUEST,
     CHANGE_PASSWORD_SUCCESS,
     CHANGE_PASSWORD_FAILURE,
+    UPDATE_PROFILE_REQUEST,
+    UPDATE_PROFILE_SUCCESS,
+    UPDATE_PROFILE_FAILURE,
 } from './Actions'
 import {
-    Register, Login, Country, States, Message, Forget, ForgetToNew ,getAllBlog,createBlog,getBlogById,deleteBlog,getUserById,ChangePassword
+    Register, Login, Country, States, Message, Forget, ForgetToNew ,getAllBlog,createBlog,getBlogById,deleteBlog,getUserById,ChangePassword,updateProfile
 } from './State'
 
+//update profile
+export const updateProfileReducer = (state = updateProfile, action) => {
+    switch (action.type) {
+        case UPDATE_PROFILE_REQUEST: return {
+            ...state,
+            loading: true
+        }
 
+        case UPDATE_PROFILE_SUCCESS: return {
+
+            ...state,
+            loading: false,
+            ResponseStatus: action.payload,
+            error: ''
+        }
+
+        case UPDATE_PROFILE_FAILURE: return {
+            ...state,
+            loading: false,
+            ResponseStatus: '',
+            error: action.payload
+        }
+        default:
+            return state;
+    }
+}
 
 //change password
 export const changePasswordReducer = (state = ChangePassword, action) => {

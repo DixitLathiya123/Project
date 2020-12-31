@@ -13,6 +13,7 @@ import {
     deleteBlogReducer,
     getUserByIdReducer,
     changePasswordReducer,
+    updateProfileReducer
 } from './Reducers'
 
 const rootreducer = combineReducers({
@@ -29,6 +30,7 @@ const rootreducer = combineReducers({
     deletBlog: deleteBlogReducer,
     getUserById: getUserByIdReducer,
     changePassword: changePasswordReducer,
+    updateProfile: updateProfileReducer,
 })
 
 export default rootreducer

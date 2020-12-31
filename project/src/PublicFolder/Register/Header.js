@@ -5,11 +5,11 @@ import { IconContext } from 'react-icons'
 
 function Header() {
     return (
-        <div>
+        <div className="sticky">
             <IconContext.Provider value={{ color: '#fff' }} >
                 <div className="navbar" >
                     <div className="col-md-6">
-                        
+
                     </div>
                     <div className="col-md-6 menu">
                         <Link to="/" className="menu-bars2" >

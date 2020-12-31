@@ -14,6 +14,7 @@ import Forgot from './PublicFolder/Register/Forgot'
 import ForgetToNew from './PublicFolder/Register/ForgetToNew'
 import CreateBlog from './PrivateFolder/Pages/CreateBlog'
 import ResetPassword from './PrivateFolder/Pages/ResetPassword'
+import SingleBlog from './PrivateFolder/Pages/SingleBlog'
 
 function Routing() {
     if (isAuthenticated() !== false) {
@@ -24,7 +25,7 @@ function Routing() {
             <Router>
                 <Switch>
                     {(isAuthenticated()) ? <Route exact path="/" component={Dashbord} /> : <Route exact path="/" component={Home} />}
-
+            
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/contact" component={Contact} />
@@ -37,11 +38,10 @@ function Routing() {
                     <PrivateRouter exact path="/update" component={UpdateProfile} />
                     <PrivateRouter exact path="/table" component={TableView} />
                     <PrivateRouter exact path="/createBlog" component={CreateBlog} />
+                    <PrivateRouter exact path="/singleBlog" component={SingleBlog} />
                     <PrivateRouter exact path="/resetPassword" component={ResetPassword} />
                 </Switch>
             </Router>
-
-
         </div>
     )
 }

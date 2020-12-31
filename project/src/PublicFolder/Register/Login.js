@@ -38,7 +38,7 @@ function Login(props) {
     }
 
     return (
-        <div>
+        <div className="content">
             <Header />
             <ToastContainer />
             <Card className="cardLogin">

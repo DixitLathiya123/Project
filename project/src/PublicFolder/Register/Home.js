@@ -11,6 +11,7 @@ import { getAllBlog } from '../../Redux/Actions'
 import Like from '../Image/likeImage.png'
 import disLike from '../Image/dislike.png'
 import comment from '../Image/comment.png'
+import { toast } from 'react-toastify';
 
 
 
@@ -44,9 +45,9 @@ function Home() {
                                 >
                                     <Meta title={item.blogTitle} description={item.blogContent} />
                                     <div className="row social">
-                                        <button className="likeDislikeButton" onClick={() => {alert("please login!")}}><img hoverable src={Like} alt="like" height="100%" width="100%" /></button>
-                                        <button className="likeDislikeButton" onClick={() => {alert("please login!")}}><img hoverable src={disLike} alt="dislike" height="100%" width="100%" /></button>
-                                        <button className="likeDislikeButton" onClick={() => {alert("please login!")}}><img hoverable src={comment} alt="comment" height="100%" width="100%" /></button>
+                                        <button className="likeDislikeButton" onClick={() => {toast.error('please login!')}}><img hoverable src={Like} alt="like" height="100%" width="100%" /></button>
+                                        <button className="likeDislikeButton" onClick={() => {toast.error('please login!')}}><img hoverable src={disLike} alt="dislike" height="100%" width="100%" /></button>
+                                        <button className="likeDislikeButton" onClick={() => {toast.error('please login!')}}><img hoverable src={comment} alt="comment" height="100%" width="100%" /></button>
                                     </div>
                                 </Card>
                             </>
