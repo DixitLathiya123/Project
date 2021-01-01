@@ -20,7 +20,7 @@ function Login(props) {
     if (isAuthenticated() !== false) {
         history.push("/")
     }
-
+    
     const dispatch = useDispatch()
 
     const initialValues = {

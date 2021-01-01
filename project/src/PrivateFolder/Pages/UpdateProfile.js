@@ -90,7 +90,6 @@ function UpdateProfile() {
     };
 
     const onSubmit = (values,onSubmitProps) => {
-        console.log(values);
       dispatch(updateProfile(values,onSubmitProps))  
     };
 

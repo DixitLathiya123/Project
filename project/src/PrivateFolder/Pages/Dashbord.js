@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { Button } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom';
 import { Card } from 'antd';
+import Loader from 'react-loader-spinner'
+import { isEmpty } from '../../Services/isEmpty'
 
 import deleteButton from '../../PublicFolder/Image/delete.png'
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,7 +15,7 @@ function Dashbord() {
     const { Meta } = Card;
 
     const dispatch = useDispatch()
-
+    // const blogById = []
     const blogById = useSelector(state => state.getBlogById.blogById.blog)
 
     useEffect(() => {
@@ -24,9 +26,6 @@ function Dashbord() {
         dispatch(deleteBlog(deleteId))
     }
 
-    const onSubmit = (values) => {
-        console.log(values);
-    }
     const history = useHistory()
     return (
         < div >
@@ -37,8 +36,14 @@ function Dashbord() {
                     </div>
                 </div>
                 <div className="row allblog">
+                    {isEmpty(blogById) &&
+                        <div className="loader">
+                            <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+                        </div>
+                    }
                     {
-                        blogById && blogById.map((item, i) => {
+                        !isEmpty(blogById) &&
+                         blogById.map((item, i) => {
                             return (
                                 <>
                                     <Card className="blogcard" key={i}
@@ -58,7 +63,7 @@ function Dashbord() {
                                     >
                                         <div className="row">
                                             <div className="col-8">
-                                                <Meta title={item.blogTitle.slice(0,20)} description={item.blogContent.slice(0,20)} />
+                                                <Meta title={item.blogTitle.slice(0, 20) + "..."} description={item.blogContent.slice(0, 20) + "..."} />
                                             </div>
                                             <div className="col-4">
                                                 <div className="row ">

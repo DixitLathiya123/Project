@@ -23,13 +23,26 @@ function Contact() {
         phoneNumber: '',
         message: '',
     }
-
+    let count = 0
     const validationSchema = Yup.object({
         name: Yup.string().required('Required*'),
         email: Yup.string().email('Invalid Format*').required('Required*'),
         phoneNumber: Yup.number().typeError('Only Number Allowed').required('Required*'),
         message: Yup.string().required('Required*'),
     })
+
+    const validateMessage = (message) => {
+        console.log(message.length);
+            count = message.length
+        let error;
+        if (message === '') {
+            error = "Required!";
+        }
+        else if (message.length > 30) {
+            error = "Message Can Not More Than 30 Character!";
+        }
+        return error;
+    }
 
     const onSubmit = values => {
         dispatch(userSendContact(values))
@@ -68,7 +81,11 @@ function Contact() {
                                                     control="textarea"
                                                     lable="Message *"
                                                     name="message"
+                                                    validate={validateMessage}
                                                 />
+                                                <div style={{    "display": "flex" , "justify-content": "flex-end"}}>
+                                                    {count}/30
+                                                </div>
 
                                                 <FormikControl
                                                     control="input"
@@ -85,39 +102,39 @@ function Contact() {
                                     }
                                 }
                             </Formik>
+                    </div>
+                    <div className="col-4" align="left">
+                        <h1>About Company</h1>
+                        <div>
+                            <h5><b>Contact-No:</b></h5>
+                            <h6>IND:+91 9096932144 USA:+1 (619) 752 3485</h6>
                         </div>
-                        <div className="col-4" align="left">
-                            <h1>About Company</h1>
-                            <div>
-                                <h5><b>Contact-No:</b></h5>
-                                <h6>IND:+91 9096932144 USA:+1 (619) 752 3485</h6>
-                            </div>
-                            <div>
-                                <h5><b>Email:</b></h5>
-                                <h6> bluesoft@gmail.com</h6>
-                            </div>
-                            <div>
-                                <h5><b>Corporate Office:</b></h5>
-                                <h6> B-240,Royal Plaza,Near Bapa-SitaramChowk,
+                        <div>
+                            <h5><b>Email:</b></h5>
+                            <h6> bluesoft@gmail.com</h6>
+                        </div>
+                        <div>
+                            <h5><b>Corporate Office:</b></h5>
+                            <h6> B-240,Royal Plaza,Near Bapa-SitaramChowk,
                                 JakatNaka Surat</h6>
-                            </div>
-                            <div>
-                                <h5><b>USA Office:</b></h5>
-                                <h6> 2535 Kettner Blvd.,Suite 3-A2,
+                        </div>
+                        <div>
+                            <h5><b>USA Office:</b></h5>
+                            <h6> 2535 Kettner Blvd.,Suite 3-A2,
                                 San Diego, CA 92101</h6>
-                            </div>
                         </div>
-                        <div className="col-4" align="left">
-                            <h1>Our Location</h1>
-                            <FormikControl
-                                control='map'
-                            />
-                        </div>
+                    </div>
+                    <div className="col-4" align="left">
+                        <h1>Our Location</h1>
+                        <FormikControl
+                            control='map'
+                        />
+                    </div>
 
                     </div>
                 </Card.Body>
             </Card>
-        </div>
+        </div >
     )
 }
 

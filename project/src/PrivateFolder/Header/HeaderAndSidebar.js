@@ -5,9 +5,11 @@ import { Navbar, Nav } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom';
 import { SidebarData } from './SidebarData'
 
+import { isEmpty } from '../../Services/isEmpty'
+
 const { Sider } = Layout;
 
-export const HeaderAndSidebar = ({ children },props) => {
+export const HeaderAndSidebar = ({ children }, props) => {
     const [state, setState] = useState(false)
 
     const history = useHistory()
@@ -23,7 +25,8 @@ export const HeaderAndSidebar = ({ children },props) => {
 
                 <Menu theme="dark" s mode="inline" >
                     {
-                        SidebarData() && SidebarData().map((item, index) => {
+                        !isEmpty(SidebarData()) && 
+                        SidebarData().map((item, index) => {
                             return (
                                 <>
                                     <Menu.Item key={index + 1} icon={item.icon} className="sidebar" >
@@ -46,7 +49,7 @@ export const HeaderAndSidebar = ({ children },props) => {
                         </Nav>
                         <div>
                             <Nav className="mr-auto">
-                                <Nav.Link onClick={()=>logout()}>Log Out</Nav.Link>
+                                <Nav.Link onClick={() => logout()}>Log Out</Nav.Link>
                             </Nav>
                         </div>
                     </Navbar.Collapse>

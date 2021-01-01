@@ -274,33 +274,16 @@ span {
 .commentLable{
   justify-content: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15%;
+  margin-left: 47%;
+}
+.loginpopup{
+  margin: 10%;
+}
+.modal{
+  border-radius: 20px;
+}

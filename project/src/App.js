@@ -5,6 +5,7 @@ import 'antd/dist/antd.css'
 import { Provider } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 function App() {
   return (

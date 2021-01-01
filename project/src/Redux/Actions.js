@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
+import { header } from '../Services/header'
 
 //register
 export const REQUEST = "REQUEST"
@@ -82,13 +83,7 @@ export const updateProfile = (data, onSubmitProps) => {
 
     return (dispatch) => {
         dispatch(updateProfileRequest())
-        axios.post(`${process.env.REACT_APP_API}/api/updateProfile`, data,
-            {
-                headers: {
-                    'Authorization': token,
-                    'content-type': "application/json"
-                }
-            })
+        axios.post(`${process.env.REACT_APP_API}/api/updateProfile`, data, header())
             .then((Response) => {
                 console.log(Response);
                 const data = Response.data
@@ -136,14 +131,9 @@ export const changePassword = (change, onSubmitProps) => {
 
     return (dispatch) => {
         dispatch(changePasswordRequest())
-        axios.put(`${process.env.REACT_APP_API}/api/changePassword`, change,
-            {
-                headers: {
-                    'Authorization': token,
-                    'content-type': "application/json"
-                }
-            })
-            .then((Response) => {
+        axios.put(`${process.env.REACT_APP_API}/api/changePassword`, change, header())
+            .then((Response) => { 
+                console.log(Response);
                 const change = Response.data
                 dispatch(changePasswordSuccess(change))
                 onSubmitProps.resetForm();
@@ -157,6 +147,7 @@ export const changePassword = (change, onSubmitProps) => {
                 }
             })
             .catch((error) => {
+                console.log(error);
                 const errors = error.message
                 dispatch(changePasswordFailure(errors))
             })
@@ -188,13 +179,7 @@ export const getUserById = () => {
     let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
     return (dispatch) => {
         dispatch(getUserByIdRequest())
-        axios.get(`${process.env.REACT_APP_API}/api/getUserById`,
-            {
-                headers: {
-                    'Authorization': token,
-                    'content-type': "application/json"
-                }
-            })
+        axios.get(`${process.env.REACT_APP_API}/api/getUserById`,header())
             .then((Response) => {
                 const UserById = Response.data
                 dispatch(getUserByIdSuccess(UserById))
@@ -231,13 +216,7 @@ export const deleteBlog = (deleteId) => {
     let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
     return (dispatch) => {
         dispatch(deleteBlogRequest())
-        axios.delete(`${process.env.REACT_APP_API}/api/deleteBlog/${deleteId}`,
-            {
-                headers: {
-                    'Authorization': token,
-                    'content-type': "application/json"
-                }
-            })
+        axios.delete(`${process.env.REACT_APP_API}/api/deleteBlog/${deleteId}`,header())
             .then((Response) => {
                 const deleteBlog = Response.data
                 dispatch(deleteBlogSuccess(deleteBlog))
@@ -281,13 +260,7 @@ export const getBlogById = () => {
     let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
     return (dispatch) => {
         dispatch(getBlogByIdRequest())
-        axios.get(`${process.env.REACT_APP_API}/api/getBlogById`,
-            {
-                headers: {
-                    'Authorization': token,
-                    'content-type': "application/json"
-                }
-            })
+        axios.get(`${process.env.REACT_APP_API}/api/getBlogById`,header())
             .then((Response) => {
                 const blogById = Response.data
                 dispatch(getBlogByIdSuccess(blogById))
@@ -323,13 +296,7 @@ export const createBlog = (blog, onSubmitProps) => {
     let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
     return (dispatch) => {
         dispatch(createBlogRequest())
-        axios.post(`${process.env.REACT_APP_API}/api/createBlog`, blog,
-            {
-                headers: {
-                    'Authorization': token,
-                    'content-type': "application/json"
-                }
-            })
+        axios.post(`${process.env.REACT_APP_API}/api/createBlog`, blog,header())
             .then((Response) => {
                 const blog = Response.data
                 dispatch(createBlogSuccess(blog))

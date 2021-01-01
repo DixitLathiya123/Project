@@ -3,15 +3,19 @@ import { Button } from 'react-bootstrap'
 import { Formik, Form } from 'formik'
 import { Link } from 'react-router-dom';
 import { Card } from 'antd';
+import { useDispatch } from 'react-redux'
+import Loader from 'react-loader-spinner'
+import * as Yup from 'yup'
 
 import FormikControl from '../../PublicFolder/Pages/FormikControl'
-import 'react-toastify/dist/ReactToastify.css';
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
-import { deleteBlog } from '../../Redux/Actions';
+
+import { isEmpty } from '../../Services/isEmpty'
 import Like from '../../PublicFolder/Image/likeImage.png'
+import LikeIcon from '../../PublicFolder/Image/likeImageIcon.jpg'
 import disLike from '../../PublicFolder/Image/dislike.png'
+import disLikeIcon from '../../PublicFolder/Image/dislikeIcon.png'
 import comment from '../../PublicFolder/Image/comment.png'
-import { useDispatch } from 'react-redux';
 
 function SingleBlog(props) {
     const { Meta } = Card;
@@ -24,6 +28,10 @@ function SingleBlog(props) {
     const initialValues = {
         comment: ''
     }
+
+    const validationSchema = Yup.object({
+        comment: Yup.string().required('Comment Required*'),
+    })
 
     const [social, setSocial] = useState({
         like: 100,
@@ -60,7 +68,7 @@ function SingleBlog(props) {
         }
     }
 
-    const onSubmit = (values,onSubmitProps) => {
+    const onSubmit = (values, onSubmitProps) => {
         setComments([
             ...comments,
             values
@@ -102,6 +110,11 @@ function SingleBlog(props) {
                 </div>
             </div>
             <div className="singleBlog1">
+                {isEmpty(singleDataBlog) &&
+                    <div className="loader">
+                        <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+                    </div>
+                }
                 {
                     <Card className="singleBlog2"
                         hoverable
@@ -114,37 +127,67 @@ function SingleBlog(props) {
                         }
                     >
                         <div className="row">
-                            <div className="col-8">
-                                <Meta title={singleDataBlog.blogTitle} description={singleDataBlog.blogContent} />
-                            </div>
+                            <Meta title={singleDataBlog.blogTitle} description={singleDataBlog.blogContent} />
                         </div>
-                        <div className="row social">
-                            <img hoverable onClick={() => setLike()} src={Like} alt="like" height="23%" width="23%" />{social.like}
-                            <img hoverable onClick={() => setDislike()} src={disLike} alt="dislike" height="23%" width="23%" />{social.dislike}
-                            <img hoverable onClick={() => setCommentStatus(!commentStatus)} src={comment} alt="comment" height="23%" width="23%" />
+                        <div>
+                            <img
+                                hoverable
+                                onClick={
+                                    () => setLike()
+                                }
+                                src={social.likeActive ? LikeIcon : Like}
+                                alt="like"
+                                height={social.likeActive ? "20%" : "23%"}
+                                width={social.likeActive ? "21%" : "23%"}
+                            />
+                            {social.like}
+                            <img
+                                hoverable
+                                onClick={
+                                    () => setDislike()
+                                }
+                                src={social.dislikeActive ? disLikeIcon : disLike}
+                                alt="dislike"
+                                height={social.dislikeActive ? "20%" : "20%"}
+                                width={social.dislikeActive ? "20%" : "20%"}
+                            />
+                            {social.dislike}
+                            <img
+                                hoverable
+                                onClick={
+                                    () => setCommentStatus(!commentStatus)
+                                }
+                                src={comment}
+                                alt="comment"
+                                height="23%"
+                                width="23%"
+                            />
                         </div>
+
                         {
                             commentStatus === true &&
                             <div>
                                 <Formik
                                     initialValues={initialValues}
+                                    // validationSchema={validationSchema}
                                     onSubmit={onSubmit}
                                 >
                                     {
                                         (formik) => {
+
                                             return (
                                                 <Form>
-                                                    <div className="row">
-                                                        <div className="col-8">
-                                                            <FormikControl className="inputComment"
 
+                                                    <div className="row">
+                                                        <div className="col-9">
+                                                            <FormikControl className="inputComment"
                                                                 control="input"
                                                                 type="text"
                                                                 lable="Comment"
                                                                 name="comment"
                                                             />
                                                         </div>
-                                                        <div className="col-4 btndiv">
+                                                        <div className="col-3 btndiv">
                                                             <Button className="button" type="submit" variant="info">Comment</Button>
                                                         </div>
                                                     </div>
@@ -160,20 +203,25 @@ function SingleBlog(props) {
                             <h4>Comments</h4>
                         </div>
                         <div>
-                            <div>
-                                {
-                                    comments && comments.map((item,i) => {
-                                        return <><h5>{item.comment}</h5><hr/></>
-                                    })
-                                }
-                            </div>
 
+                            {!isEmpty(comments) &&
+                                <div style={{ overflowY: 'scroll', height: 'calc(15vh - 20px)' }}>
+                                    {
+                                        !isEmpty(comments) && comments.map((item, i) => {
+                                            return <>
+                                                <h5>{item.comment}</h5>
 
+                                                <hr />
+                                            </>
+                                        })
+                                    }
+                                </div>
+                            }
                         </div>
-                    </Card>
+                    </Card >
                 }
-            </div>
-        </HeaderAndSidebar>
+            </div >
+        </HeaderAndSidebar >
     )
 }
 

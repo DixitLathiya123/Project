@@ -17,15 +17,14 @@ import ResetPassword from './PrivateFolder/Pages/ResetPassword'
 import SingleBlog from './PrivateFolder/Pages/SingleBlog'
 
 function Routing() {
-    if (isAuthenticated() !== false) {
-        <Route exact path="/" component={Dashbord} />
-    }
+    
     return (
         <div>
             <Router>
                 <Switch>
-                    {(isAuthenticated()) ? <Route exact path="/" component={Dashbord} /> : <Route exact path="/" component={Home} />}
+                    {/* {(isAuthenticated()) ? <Route exact path="/" component={Dashbord} /> : <Route exact path="/" component={Home} />} */}
             
+                    <Route exact path="/" component={Home} />
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/contact" component={Contact} />
@@ -34,6 +33,7 @@ function Routing() {
                     <Route exact path="/forget-password/link/" component={Error404} />
                     <Route path="/forget-password/link/" component={ForgetToNew} />
 
+                    <PrivateRouter exact path="/" component={Dashbord} />
                     <PrivateRouter exact path="/dash" component={Dashbord} />
                     <PrivateRouter exact path="/update" component={UpdateProfile} />
                     <PrivateRouter exact path="/table" component={TableView} />
