@@ -2,7 +2,6 @@ import React from 'react'
 import { Field, ErrorMessage } from 'formik'
 import TextError from '../Pages/TextError'
 
-
 function Select(props) {
     const { lable, name, option, ...rest } = props
     return (
@@ -23,5 +22,4 @@ function Select(props) {
         </div>
     )
 }
-
 export default Select

@@ -28,12 +28,11 @@ function Home(props) {
     }
 
     const { Meta } = Card;
-
+    const dispatch = useDispatch()
+    
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getAllBlog())
@@ -51,9 +50,7 @@ function Home(props) {
         password: Yup.string().length(6).required('Password Required*')
     })
 
-    const onSubmit = values => {
-        dispatch(userGoingForLogin(values, props))
-    }
+    const onSubmit = values => dispatch(userGoingForLogin(values, props))
     return (
         <div>
             <Header />
@@ -86,16 +83,12 @@ function Home(props) {
                     })
                 }
             </div>
-
             <Modal show={show} onHide={() => {handleClose() }} className="modal">
                 <Modal.Header closeButton>
                     <Modal.Title>Sign In</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="loginpopup">
-
-                        {/* <Cards className="loginpopup">
-                        <Cards.Body className=""> */}
                         <div className="row" style={{ "justifyContent": "center" }}>
                             <div className="form col-6" >
                                 <Formik
@@ -107,7 +100,6 @@ function Home(props) {
                                         (formik) => {
                                             return (
                                                 <Form>
-                                                    {/* <h1 align="center">Sign In</h1> */}
                                                     <FormikControl
                                                         control="input"
                                                         type="email"
@@ -133,10 +125,7 @@ function Home(props) {
                                 </Formik>
                             </div>
                         </div>
-                        {/* </Cards.Body>
-                    </Cards> */}
                     </div>
-
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => { handleClose() }}>
@@ -144,8 +133,6 @@ function Home(props) {
                     </Button>
                 </Modal.Footer>
             </Modal>
-
-
         </div>
     )
 }

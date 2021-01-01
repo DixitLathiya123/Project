@@ -1,28 +1,23 @@
 import React, { useState } from 'react'
 import { Layout, Menu } from 'antd';
-
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom';
-import { SidebarData } from './SidebarData'
 
+import { SidebarData } from './SidebarData'
 import { isEmpty } from '../../Services/isEmpty'
 
 const { Sider } = Layout;
 
 export const HeaderAndSidebar = ({ children }, props) => {
     const [state, setState] = useState(false)
-
     const history = useHistory()
-
     const logout = () => {
         localStorage.clear()
         history.push("/login")
     }
-
     return (
         <Layout style={{ minHeight: '100vh' }} >
             <Sider collapsible collapsed={state} onCollapse={() => { setState(!state) }} >
-
                 <Menu theme="dark" s mode="inline" >
                     {
                         !isEmpty(SidebarData()) && 
@@ -59,5 +54,4 @@ export const HeaderAndSidebar = ({ children }, props) => {
         </Layout>
     );
 }
-
 export default HeaderAndSidebar

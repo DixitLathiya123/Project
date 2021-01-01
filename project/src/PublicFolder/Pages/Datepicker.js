@@ -4,7 +4,6 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { Field, ErrorMessage } from 'formik'
 import TextError from '../Pages/TextError'
 
-
 function Datepicker(props) {
     const { lable, name, ...rest } = props
     return (
@@ -31,5 +30,4 @@ function Datepicker(props) {
         </div>
     )
 }
-
 export default Datepicker

@@ -3,18 +3,16 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Button } from 'react-bootstrap'
 import { ToastContainer } from 'react-toastify';
-import FormikControl from '../../PublicFolder/Pages/FormikControl'
 import { useDispatch } from "react-redux";
+import { useHistory } from 'react-router-dom';
 
-
+import FormikControl from '../../PublicFolder/Pages/FormikControl'
 import { createBlog } from '../../Redux/Actions';
 import Card from 'react-bootstrap/Card'
 import 'react-toastify/dist/ReactToastify.css';
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
-import { useHistory } from 'react-router-dom';
 
 function CreateBlog() {
-
     const history = useHistory()
     const dispatch = useDispatch();
 
@@ -34,7 +32,6 @@ function CreateBlog() {
             history.push("/dash")
         }, 2000);
     }
-
     return (
         < div >
             <HeaderAndSidebar title="dashbord">
@@ -80,9 +77,6 @@ function CreateBlog() {
                 </Card>
             </HeaderAndSidebar>
         </div >
-
     )
 }
-
-
 export default CreateBlog

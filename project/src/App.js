@@ -3,8 +3,9 @@ import Routing from './Routing';
 import store from './Redux/Store'
 import 'antd/dist/antd.css'
 import { Provider } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 function App() {
@@ -17,5 +18,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

@@ -3,19 +3,17 @@ import { Button } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom';
 import { Card } from 'antd';
 import Loader from 'react-loader-spinner'
-import { isEmpty } from '../../Services/isEmpty'
-
-import deleteButton from '../../PublicFolder/Image/delete.png'
-import 'react-toastify/dist/ReactToastify.css';
-import HeaderAndSidebar from '../Header/HeaderAndSidebar'
 import { useDispatch, useSelector } from 'react-redux';
+
+import { isEmpty } from '../../Services/isEmpty'
+import deleteButton from '../../PublicFolder/Image/delete.png'
+import HeaderAndSidebar from '../Header/HeaderAndSidebar'
 import { deleteBlog, getBlogById } from '../../Redux/Actions';
 
 function Dashbord() {
     const { Meta } = Card;
-
+    const history = useHistory()
     const dispatch = useDispatch()
-    // const blogById = []
     const blogById = useSelector(state => state.getBlogById.blogById.blog)
 
     useEffect(() => {
@@ -25,8 +23,6 @@ function Dashbord() {
     const deleteBlogById = (deleteId) => {
         dispatch(deleteBlog(deleteId))
     }
-
-    const history = useHistory()
     return (
         < div >
             <HeaderAndSidebar title="dashbord">
@@ -81,9 +77,6 @@ function Dashbord() {
                 </div>
             </HeaderAndSidebar>
         </div >
-
     )
 }
-
-
 export default Dashbord

@@ -3,13 +3,10 @@ import { Button } from 'react-bootstrap'
 import { Formik, Form } from 'formik'
 import { Link } from 'react-router-dom';
 import { Card } from 'antd';
-import { useDispatch } from 'react-redux'
 import Loader from 'react-loader-spinner'
-import * as Yup from 'yup'
 
 import FormikControl from '../../PublicFolder/Pages/FormikControl'
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
-
 import { isEmpty } from '../../Services/isEmpty'
 import Like from '../../PublicFolder/Image/likeImage.png'
 import LikeIcon from '../../PublicFolder/Image/likeImageIcon.jpg'
@@ -19,20 +16,7 @@ import comment from '../../PublicFolder/Image/comment.png'
 
 function SingleBlog(props) {
     const { Meta } = Card;
-
     const singleDataBlog = props.location.state
-
-    const dispatch = useDispatch()
-
-
-    const initialValues = {
-        comment: ''
-    }
-
-    const validationSchema = Yup.object({
-        comment: Yup.string().required('Comment Required*'),
-    })
-
     const [social, setSocial] = useState({
         like: 100,
         dislike: 10,
@@ -43,7 +27,6 @@ function SingleBlog(props) {
     const [comments, setComments] = useState([])
 
     const setDislike = () => {
-
         if (social.likeActive === true) {
             setSocial({
                 dislikeActive: true,
@@ -77,7 +60,6 @@ function SingleBlog(props) {
     }
 
     const setLike = () => {
-
         if (social.dislikeActive === true) {
             setSocial({
                 dislikeActive: false,
@@ -118,11 +100,10 @@ function SingleBlog(props) {
                 {
                     <Card className="singleBlog2"
                         hoverable
-                        style={{ width: 320 }}
                         cover={
                             <img
                                 alt="example"
-                                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                                src="https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png"
                             />
                         }
                     >
@@ -137,10 +118,11 @@ function SingleBlog(props) {
                                 }
                                 src={social.likeActive ? LikeIcon : Like}
                                 alt="like"
-                                height={social.likeActive ? "20%" : "23%"}
-                                width={social.likeActive ? "21%" : "23%"}
+                                height={social.likeActive ? "8%" : "10%"}
+                                width={social.likeActive ? "10%" : "10%"}
                             />
                             {social.like}
+                            &nbsp;&nbsp;&nbsp;
                             <img
                                 hoverable
                                 onClick={
@@ -148,10 +130,11 @@ function SingleBlog(props) {
                                 }
                                 src={social.dislikeActive ? disLikeIcon : disLike}
                                 alt="dislike"
-                                height={social.dislikeActive ? "20%" : "20%"}
-                                width={social.dislikeActive ? "20%" : "20%"}
+                                height={social.dislikeActive ? "8%" : "8%"}
+                                width={social.dislikeActive ? "8%" : "8%"}
                             />
                             {social.dislike}
+                            &nbsp;&nbsp;&nbsp;
                             <img
                                 hoverable
                                 onClick={
@@ -159,8 +142,8 @@ function SingleBlog(props) {
                                 }
                                 src={comment}
                                 alt="comment"
-                                height="23%"
-                                width="23%"
+                                height="10%"
+                                width="10%"
                             />
                         </div>
 
@@ -168,8 +151,6 @@ function SingleBlog(props) {
                             commentStatus === true &&
                             <div>
                                 <Formik
-                                    initialValues={initialValues}
-                                    // validationSchema={validationSchema}
                                     onSubmit={onSubmit}
                                 >
                                     {

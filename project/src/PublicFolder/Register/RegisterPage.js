@@ -35,10 +35,8 @@ function Register(props) {
     }
     const dispatch = useDispatch();
     const [captcha, setCaptcha] = useState("");
-
     const CountryData = useSelector(state => state.country.CountryData)
     const StatesData = useSelector(state => state.states.StateData)
-
 
     useEffect(() => {
         dispatch(getAllCountry())
@@ -102,10 +100,7 @@ function Register(props) {
         return error;
     };
 
-    const onSubmit = (values) => {
-        dispatch(userGoingForRegister(values, props));
-    };
-
+    const onSubmit = (values) =>  dispatch(userGoingForRegister(values, props));
     const handlecaptcha = (e) => setCaptcha(e);
 
     return (
@@ -245,5 +240,4 @@ function Register(props) {
         </div>
     );
 }
-
 export default Register

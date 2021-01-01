@@ -53,7 +53,6 @@ export const updateProfileReducer = (state = updateProfile, action) => {
             ...state,
             loading: true
         }
-
         case UPDATE_PROFILE_SUCCESS: return {
 
             ...state,
@@ -61,7 +60,6 @@ export const updateProfileReducer = (state = updateProfile, action) => {
             ResponseStatus: action.payload,
             error: ''
         }
-
         case UPDATE_PROFILE_FAILURE: return {
             ...state,
             loading: false,
@@ -80,7 +78,6 @@ export const changePasswordReducer = (state = ChangePassword, action) => {
             ...state,
             loading: true
         }
-
         case CHANGE_PASSWORD_SUCCESS: return {
 
             ...state,
@@ -88,7 +85,6 @@ export const changePasswordReducer = (state = ChangePassword, action) => {
             ReturnCode: action.payload,
             error: ''
         }
-
         case CHANGE_PASSWORD_FAILURE: return {
             ...state,
             loading: false,
@@ -100,7 +96,6 @@ export const changePasswordReducer = (state = ChangePassword, action) => {
     }
 }
 
-
 //get User by id
 export const getUserByIdReducer = (state = getUserById, action) => {
     switch (action.type) {
@@ -108,15 +103,12 @@ export const getUserByIdReducer = (state = getUserById, action) => {
             ...state,
             loading: true
         }
-
         case GET_USER_BY_ID_SUCCESS: return {
-
             ...state,
             loading: false,
             blogById: action.payload,
             error: ''
         }
-
         case GET_USER_BY_ID_FAILURE: return {
             ...state,
             loading: false,
@@ -135,15 +127,12 @@ export const deleteBlogReducer = (state = deleteBlog, action) => {
             ...state,
             loading: true
         }
-
         case DELETE_BLOG_SUCCESS: return {
-
             ...state,
             loading: false,
             ResponseStatus: action.payload,
             error: ''
         }
-
         case DELETE_BLOG_FAILURE: return {
             ...state,
             loading: false,
@@ -162,15 +151,12 @@ export const getBlogByIdReducer = (state = getBlogById, action) => {
             ...state,
             loading: true
         }
-
         case GET_BLOG_BY_ID_SUCCESS: return {
-
             ...state,
             loading: false,
             blogById: action.payload,
             error: ''
         }
-
         case GET_BLOG_BY_ID_FAILURE: return {
             ...state,
             loading: false,
@@ -189,15 +175,12 @@ export const CreateBlogReducer = (state = createBlog, action) => {
             ...state,
             loading: true
         }
-
         case CREATE_BLOG_SUCCESS: return {
-
             ...state,
             loading: false,
             ResponseStatus: action.payload,
             error: ''
         }
-
         case CREATE_BLOG_REQUEST: return {
             ...state,
             loading: false,
@@ -216,15 +199,12 @@ export const getAllBlogReducer = (state = getAllBlog, action) => {
             ...state,
             loading: true
         }
-
         case GET_ALL_BLOG_SUCCESS: return {
-
             ...state,
             loading: false,
             Blogs: action.payload,
             error: ''
         }
-
         case GET_ALL_BLOG_REQUEST: return {
             ...state,
             loading: false,
@@ -236,7 +216,6 @@ export const getAllBlogReducer = (state = getAllBlog, action) => {
     }
 }
 
-
 //forgetToNEW
 export const ForgetToNewReducer = (state = ForgetToNew, action) => {
     switch (action.type) {
@@ -244,15 +223,12 @@ export const ForgetToNewReducer = (state = ForgetToNew, action) => {
             ...state,
             loading: true
         }
-
         case FORGET_TO_NEWSUCCESS: return {
-
             ...state,
             loading: false,
             ReturnCode: action.payload,
             error: ''
         }
-
         case FORGET_TO_NEWFAILURE: return {
             ...state,
             loading: false,
@@ -271,15 +247,12 @@ export const ForgetReducer = (state = Forget, action) => {
             ...state,
             loading: true
         }
-
         case FORGET_SUCCESS: return {
-
             ...state,
             loading: false,
             ReturnCode: action.payload,
             error: ''
         }
-
         case FORGET_FAILURE: return {
             ...state,
             loading: false,
@@ -298,15 +271,12 @@ export const MessageReducer = (state = Message, action) => {
             ...state,
             loading: true
         }
-
         case MESSAGE_SUCCESS: return {
-
             ...state,
             loading: false,
             ResponseStatus: action.payload,
             error: ''
         }
-
         case MESSAGE_REQUEST: return {
             ...state,
             loading: false,
@@ -325,15 +295,12 @@ export const StateReducer = (state = States, action) => {
             ...state,
             loading: true
         }
-
         case STATE_SUCCESS: return {
-
             ...state,
             loading: false,
             StateData: action.payload,
             error: ''
         }
-
         case STATE_REQUEST: return {
             ...state,
             loading: false,
@@ -353,15 +320,12 @@ export const CountryReducer = (state = Country, action) => {
             ...state,
             loading: true
         }
-
         case COUNTRY_SUCCESS: return {
-
             ...state,
             loading: false,
             CountryData: action.payload,
             error: ''
         }
-
         case COUNTRY_FAILURE: return {
             ...state,
             loading: false,
@@ -380,14 +344,12 @@ export const reducer = (state = Register, action) => {
             ...state,
             loading: true
         }
-
         case SUCCESS: return {
             ...state,
             loading: false,
             ResponseStatus: action.payload.ResponseStatus ? action.payload.ResponseStatus : '',
             message: action.payload.message
         }
-
         case FAILURE: return {
             ...state,
             loading: false,
@@ -395,7 +357,6 @@ export const reducer = (state = Register, action) => {
             message: '',
             error: action.payload
         }
-
         default:
             return state;
     }
@@ -408,7 +369,6 @@ export const loginReducer = (state = Login, action) => {
             ...state,
             loading: true
         }
-
         case LOGIN_SUCCESS:
             state = {
                 ...state,
@@ -416,16 +376,13 @@ export const loginReducer = (state = Login, action) => {
                 LoginToken: action.payload,
             }
             localStorage.setItem('loginTokenFromApi', JSON.stringify(action.payload !== undefined && action.payload.token !== false && action.payload.token))
-
             return state
-
         case LOGIN_FAILURE: return {
             ...state,
             loading: false,
             LoginToken: '',
             error: action.payload
         }
-
         default:
             return state;
     }

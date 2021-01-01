@@ -4,14 +4,11 @@ import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Card from "react-bootstrap/Card";
 
-
 import FormikControl from "../../PublicFolder/Pages/FormikControl";
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserById, getAllCountry, getAllstate ,updateProfile } from '../../Redux/Actions';
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
 import * as Yup from "yup";
-
-
 
 function UpdateProfile() {
     const dispatch = useDispatch()
@@ -20,8 +17,6 @@ function UpdateProfile() {
         dispatch(getUserById())
         dispatch(getAllCountry())
     }, [])
-
-    const [captcha, setCaptcha] = useState("");
 
     const CountryData = useSelector(state => state.country.CountryData)
     const StatesData = useSelector(state => state.states.StateData)
@@ -32,6 +27,7 @@ function UpdateProfile() {
         { key: "BBA", value: "bba" },
         { key: "BCOM", value: "bcom" },
     ];
+
     const checkBoxOptions = [
         { key: "Cricket", value: "cricket" },
         { key: "Reading", value: "reading" },
@@ -202,5 +198,4 @@ function UpdateProfile() {
         </div>
     )
 }
-
 export default UpdateProfile

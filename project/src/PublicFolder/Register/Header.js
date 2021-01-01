@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../../App.css'
 import { IconContext } from 'react-icons'
+import '../../App.css'
 
 function Header() {
     return (
@@ -9,7 +9,6 @@ function Header() {
             <IconContext.Provider value={{ color: '#fff' }} >
                 <div className="navbar" >
                     <div className="col-md-6">
-
                     </div>
                     <div className="col-md-6 menu">
                         <Link to="/" className="menu-bars2" >

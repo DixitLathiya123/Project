@@ -2,7 +2,6 @@ import React from 'react'
 import { Field, ErrorMessage } from 'formik'
 import TextError from '../Pages/TextError'
 
-
 function Checkbox(props) {
     const { lable, name, options, ...rest } = props
     return (
@@ -36,5 +35,4 @@ function Checkbox(props) {
         </div>
     )
 }
-
 export default Checkbox

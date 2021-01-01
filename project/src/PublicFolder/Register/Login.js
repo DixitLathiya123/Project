@@ -6,11 +6,9 @@ import { useDispatch } from 'react-redux'
 import { ToastContainer } from 'react-toastify';
 import { Link, useHistory } from 'react-router-dom';
 
-
 import Card from 'react-bootstrap/Card'
 import FormikControl from '../Pages/FormikControl'
 import { userGoingForLogin } from '../../Redux/Actions'
-
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './Header'
 import { isAuthenticated } from '../../PrivateRouter/Auth'
@@ -33,9 +31,7 @@ function Login(props) {
         password: Yup.string().length(6).required('Password Required*')
     })
 
-    const onSubmit = values => {
-        dispatch(userGoingForLogin(values, props))
-    }
+    const onSubmit = values => dispatch(userGoingForLogin(values, props))
 
     return (
         <div className="content">
@@ -85,5 +81,4 @@ function Login(props) {
         </div>
     )
 }
-
 export default Login

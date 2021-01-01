@@ -79,13 +79,10 @@ export const updateProfileFailure = (error) => {
     }
 }
 export const updateProfile = (data, onSubmitProps) => {
-    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
-
     return (dispatch) => {
         dispatch(updateProfileRequest())
         axios.post(`${process.env.REACT_APP_API}/api/updateProfile`, data, header())
             .then((Response) => {
-                console.log(Response);
                 const data = Response.data
                 dispatch(updateProfileSuccess(data))
                 onSubmitProps.resetForm();
@@ -99,13 +96,11 @@ export const updateProfile = (data, onSubmitProps) => {
                 }
             })
             .catch((error) => {
-                console.log(error);
                 const errors = error.message
                 dispatch(updateProfileFailure(errors))
             })
     }
 }
-
 
 //change password
 export const changePasswordRequest = () => {
@@ -127,13 +122,10 @@ export const changePasswordFailure = (error) => {
     }
 }
 export const changePassword = (change, onSubmitProps) => {
-    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
-
     return (dispatch) => {
         dispatch(changePasswordRequest())
         axios.put(`${process.env.REACT_APP_API}/api/changePassword`, change, header())
             .then((Response) => { 
-                console.log(Response);
                 const change = Response.data
                 dispatch(changePasswordSuccess(change))
                 onSubmitProps.resetForm();
@@ -147,14 +139,11 @@ export const changePassword = (change, onSubmitProps) => {
                 }
             })
             .catch((error) => {
-                console.log(error);
                 const errors = error.message
                 dispatch(changePasswordFailure(errors))
             })
-
     }
 }
-
 
 //get user by id
 export const getUserByIdRequest = () => {
@@ -176,7 +165,6 @@ export const getUserByIdFailure = (error) => {
     }
 }
 export const getUserById = () => {
-    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
     return (dispatch) => {
         dispatch(getUserByIdRequest())
         axios.get(`${process.env.REACT_APP_API}/api/getUserById`,header())
@@ -188,10 +176,8 @@ export const getUserById = () => {
                 const errors = error.message
                 dispatch(getUserByIdFailure(errors))
             })
-
     }
 }
-
 
 //delete blog
 export const deleteBlogRequest = () => {
@@ -213,7 +199,6 @@ export const deleteBlogFailure = (error) => {
     }
 }
 export const deleteBlog = (deleteId) => {
-    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
     return (dispatch) => {
         dispatch(deleteBlogRequest())
         axios.delete(`${process.env.REACT_APP_API}/api/deleteBlog/${deleteId}`,header())
@@ -257,7 +242,6 @@ export const getBlogByIdFailure = (error) => {
     }
 }
 export const getBlogById = () => {
-    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
     return (dispatch) => {
         dispatch(getBlogByIdRequest())
         axios.get(`${process.env.REACT_APP_API}/api/getBlogById`,header())
@@ -293,7 +277,6 @@ export const createBlogFailure = (error) => {
     }
 }
 export const createBlog = (blog, onSubmitProps) => {
-    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
     return (dispatch) => {
         dispatch(createBlogRequest())
         axios.post(`${process.env.REACT_APP_API}/api/createBlog`, blog,header())
@@ -311,10 +294,8 @@ export const createBlog = (blog, onSubmitProps) => {
                 const errors = error.message
                 dispatch(createBlogFailure(errors))
             })
-
     }
 }
-
 
 //getAllBlog
 export const getAllBlogRequest = () => {
@@ -388,7 +369,6 @@ export const forgetToNewPassword = (data) => {
             })
     }
 }
-
 
 //forget
 export const forgetRequest = () => {
@@ -468,7 +448,6 @@ export const userSendContact = (message) => {
     }
 }
 
-
 //state
 export const stateRequest = () => {
     return {
@@ -538,7 +517,6 @@ export const getAllCountry = () => {
     }
 }
 
-
 //register
 export const request = () => {
     return {
@@ -584,7 +562,6 @@ export const userGoingForRegister = (values, props) => {
     }
 }
 
-
 //login
 export const loginrequest = () => {
     return {
@@ -596,7 +573,6 @@ export const loginsuccess = (token) => {
     return {
         type: LOGIN_SUCCESS,
         payload: token,
-
     }
 }
 export const loginfailure = (error) => {
@@ -605,7 +581,6 @@ export const loginfailure = (error) => {
         LoginStatus: '',
         payload: error,
         LoginToken: '',
-
     }
 }
 export const userGoingForLogin = (values, props) => {

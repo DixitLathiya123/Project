@@ -2,8 +2,6 @@ import React from 'react'
 import { Field , ErrorMessage } from 'formik' 
 import TextError from '../Pages/TextError'
 
-
-
 function Textarea(props) {
     const { lable,name,...rest } = props
     return (
@@ -14,5 +12,4 @@ function Textarea(props) {
         </div>
     )
 }
-
 export default Textarea

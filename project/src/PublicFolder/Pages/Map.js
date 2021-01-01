@@ -1,13 +1,11 @@
 import React from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
-
 function Maps(props) {
     const mapStyles = {
         width: '80%',
         height: '85%',
     };
-    
     return (
         <div>
             <Map
@@ -21,7 +19,6 @@ function Maps(props) {
         </div>
     )
 }
-
 export default GoogleApiWrapper({
     apiKey: 'AIzaSyBe6do-yJm4xj9leLUZuaVZksHPM6QG2xM'
 })(Maps);

@@ -5,15 +5,14 @@ import { getBlogById } from '../../Redux/Actions';
 
 
 function TableView() {
+    // const dispatch = useDispatch()
 
-    const dispatch = useDispatch()
+    // useEffect(() => {
+    //     dispatch(getBlogById())
+    // }, [])
 
-    useEffect(() => {
-        dispatch(getBlogById())
-    }, [])
-
-    const blogById = useSelector(state => state.getBlogById.blogById.blog)
-    console.log(blogById);
+    // const blogById = useSelector(state => state.getBlogById.blogById.blog)
+    // console.log(blogById);
 
     return (
         <HeaderAndSidebar title="table">

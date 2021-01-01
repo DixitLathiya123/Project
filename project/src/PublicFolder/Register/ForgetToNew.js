@@ -15,9 +15,7 @@ import { isAuthenticated } from '../../PrivateRouter/Auth'
 import Header from './Header';
 
 function ForgetToNew() {
-
     const history = useHistory()
-
     if (isAuthenticated() !== false) {
         history.push("/")
     }
@@ -35,13 +33,8 @@ function ForgetToNew() {
         Token: ''
     }
 
-    const validationSchema = Yup.object({
-        password: Yup.string().length(6).required('Password Required*')
-    })
-
-    const onSubmit = values => {
-        dispatch(forgetToNewPassword(values))
-    }
+    const validationSchema = Yup.object({ password: Yup.string().length(6).required('Password Required*')})
+    const onSubmit = values => dispatch(forgetToNewPassword(values))
 
     return (
         <div>
@@ -74,7 +67,6 @@ function ForgetToNew() {
                                                     name="Token"
                                                     value={url}
                                                 />
-
                                                 <div className="btndivforgot">
                                                     <Button className="button" type="submit" variant="info">Change Password</Button>
                                                 </div>
@@ -90,6 +82,4 @@ function ForgetToNew() {
         </div>
     )
 }
-
 export default ForgetToNew
-

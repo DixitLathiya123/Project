@@ -7,5 +7,4 @@ function TextError(props) {
         </div>
     )
 }
-
 export default TextError

@@ -3,7 +3,6 @@ import { Field, ErrorMessage } from 'formik'
 import TextError from '../Pages/TextError'
 import { isEmpty } from '../../Services/isEmpty'
 
-
 function Country(props) {
     const { lable, name, option, ...rest } = props
     return (
@@ -24,5 +23,4 @@ function Country(props) {
         </div>
     )
 }
-
 export default Country

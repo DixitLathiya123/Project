@@ -2,7 +2,6 @@ import React from 'react'
 import { Field, ErrorMessage} from 'formik'
 import TextError from '../Pages/TextError'
 
-
 function Radio(props) {
     const { lable, name, option, ...rest } = props
     return (
@@ -26,5 +25,4 @@ function Radio(props) {
         </div>
     )
 }
-
 export default Radio

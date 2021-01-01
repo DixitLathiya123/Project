@@ -1,6 +1,3 @@
-export const isEmpty = (values) => {
-    return (
-        values === undefined || values === null || values === "" || values.length === 0 
-    )
-}
+export const isEmpty = (values) => values === undefined || values === null || values === "" || values.length === 0 
+
 

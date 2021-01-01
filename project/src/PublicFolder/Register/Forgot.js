@@ -6,28 +6,16 @@ import { ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux'
 import { forgetPassword } from '../../Redux/Actions'
 
-
 import Card from 'react-bootstrap/Card'
 import FormikControl from '../Pages/FormikControl'
-
-import 'react-toastify/dist/ReactToastify.css';
 import Header from './Header';
 
 function Forgot() {
 
     const dispatch = useDispatch()
-
-    const initialValues = {
-        email: '',
-    }
-
-    const validationSchema = Yup.object({
-        email: Yup.string().email('Invalid Format*').required('Email Required*'),
-    })
-
-    const onSubmit = values => {
-        dispatch(forgetPassword(values))
-    }
+    const initialValues = { email: '', }
+    const validationSchema = Yup.object({email: Yup.string().email('Invalid Format*').required('Email Required*')})
+    const onSubmit = values =>  dispatch(forgetPassword(values))
 
     return (
         <div>
@@ -69,5 +57,4 @@ function Forgot() {
         </div>
     )
 }
-
 export default Forgot
