@@ -1,5 +1,5 @@
-let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
 export const header = () => {
+    let token = JSON.parse(localStorage.getItem('loginTokenFromApi'))
     return {
         headers: {
             'Authorization': token,

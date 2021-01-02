@@ -14,7 +14,7 @@ const PrivateRouter = ({ component: Component, ...rest }) =>
             (
                 <Redirect to={
                     {
-                        pathname: "/",
+                        pathname: "/home",
                     }
                 }
                 />

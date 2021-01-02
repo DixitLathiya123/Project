@@ -5,7 +5,6 @@ import { Formik, Form } from 'formik'
 import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup'
 import Modal from 'react-bootstrap/Modal'
-import Cards from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
 import { isEmpty } from '../../Services/isEmpty'
@@ -23,22 +22,23 @@ import { userGoingForLogin } from '../../Redux/Actions'
 
 function Home(props) {
     const history = useHistory()
+
     if (isAuthenticated() !== false) {
         history.push("/")
     }
 
     const { Meta } = Card;
     const dispatch = useDispatch()
-    
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const Blog = useSelector(state => state.getAllBlog.Blogs.blogList)
+
     useEffect(() => {
         dispatch(getAllBlog())
     }, [])
-
-    const Blog = useSelector(state => state.getAllBlog.Blogs.blogList)
 
     const initialValues = {
         email: '',
@@ -83,8 +83,8 @@ function Home(props) {
                     })
                 }
             </div>
-            <Modal show={show} onHide={() => {handleClose() }} className="modal">
-                <Modal.Header closeButton>
+            <Modal show={show} onHide={() => { handleClose() }} className="modal">
+                <Modal.Header closeButton  style={{    "outline": "none"}}>
                     <Modal.Title>Sign In</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

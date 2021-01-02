@@ -599,7 +599,7 @@ export const userGoingForLogin = (values, props) => {
                 else {
                     toast.success("Login Successfully!!")
                     setTimeout(() => {
-                        props.history.push("/dash")
+                        props.history.push("/")
                     }, 2000);
                 }
             })
