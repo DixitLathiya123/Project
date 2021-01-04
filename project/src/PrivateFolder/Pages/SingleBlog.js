@@ -7,6 +7,7 @@ import Loader from 'react-loader-spinner'
 
 import FormikControl from '../../PublicFolder/Pages/FormikControl'
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
+
 import { isEmpty } from '../../Services/isEmpty'
 import Like from '../../PublicFolder/Image/likeImage.png'
 import LikeIcon from '../../PublicFolder/Image/likeImageIcon.jpg'
@@ -16,7 +17,13 @@ import comment from '../../PublicFolder/Image/comment.png'
 
 function SingleBlog(props) {
     const { Meta } = Card;
+
     const singleDataBlog = props.location.state
+
+    const initialValues = {
+        comment: ''
+    }
+
     const [social, setSocial] = useState({
         like: 100,
         dislike: 10,
@@ -27,6 +34,7 @@ function SingleBlog(props) {
     const [comments, setComments] = useState([])
 
     const setDislike = () => {
+
         if (social.likeActive === true) {
             setSocial({
                 dislikeActive: true,
@@ -60,6 +68,7 @@ function SingleBlog(props) {
     }
 
     const setLike = () => {
+
         if (social.dislikeActive === true) {
             setSocial({
                 dislikeActive: false,
@@ -100,6 +109,7 @@ function SingleBlog(props) {
                 {
                     <Card className="singleBlog2"
                         hoverable
+                        style={{ width: 320 }}
                         cover={
                             <img
                                 alt="example"
@@ -122,7 +132,6 @@ function SingleBlog(props) {
                                 width={social.likeActive ? "10%" : "10%"}
                             />
                             {social.like}
-                            &nbsp;&nbsp;&nbsp;
                             <img
                                 hoverable
                                 onClick={
@@ -134,7 +143,6 @@ function SingleBlog(props) {
                                 width={social.dislikeActive ? "8%" : "8%"}
                             />
                             {social.dislike}
-                            &nbsp;&nbsp;&nbsp;
                             <img
                                 hoverable
                                 onClick={
@@ -151,6 +159,7 @@ function SingleBlog(props) {
                             commentStatus === true &&
                             <div>
                                 <Formik
+                                    initialValues={initialValues}
                                     onSubmit={onSubmit}
                                 >
                                     {

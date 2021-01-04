@@ -25,14 +25,16 @@ function Contact() {
     }
     let count = 0
     const validationSchema = Yup.object({
-        name: Yup.string().required('Required*'),
-        email: Yup.string().email('Invalid Format*').required('Required*'),
-        phoneNumber: Yup.number().typeError('Only Number Allowed').required('Required*'),
-        message: Yup.string().required('Required*'),
+        name: Yup.string().required('name required*'),
+        email: Yup.string().email('Invalid Format*').required('email required*'),
+        phoneNumber: Yup.number().typeError('Only Number Allowed').required('phoneNumber required*'),
+        message: Yup.string().required('message required*'),
     })
 
     const validateMessage = (message) => {
-        count = message.length
+        if (count < 30) {
+            count = message.length
+        }
         let error;
         if (message === '') {
             error = "Required!";

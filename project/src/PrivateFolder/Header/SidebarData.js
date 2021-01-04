@@ -5,6 +5,10 @@ import {
 } from '@ant-design/icons';
 export const SidebarData = () => [
     {
+        title: '',
+        path: '',
+    },
+    {
         title: 'Dashbord',
         path: '/dash',
         icon: <PieChartOutlined/>,

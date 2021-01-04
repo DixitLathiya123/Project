@@ -79,7 +79,7 @@ function Dashbord() {
                                                     state: item
                                                 }
                                                 )}
-                                                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                                                src="https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png"
                                             />
                                         }
                                     >

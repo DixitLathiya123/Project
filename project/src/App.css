@@ -1,9 +1,18 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+.content {
+  min-height: 100%;
+  margin: 0 auto -50px;
+}
 .form {
   display: flex;
   justify-content: center;
@@ -248,7 +257,6 @@ span {
 .social {
   display: inline-flex;
 }
-
 .sticky {
   position: sticky;
   top: 0;
@@ -264,27 +272,37 @@ span {
   display: flex;
   justify-content: center;
 }
-.singleBlog1  {
+.singleBlog1 {
   display: flex;
   justify-content: center;
 }
 .singleBlog2 {
   width: 600px !important;
-  
 }
-.commentLable{
+.commentLable {
   justify-content: center;
 }
-.loader{
+.loader {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 15%;
   margin-left: 47%;
 }
-.loginpopup{
+.loginpopup {
   margin: 10%;
 }
-.modal{
+.modal {
   border-radius: 20px;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.stickyFooter {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: 5px;
 }

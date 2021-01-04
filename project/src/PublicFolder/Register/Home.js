@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import Loader from 'react-loader-spinner'
 
 import { isEmpty } from '../../Services/isEmpty'
 import { isAuthenticated } from '../../PrivateRouter/Auth'
@@ -15,7 +16,6 @@ import { getAllBlog } from '../../Redux/Actions'
 import Like from '../Image/likeImage.png'
 import disLike from '../Image/dislike.png'
 import comment from '../Image/comment.png'
-import Loader from 'react-loader-spinner'
 import FormikControl from '../Pages/FormikControl'
 import { userGoingForLogin } from '../../Redux/Actions'
 
@@ -69,7 +69,7 @@ function Home(props) {
                                     className="blogimage"
                                     hoverable
                                     style={{ width: 300 }}
-                                    cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+                                    cover={<img alt="example" src="https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png" />}
                                 >
                                     <Meta title={item.blogTitle.slice(0, 20) + "..."} description={item.blogContent.slice(0, 20) + "..."} />
                                     <div className="row social">
@@ -84,7 +84,7 @@ function Home(props) {
                 }
             </div>
             <Modal show={show} onHide={() => { handleClose() }} className="modal">
-                <Modal.Header closeButton  style={{    "outline": "none"}}>
+                <Modal.Header closeButton  style={{"outline": "none"}}>
                     <Modal.Title>Sign In</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -106,7 +106,6 @@ function Home(props) {
                                                         lable="Email*"
                                                         name="email"
                                                     />
-
                                                     <FormikControl
                                                         control="input"
                                                         type="password"
@@ -127,11 +126,6 @@ function Home(props) {
                         </div>
                     </div>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={() => { handleClose() }}>
-                        Close
-                    </Button>
-                </Modal.Footer>
             </Modal>
         </div>
     )
