@@ -97,7 +97,7 @@ function SingleBlog(props) {
         <HeaderAndSidebar title="dashbord">
             <div className="row">
                 <div className="col-12  blogbutton">
-                    <Button className="blogbutton2" variant="dark"><Link to="/dash"> Back To Blog</Link></Button >
+                    <Button className="blogbutton2" variant="dark"><Link to="/dashbord"> Back To Blog</Link></Button >
                 </div>
             </div>
             <div className="singleBlog1">

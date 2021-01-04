@@ -17,7 +17,7 @@ import Header from './Header';
 function ForgetToNew() {
     const history = useHistory()
     if (isAuthenticated() !== false) {
-        history.push("/")
+        history.push("/dashbord")
     }
     const dispatch = useDispatch()
     const [url, setUrl] = useState()

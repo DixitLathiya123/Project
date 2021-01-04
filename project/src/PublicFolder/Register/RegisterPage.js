@@ -15,6 +15,7 @@ import FormikControl from "../Pages/FormikControl";
 import Header from "./Header";
 import { isAuthenticated } from '../../PrivateRouter/Auth'
 import { userGoingForRegister, getAllCountry, getAllstate } from "../../Redux/Actions";
+import { isEmpty } from "../../Services/isEmpty";
 
 const option = [
     { key: "Select Course", value: "" },
@@ -31,12 +32,12 @@ function Register(props) {
     const history = useHistory()
 
     if (isAuthenticated() !== false) {
-        history.push("/")
+        history.push("/dashbord")
     }
     const dispatch = useDispatch();
     const [captcha, setCaptcha] = useState("");
-    const CountryData = useSelector(state => state.country.CountryData)
-    const StatesData = useSelector(state => state.states.StateData)
+    const CountryData = useSelector(state => state.initialState.countries.CountryData)
+    const StatesData = useSelector(state => state.initialState.states.StateData)
 
     useEffect(() => {
         dispatch(getAllCountry())
@@ -59,9 +60,6 @@ function Register(props) {
 
     const validationSchema = Yup.object({
         name: Yup.string().required("Name required *"),
-        phoneNo: Yup.number()
-            .typeError("Only Number Allowed")
-            .required("PhoneNo required *"),
         pinCode: Yup.number()
             .typeError("Only Number Allowed")
             .required("Pincode required *"),
@@ -99,8 +97,36 @@ function Register(props) {
         }
         return error;
     };
+    const phoneValidate = (phone) => {
+        isNaN(phone)
+        let error;
+        if (isEmpty(phone)) {
+            error = "phoneNo required!"
+        }
+        else if (phone.length !== 10) {
+            error = "phoneNo length must be 10"
+        }
+        if (isNaN(phone) === true) {
+            error = "Only Number Allowed"
+        }
+        return error
+    }
+    const pinValidate = (pin) => {
+        isNaN(pin)
+        let error;
+        if (isEmpty(pin)) {
+            error = "pinNo required!"
+        }
+        else if (pin.length !== 6) {
+            error = "pinNo length must be 6"
+        }
+        if (isNaN(pin) === true) {
+            error = "Only Number Allowed"
+        }
+        return error
+    }
 
-    const onSubmit = (values) =>  dispatch(userGoingForRegister(values, props));
+    const onSubmit = (values) => dispatch(userGoingForRegister(values, props));
     const handlecaptcha = (e) => setCaptcha(e);
 
     return (
@@ -139,6 +165,7 @@ function Register(props) {
                                                         type="text"
                                                         lable="PhoneNo*"
                                                         name="phoneNo"
+                                                        validate={phoneValidate}
                                                     />
                                                     <FormikControl
                                                         control="select"
@@ -180,6 +207,7 @@ function Register(props) {
                                                         type="text"
                                                         lable="Pincode*"
                                                         name="pinCode"
+                                                        validate={pinValidate}
                                                     />
                                                     <FormikControl
                                                         control="input"

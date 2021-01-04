@@ -16,7 +16,7 @@ import { isAuthenticated } from '../../PrivateRouter/Auth'
 function Login(props) {
     const history = useHistory();
     if (isAuthenticated() !== false) {
-        history.push("/")
+        history.push("/dashbord")
     }
     
     const dispatch = useDispatch()

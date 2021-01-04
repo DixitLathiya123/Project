@@ -10,11 +10,12 @@ import Header from './Header'
 import FormikControl from '../Pages/FormikControl'
 import { isAuthenticated } from '../../PrivateRouter/Auth'
 import { userSendContact } from '../../Redux/Actions'
+import { isEmpty } from '../../Services/isEmpty'
 
 function Contact() {
     const history = useHistory()
     if (isAuthenticated() !== false) {
-        history.push("/")
+        history.push("/dashbord")
     }
     const dispatch = useDispatch()
     const initialValues = {
@@ -27,20 +28,28 @@ function Contact() {
     const validationSchema = Yup.object({
         name: Yup.string().required('name required*'),
         email: Yup.string().email('Invalid Format*').required('email required*'),
-        phoneNumber: Yup.number().typeError('Only Number Allowed').required('phoneNumber required*'),
         message: Yup.string().required('message required*'),
     })
+    const PhoneValidation = (phone) => {
+        isNaN(phone)
+        let error;
+        if(isEmpty(phone)){
+            error = "phoneNo required!"
+        }
+        else if(phone.length !== 10){
+            error = "phoneNo length must be 10"
+        }
+        if(isNaN(phone) === true){
+            error = "Only Number Allowed"
+        }
+        return error
+    }
 
     const validateMessage = (message) => {
-        if (count < 30) {
-            count = message.length
-        }
+        count = message.length
         let error;
         if (message === '') {
-            error = "Required!";
-        }
-        else if (message.length > 30) {
-            error = "Message Can Not More Than 30 Character!";
+            error = "required!";
         }
         return error;
     }
@@ -82,6 +91,7 @@ function Contact() {
                                                     lable="Message *"
                                                     name="message"
                                                     validate={validateMessage}
+                                                    maxlength="30"
                                                 />
                                                 <div style={{ "display": "flex", "justify-content": "flex-end" }}>
                                                     {count}/30
@@ -89,8 +99,9 @@ function Contact() {
                                                 <FormikControl
                                                     control="input"
                                                     type="text"
-                                                    lable="Phone-No *"
+                                                    lable="PhoneNo *"
                                                     name="phoneNumber"
+                                                    validate={PhoneValidation}
                                                 />
                                                 <Button className="button" type="submit">Submit</Button>
                                                 <Button className="button" type="reset" >Reset</Button>

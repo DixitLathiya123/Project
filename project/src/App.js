@@ -1,5 +1,5 @@
 import './App.css';
-import Routing from './Routing';
+import Routes from './Routes';
 import store from './Redux/Store'
 import 'antd/dist/antd.css'
 import { Provider } from 'react-redux';
@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <ToastContainer />
-        <Routing />
+        <Routes />
       </Provider>
     </div>
   );

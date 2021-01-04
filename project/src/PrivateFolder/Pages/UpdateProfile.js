@@ -18,8 +18,8 @@ function UpdateProfile() {
         dispatch(getAllCountry())
     }, [])
 
-    const CountryData = useSelector(state => state.country.CountryData)
-    const StatesData = useSelector(state => state.states.StateData)
+    const CountryData = useSelector(state => state.initialState.countries.CountryData)
+    const StatesData = useSelector(state => state.initialState.states.StateData)
 
     const option = [
         { key: "Select Course", value: "" },

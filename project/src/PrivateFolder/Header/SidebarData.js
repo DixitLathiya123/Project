@@ -10,7 +10,7 @@ export const SidebarData = () => [
     },
     {
         title: 'Dashbord',
-        path: '/dash',
+        path: '/dashbord',
         icon: <PieChartOutlined/>,
     },
     {

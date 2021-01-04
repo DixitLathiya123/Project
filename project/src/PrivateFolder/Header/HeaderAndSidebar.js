@@ -40,7 +40,7 @@ export const HeaderAndSidebar = ({ children }, props) => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link><Link to="/dash" >Home</Link></Nav.Link>
+                            <Nav.Link><Link to="/dashbord" >Home</Link></Nav.Link>
                         </Nav>
                         <div>
                             <Nav className="mr-auto">

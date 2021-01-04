@@ -35,19 +35,25 @@ function Dashbord() {
     const initialValues = {
         blogTitle: '',
         blogContent: '',
+        file: ''
     }
 
     const validationSchema = Yup.object({
         blogTitle: Yup.string().required('Blog Title Required*'),
-        blogContent: Yup.string().required('Blog Content Required*')
+        blogContent: Yup.string().required('Blog Content Required*'),
+        file: Yup.string().required('Blog Image Required*'),
     })
 
     const onSubmit = (values, onSubmitProps) => {
-        dispatch(createBlog(values, onSubmitProps))
+
+        let formData = new FormData();
+        formData.append('blogTitle', values.blogTitle);
+        formData.append('blogContent', values.blogContent);
+        formData.append('file', values.file);
+
+        dispatch(createBlog(formData, onSubmitProps))
         dispatch(getBlogById())
     }
-
-
 
     return (
         < div >
@@ -85,7 +91,7 @@ function Dashbord() {
                                     >
                                         <div className="row">
                                             <div className="col-8">
-                                                <Meta title={item.blogTitle.slice(0, 20) + "..."} description={item.blogContent.slice(0, 20) + "..."} />
+                                                <Meta className="blogContent" title={item.blogTitle} description={item.blogContent} />
                                             </div>
                                             <div className="col-4">
                                                 <div className="row ">
@@ -105,7 +111,7 @@ function Dashbord() {
 
 
                 <Modal show={show} onHide={() => { handleClose() }} className="modal">
-                    <Modal.Header closeButton style={{    "outline": "none"}}>
+                    <Modal.Header closeButton style={{ "outline": "none" }}>
                         <Modal.Title>Create Blog</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -135,6 +141,14 @@ function Dashbord() {
                                                             lable="Blog Content*"
                                                             name="blogContent"
                                                         />
+
+                                                        <FormikControl
+                                                            control="input"
+                                                            type="file"
+                                                            lable="Blog Image*"
+                                                            name="file"
+                                                        />
+
                                                         <div className="btndiv">
                                                             <Button className="button" type="submit" variant="info" onClick={() => { handleClose() }}>Create</Button>
                                                         </div>

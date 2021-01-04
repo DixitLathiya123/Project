@@ -11,7 +11,7 @@ function Header() {
                     <div className="col-md-6">
                     </div>
                     <div className="col-md-6 menu">
-                        <Link to="/" className="menu-bars2" >
+                        <Link to="/home" className="menu-bars2" >
                             Home
                     </Link>
                         <Link to="/contact" className="menu-bars2" >

@@ -24,7 +24,7 @@ function Home(props) {
     const history = useHistory()
 
     if (isAuthenticated() !== false) {
-        history.push("/")
+        history.push("/dashbord")
     }
 
     const { Meta } = Card;
@@ -71,7 +71,7 @@ function Home(props) {
                                     style={{ width: 300 }}
                                     cover={<img alt="example" src="https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png" />}
                                 >
-                                    <Meta title={item.blogTitle.slice(0, 20) + "..."} description={item.blogContent.slice(0, 20) + "..."} />
+                                    <Meta className="blogContent" title={item.blogTitle} description={item.blogContent} />
                                     <div className="row social">
                                         <button className="likeDislikeButton" onClick={() => { handleShow() }}><img hoverable src={Like} alt="like" height="100%" width="100%" /></button>
                                         <button className="likeDislikeButton" onClick={() => { handleShow() }}><img hoverable src={disLike} alt="dislike" height="100%" width="100%" /></button>

@@ -306,3 +306,8 @@ span {
   right: 0px;
   margin: 5px;
 }
+.blogContent{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

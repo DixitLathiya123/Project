@@ -20,7 +20,7 @@ function ResetPassword() {
         oldPassword: '',
     }
 
-    const changePasswordStatus = useSelector(state => state.changePassword.ReturnCode.ReturnCode)
+    const changePasswordStatus = useSelector(state => state.initialState.ChangePassword.ReturnCode)
 
     const validationSchema = Yup.object({
         newPassword: Yup.string().length(6).required("New Password required *"),
@@ -31,7 +31,7 @@ function ResetPassword() {
         dispatch(changePassword(values, onSubmitProps))
         if (changePasswordStatus !== "" && changePasswordStatus === 0) {
             setTimeout(() => {
-                history.push("/dash")
+                history.push("/dashbord")
             }, 5000);
         }
     }

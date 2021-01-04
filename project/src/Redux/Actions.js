@@ -72,6 +72,7 @@ export const updateProfileSuccess = (change) => {
     }
 }
 export const updateProfileFailure = (error) => {
+
     return {
         type: UPDATE_PROFILE_FAILURE,
         ResponseStatus: '',
@@ -122,10 +123,11 @@ export const changePasswordFailure = (error) => {
     }
 }
 export const changePassword = (change, onSubmitProps) => {
+
     return (dispatch) => {
         dispatch(changePasswordRequest())
         axios.put(`${process.env.REACT_APP_API}/api/changePassword`, change, header())
-            .then((Response) => { 
+            .then((Response) => {
                 const change = Response.data
                 dispatch(changePasswordSuccess(change))
                 onSubmitProps.resetForm();
@@ -165,9 +167,10 @@ export const getUserByIdFailure = (error) => {
     }
 }
 export const getUserById = () => {
+
     return (dispatch) => {
         dispatch(getUserByIdRequest())
-        axios.get(`${process.env.REACT_APP_API}/api/getUserById`,header())
+        axios.get(`${process.env.REACT_APP_API}/api/getUserById`, header())
             .then((Response) => {
                 const UserById = Response.data
                 dispatch(getUserByIdSuccess(UserById))
@@ -199,9 +202,10 @@ export const deleteBlogFailure = (error) => {
     }
 }
 export const deleteBlog = (deleteId) => {
+
     return (dispatch) => {
         dispatch(deleteBlogRequest())
-        axios.delete(`${process.env.REACT_APP_API}/api/deleteBlog/${deleteId}`,header())
+        axios.delete(`${process.env.REACT_APP_API}/api/deleteBlog/${deleteId}`, header())
             .then((Response) => {
                 const deleteBlog = Response.data
                 dispatch(deleteBlogSuccess(deleteBlog))
@@ -244,12 +248,15 @@ export const getBlogByIdFailure = (error) => {
 export const getBlogById = () => {
     return (dispatch) => {
         dispatch(getBlogByIdRequest())
-        axios.get(`${process.env.REACT_APP_API}/api/getBlogById`,header())
+        axios.get(`${process.env.REACT_APP_API}/api/getBlogById`, header())
             .then((Response) => {
+                console.log("id", Response);
                 const blogById = Response.data
                 dispatch(getBlogByIdSuccess(blogById))
             })
             .catch((error) => {
+                console.log("id", error);
+
                 const errors = error.message
                 dispatch(getBlogByIdFailure(errors))
             })
@@ -259,17 +266,20 @@ export const getBlogById = () => {
 
 //create blog
 export const createBlogRequest = () => {
+    console.log("request");
     return {
         type: CREATE_BLOG_REQUEST
     }
 }
 export const createBlogSuccess = (data) => {
+    console.log("suuccesss");
     return {
         type: CREATE_BLOG_SUCCESS,
         payload: data,
     }
 }
 export const createBlogFailure = (error) => {
+    console.log("failure");
     return {
         type: CREATE_BLOG_FAILURE,
         ReturnCode: '',
@@ -279,8 +289,9 @@ export const createBlogFailure = (error) => {
 export const createBlog = (blog, onSubmitProps) => {
     return (dispatch) => {
         dispatch(createBlogRequest())
-        axios.post(`${process.env.REACT_APP_API}/api/createBlog`, blog,header())
+        axios.post(`${process.env.REACT_APP_API}/api/createBlog`, blog, header())
             .then((Response) => {
+                console.log("Response", Response);
                 const blog = Response.data
                 dispatch(createBlogSuccess(blog))
                 if (blog.ResponseStatus === 0) {
@@ -291,6 +302,7 @@ export const createBlog = (blog, onSubmitProps) => {
                 }
             })
             .catch((error) => {
+                console.log(error);
                 const errors = error.message
                 dispatch(createBlogFailure(errors))
             })
@@ -317,6 +329,7 @@ export const getAllBlogFailure = (error) => {
     }
 }
 export const getAllBlog = () => {
+
     return (dispatch) => {
         dispatch(getAllBlogRequest())
         axios.get(`${process.env.REACT_APP_API}/api/getAllBlog`)
@@ -351,6 +364,7 @@ export const forgetToNewFailure = (error) => {
     }
 }
 export const forgetToNewPassword = (data) => {
+
     return (dispatch) => {
         dispatch(forgetToNewRequest())
         axios.post(`${process.env.REACT_APP_API}/api/resetPassword`, data)
@@ -390,6 +404,7 @@ export const forgetFailure = (error) => {
     }
 }
 export const forgetPassword = (email) => {
+
     return (dispatch) => {
         dispatch(forgetRequest())
         axios.post(`${process.env.REACT_APP_API}/api/forgetPassword`, email)
@@ -429,6 +444,8 @@ export const messageFailure = (error) => {
     }
 }
 export const userSendContact = (message) => {
+    ("message");
+
     return (dispatch) => {
         dispatch(messageRequest())
         axios.post(`${process.env.REACT_APP_API}/api/contactUs`, message)
@@ -468,6 +485,7 @@ export const stateFailure = (error) => {
     }
 }
 export const getAllstate = (countryId) => {
+
     return (dispatch) => {
         dispatch(stateRequest())
         axios.get(`${process.env.REACT_APP_API}/api/getStateById/${countryId}`)
@@ -503,6 +521,7 @@ export const countryFailure = (error) => {
     }
 }
 export const getAllCountry = () => {
+
     return (dispatch) => {
         dispatch(countryRequest())
         axios.get(`${process.env.REACT_APP_API}/api/getAllCountry`)
@@ -537,6 +556,7 @@ export const failure = (error) => {
     }
 }
 export const userGoingForRegister = (values, props) => {
+
     return (dispatch) => {
         dispatch(request)
         axios.post(`${process.env.REACT_APP_API}/api/signin`, values)
@@ -599,7 +619,7 @@ export const userGoingForLogin = (values, props) => {
                 else {
                     toast.success("Login Successfully!!")
                     setTimeout(() => {
-                        props.history.push("/")
+                        props.history.push("/dashbord")
                     }, 2000);
                 }
             })

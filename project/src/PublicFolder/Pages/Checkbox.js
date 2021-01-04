@@ -31,7 +31,7 @@ function Checkbox(props) {
                     }
                 </Field>
             </div>
-            <ErrorMessage name={name} component={TextError} />
+            <p><ErrorMessage name={name} component={TextError} /></p>
         </div>
     )
 }
