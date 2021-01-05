@@ -41,6 +41,9 @@ import {
     UPDATE_PROFILE_REQUEST,
     UPDATE_PROFILE_SUCCESS,
     UPDATE_PROFILE_FAILURE,
+    COMMENT_REQUEST,
+    COMMENT_SUCCESS,
+    COMMENT_FAILURE,
 } from './Actions'
 import {
     initialState,getAllBlog, getBlogById,
@@ -61,6 +64,7 @@ export const initialStateReducer = (state = initialState, action) => {
         case GET_USER_BY_ID_REQUEST: return { ...state, loading: true }
         case CHANGE_PASSWORD_REQUEST: return { ...state, loading: true }
         case UPDATE_PROFILE_REQUEST: return { ...state, loading: true }
+        case COMMENT_REQUEST: return { ...state, loading: true }
 
         case LOGIN_SUCCESS:
             state.Login = {
@@ -146,6 +150,13 @@ export const initialStateReducer = (state = initialState, action) => {
                 ResponseStatus: action.payload,
             }
             return state
+        case COMMENT_SUCCESS:
+            state = { ...state,loading: false, error: '', }
+            state.comments = {
+                ...state.comments,
+                ResponseStatus: action.payload,
+            }
+            return state
 
         case FAILURE: return { ...state, loading: false, LoginToken: '', error: action.payload }
         case LOGIN_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
@@ -159,9 +170,9 @@ export const initialStateReducer = (state = initialState, action) => {
         case GET_USER_BY_ID_FAILURE: return { ...state, loading: false, UserById: [], error: action.payload }
         case CHANGE_PASSWORD_FAILURE: return { ...state, loading: false, ReturnCode: '', error: action.payload }
         case UPDATE_PROFILE_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
+        case COMMENT_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
 
-        default:
-            return state;
+        default: return state;
     }
 }
 //get blog by id

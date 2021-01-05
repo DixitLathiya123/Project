@@ -23,6 +23,8 @@ function Dashbord() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [selectedFile, setselectedFile] = useState()
+
     useEffect(() => {
         dispatch(getBlogById())
     }, [])
@@ -35,25 +37,29 @@ function Dashbord() {
     const initialValues = {
         blogTitle: '',
         blogContent: '',
-        file: ''
+        file: selectedFile
     }
 
     const validationSchema = Yup.object({
         blogTitle: Yup.string().required('Blog Title Required*'),
         blogContent: Yup.string().required('Blog Content Required*'),
-        file: Yup.string().required('Blog Image Required*'),
     })
 
     const onSubmit = (values, onSubmitProps) => {
-
         let formData = new FormData();
         formData.append('blogTitle', values.blogTitle);
         formData.append('blogContent', values.blogContent);
-        formData.append('file', values.file);
-
+        formData.append('file', selectedFile);
+        
         dispatch(createBlog(formData, onSubmitProps))
-        dispatch(getBlogById())
+        setTimeout(() => {
+            dispatch(getBlogById())
+            handleClose()
+        }, 2000);
     }
+    const fileChangeHandler = (e) => {
+        setselectedFile(e.target.files[0])
+    } 
 
     return (
         < div >
@@ -79,13 +85,14 @@ function Dashbord() {
                                         style={{ width: 320 }}
                                         cover={
                                             <img
+                                                height="250px"
                                                 alt="example"
                                                 onClick={() => history.push({
                                                     pathname: "/singleBlog",
                                                     state: item
                                                 }
                                                 )}
-                                                src="https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png"
+                                                src={process.env.REACT_APP_API +"/"+item.blogImagePath}
                                             />
                                         }
                                     >
@@ -147,10 +154,11 @@ function Dashbord() {
                                                             type="file"
                                                             lable="Blog Image*"
                                                             name="file"
+                                                            onChange = {(e) => fileChangeHandler(e)}
                                                         />
 
                                                         <div className="btndiv">
-                                                            <Button className="button" type="submit" variant="info" onClick={() => { handleClose() }}>Create</Button>
+                                                            <Button className="button" type="submit" variant="info" >Create</Button>
                                                         </div>
                                                     </Form>
                                                 )

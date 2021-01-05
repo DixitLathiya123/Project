@@ -4,26 +4,28 @@ import { Formik, Form } from 'formik'
 import { Link } from 'react-router-dom';
 import { Card } from 'antd';
 import Loader from 'react-loader-spinner'
+import { useDispatch } from 'react-redux'
 
 import FormikControl from '../../PublicFolder/Pages/FormikControl'
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
 
 import { isEmpty } from '../../Services/isEmpty'
+import { comment } from '../../Redux/Actions';
 import Like from '../../PublicFolder/Image/likeImage.png'
 import LikeIcon from '../../PublicFolder/Image/likeImageIcon.jpg'
 import disLike from '../../PublicFolder/Image/dislike.png'
 import disLikeIcon from '../../PublicFolder/Image/dislikeIcon.png'
-import comment from '../../PublicFolder/Image/comment.png'
+import commentImage from '../../PublicFolder/Image/comment.png'
 
 function SingleBlog(props) {
     const { Meta } = Card;
+    const dispatch = useDispatch()
 
     const singleDataBlog = props.location.state
 
     const initialValues = {
-        comment: ''
+        blogComment: []
     }
-
     const [social, setSocial] = useState({
         like: 100,
         dislike: 10,
@@ -31,7 +33,6 @@ function SingleBlog(props) {
         dislikeActive: false
     })
     const [commentStatus, setCommentStatus] = useState(false)
-    const [comments, setComments] = useState([])
 
     const setDislike = () => {
 
@@ -59,12 +60,8 @@ function SingleBlog(props) {
         }
     }
 
-    const onSubmit = (values, onSubmitProps) => {
-        setComments([
-            ...comments,
-            values
-        ])
-        onSubmitProps.resetForm()
+    const onSubmit = (values,onSubmitProps) => {
+        dispatch(comment(values,singleDataBlog._id,onSubmitProps))
     }
 
     const setLike = () => {
@@ -113,7 +110,7 @@ function SingleBlog(props) {
                         cover={
                             <img
                                 alt="example"
-                                src="https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png"
+                                src={process.env.REACT_APP_API +"/"+singleDataBlog.blogImagePath}
                             />
                         }
                     >
@@ -148,7 +145,7 @@ function SingleBlog(props) {
                                 onClick={
                                     () => setCommentStatus(!commentStatus)
                                 }
-                                src={comment}
+                                src={commentImage}
                                 alt="comment"
                                 height="10%"
                                 width="10%"
@@ -174,7 +171,7 @@ function SingleBlog(props) {
                                                                 control="input"
                                                                 type="text"
                                                                 lable="Comment"
-                                                                name="comment"
+                                                                name="blogComment"
                                                             />
                                                         </div>
                                                         <div className="col-3 btndiv">
@@ -194,19 +191,6 @@ function SingleBlog(props) {
                         </div>
                         <div>
 
-                            {!isEmpty(comments) &&
-                                <div style={{ overflowY: 'scroll', height: 'calc(15vh - 20px)' }}>
-                                    {
-                                        !isEmpty(comments) && comments.map((item, i) => {
-                                            return <>
-                                                <h5>{item.comment}</h5>
-
-                                                <hr />
-                                            </>
-                                        })
-                                    }
-                                </div>
-                            }
                         </div>
                     </Card >
                 }

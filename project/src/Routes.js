@@ -17,6 +17,7 @@ import ResetPassword from './PrivateFolder/Pages/ResetPassword'
 import SingleBlog from './PrivateFolder/Pages/SingleBlog'
 import Footer from './PublicFolder/Register/Footer'
 import LandingPage from './LandingPage'
+import AllBlog from './PrivateFolder/Pages/AllBlog'
 
 function Routes() {
     return (
@@ -32,6 +33,7 @@ function Routes() {
                     <Route exact path="/forget-password/link/" component={Error404} /> 
                     <Route path="/forget-password/link/" component={ForgetToNew} /> 
                     <PrivateRouter exact path="/dashbord" component={Dashbord} />
+                    <PrivateRouter exact path="/allBlog" component={AllBlog} />
                     <PrivateRouter exact path="/update" component={UpdateProfile} />
                     <PrivateRouter exact path="/table" component={TableView} />
                     <PrivateRouter exact path="/createBlog" component={CreateBlog} />

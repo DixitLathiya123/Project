@@ -14,6 +14,11 @@ export const SidebarData = () => [
         icon: <PieChartOutlined/>,
     },
     {
+        title: 'All Blog',
+        path: '/allBlog',
+        icon: <PieChartOutlined/>,
+    },
+    {
         title: 'Profile',
         path: '/update',
         icon: <DesktopOutlined/>,
