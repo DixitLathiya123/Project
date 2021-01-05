@@ -1,6 +1,6 @@
 import './App.css';
 import Routes from './Routes';
-import store from './Redux/Store'
+import store from './Store/Store'
 import 'antd/dist/antd.css'
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';

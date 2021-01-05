@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
-import { useDispatch, useSelector } from 'react-redux';
-import { getBlogById } from '../../Redux/Actions';
 
 
 function TableView() {

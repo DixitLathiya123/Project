@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux'
 import Header from './Header'
 import FormikControl from '../Pages/FormikControl'
 import { isAuthenticated } from '../../PrivateRouter/Auth'
-import { userSendContact } from '../../Redux/Actions'
+import { userSendContact } from '../../Action/actionIndex'
 import { isEmpty } from '../../Services/isEmpty'
 
 function Contact() {

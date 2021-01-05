@@ -14,7 +14,7 @@ import * as Yup from "yup";
 import FormikControl from "../Pages/FormikControl";
 import Header from "./Header";
 import { isAuthenticated } from '../../PrivateRouter/Auth'
-import { userGoingForRegister, getAllCountry, getAllstate } from "../../Redux/Actions";
+import { userGoingForRegister, getAllCountry, getAllstate } from "../../Action/actionIndex";
 import { isEmpty } from "../../Services/isEmpty";
 
 const option = [

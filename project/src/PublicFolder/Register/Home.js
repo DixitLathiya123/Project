@@ -12,12 +12,11 @@ import { isEmpty } from '../../Services/isEmpty'
 import { isAuthenticated } from '../../PrivateRouter/Auth'
 import Header from './Header'
 import Slider from '../Pages/Slider'
-import { getAllBlog } from '../../Redux/Actions'
+import { getAllBlog ,userGoingForLogin} from '../../Action/actionIndex'
 import Like from '../Image/likeImage.png'
 import disLike from '../Image/dislike.png'
 import comment from '../Image/comment.png'
 import FormikControl from '../Pages/FormikControl'
-import { userGoingForLogin } from '../../Redux/Actions'
 
 
 function Home(props) {

@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import Card from 'react-bootstrap/Card'
 
 import FormikControl from '../../PublicFolder/Pages/FormikControl'
-import { changePassword } from '../../Redux/Actions';
+import { changePassword } from '../../Action/actionIndex';
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
 
 function ResetPassword() {

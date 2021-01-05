@@ -5,7 +5,7 @@ import Loader from 'react-loader-spinner'
 
 import { isEmpty } from '../../Services/isEmpty'
 import HeaderAndSidebar from '../Header/HeaderAndSidebar';
-import { getAllBlog } from '../../Redux/Actions';
+import { getAllBlog } from '../../Action/actionIndex';
 import { useHistory } from 'react-router-dom';
 
 function AllBlog() {

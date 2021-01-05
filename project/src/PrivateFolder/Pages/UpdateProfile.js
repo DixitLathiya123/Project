@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card";
 
 import FormikControl from "../../PublicFolder/Pages/FormikControl";
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserById, getAllCountry, getAllstate ,updateProfile } from '../../Redux/Actions';
+import { getUserById, getAllCountry, getAllstate ,updateProfile } from '../../Action/actionIndex';
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
 import * as Yup from "yup";
 

@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik'
 import { Button } from 'react-bootstrap'
 import { ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux'
-import { forgetPassword } from '../../Redux/Actions'
+import { forgetPassword } from '../../Action/actionIndex'
 
 import Card from 'react-bootstrap/Card'
 import FormikControl from '../Pages/FormikControl'

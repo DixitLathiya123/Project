@@ -8,7 +8,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card'
 import FormikControl from '../Pages/FormikControl'
-import { userGoingForLogin } from '../../Redux/Actions'
+import { userGoingForLogin } from '../../Action/actionIndex'
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './Header'
 import { isAuthenticated } from '../../PrivateRouter/Auth'

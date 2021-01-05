@@ -10,7 +10,7 @@ import FormikControl from '../../PublicFolder/Pages/FormikControl'
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
 
 import { isEmpty } from '../../Services/isEmpty'
-import { comment } from '../../Redux/Actions';
+import { comment } from '../../Action/actionIndex';
 import Like from '../../PublicFolder/Image/likeImage.png'
 import LikeIcon from '../../PublicFolder/Image/likeImageIcon.jpg'
 import disLike from '../../PublicFolder/Image/dislike.png'

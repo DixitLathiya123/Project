@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { forgetToNewPassword } from '../../Redux/Actions'
+import { forgetToNewPassword } from '../../Action/actionIndex'
 import Card from 'react-bootstrap/Card'
 import FormikControl from '../Pages/FormikControl'
 

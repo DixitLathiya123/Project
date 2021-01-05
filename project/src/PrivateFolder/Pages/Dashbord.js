@@ -11,7 +11,7 @@ import Modal from 'react-bootstrap/Modal'
 import { isEmpty } from '../../Services/isEmpty'
 import deleteButton from '../../PublicFolder/Image/delete.png'
 import HeaderAndSidebar from '../Header/HeaderAndSidebar'
-import { createBlog, deleteBlog, getBlogById, } from '../../Redux/Actions';
+import { createBlog, deleteBlog, getBlogById, } from '../../Action/actionIndex';
 import FormikControl from '../../PublicFolder/Pages/FormikControl';
 
 function Dashbord() {
