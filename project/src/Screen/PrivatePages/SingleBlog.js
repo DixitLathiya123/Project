@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { Formik, Form } from 'formik'
 import { Link } from 'react-router-dom';
@@ -6,10 +6,10 @@ import { Card } from 'antd';
 import Loader from 'react-loader-spinner'
 import { useDispatch } from 'react-redux'
 
-import {HeaderAndSidebar,FormikControl} from '../../Components/componentIndex'
+import { HeaderAndSidebar, FormikControl } from '../../Components/componentIndex'
 
 import { isEmpty } from '../../Services/isEmpty'
-import { comment } from '../../Action/actionIndex';
+import { blogLike, comment } from '../../Action/actionIndex';
 import Like from '../../Assets/Image/likeImage.png'
 import LikeIcon from '../../Assets/Image/likeImageIcon.jpg'
 import disLike from '../../Assets/Image/dislike.png'
@@ -21,74 +21,21 @@ function SingleBlog(props) {
     const dispatch = useDispatch()
 
     const singleDataBlog = props.location.state
+    const loginDataFromApi = JSON.parse(localStorage.getItem('loginData'))
+    const loginData =  loginDataFromApi.data
+    const LikedBlog =singleDataBlog && singleDataBlog.blogLike.includes(loginData[0]._id)
+    const DisLikedBlog = singleDataBlog && singleDataBlog.blogDislike.includes(loginData[0]._id)
 
     const initialValues = {
         blogComment: []
     }
-    const [social, setSocial] = useState({
-        like: 100,
-        dislike: 10,
-        likeActive: false,
-        dislikeActive: false
-    })
+
     const [commentStatus, setCommentStatus] = useState(false)
 
-    const setDislike = () => {
-
-        if (social.likeActive === true) {
-            setSocial({
-                dislikeActive: true,
-                likeActive: false,
-                like: social.like - 1,
-                dislike: social.dislike + 1,
-            })
-        }
-        else if (social.dislikeActive === true) {
-            setSocial({
-                ...social,
-                dislikeActive: false,
-                dislike: social.dislike - 1
-            })
-        }
-        else if (social.dislikeActive === false) {
-            setSocial({
-                ...social,
-                dislikeActive: true,
-                dislike: social.dislike + 1
-            })
-        }
+    const onSubmit = (values, onSubmitProps) => {
+        dispatch(comment(values, singleDataBlog._id, onSubmitProps))
     }
 
-    const onSubmit = (values,onSubmitProps) => {
-        dispatch(comment(values,singleDataBlog._id,onSubmitProps))
-    }
-
-    const setLike = () => {
-
-        if (social.dislikeActive === true) {
-            setSocial({
-                dislikeActive: false,
-                likeActive: true,
-                dislike: social.dislike - 1,
-                like: social.like + 1
-            })
-
-        }
-        else if (social.likeActive === true) {
-            setSocial({
-                ...social,
-                likeActive: false,
-                like: social.like - 1
-            })
-        }
-        else if (social.likeActive === false) {
-            setSocial({
-                ...social,
-                likeActive: true,
-                like: social.like + 1
-            })
-        }
-    }
     return (
         <HeaderAndSidebar title="dashbord">
             <div className="row">
@@ -109,7 +56,7 @@ function SingleBlog(props) {
                         cover={
                             <img
                                 alt="example"
-                                src={process.env.REACT_APP_API +"/"+singleDataBlog.blogImagePath}
+                                src={process.env.REACT_APP_API + "/" + singleDataBlog.blogImagePath}
                             />
                         }
                     >
@@ -119,26 +66,21 @@ function SingleBlog(props) {
                         <div>
                             <img
                                 hoverable
-                                onClick={
-                                    () => setLike()
-                                }
-                                src={social.likeActive ? LikeIcon : Like}
+                                onClick={()=>{
+                                    dispatch(blogLike(singleDataBlog._id))
+                                }}
+                                src={LikedBlog ? LikeIcon : Like}
                                 alt="like"
-                                height={social.likeActive ? "8%" : "10%"}
-                                width={social.likeActive ? "10%" : "10%"}
+                                height={LikedBlog ? "8%" : "10%"}
+                                width={LikedBlog ? "10%" : "10%"}
                             />
-                            {social.like}
                             <img
                                 hoverable
-                                onClick={
-                                    () => setDislike()
-                                }
-                                src={social.dislikeActive ? disLikeIcon : disLike}
+                                src={DisLikedBlog ? disLikeIcon : disLike}
                                 alt="dislike"
-                                height={social.dislikeActive ? "8%" : "8%"}
-                                width={social.dislikeActive ? "8%" : "8%"}
+                                height={DisLikedBlog ? "8%" : "8%"}
+                                width={DisLikedBlog ? "8%" : "8%"}
                             />
-                            {social.dislike}
                             <img
                                 hoverable
                                 onClick={

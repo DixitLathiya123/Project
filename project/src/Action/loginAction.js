@@ -25,7 +25,7 @@ export const loginfailure = (error) => {
         type: LOGIN_FAILURE,
         LoginStatus: '',
         payload: error,
-        LoginToken: '',
+        LoginData: [],
     }
 }
 export const userGoingForLogin = (values, props) => {
@@ -33,6 +33,7 @@ export const userGoingForLogin = (values, props) => {
         dispatch(loginrequest)
         axios.post(`${process.env.REACT_APP_API}/api/login`, values, headerWithOutToken())
             .then(Response => {
+                console.log(Response);
                 const token = Response.data
                 dispatch(loginsuccess(token))
                 if (token.ResponseStatus !== 0) {

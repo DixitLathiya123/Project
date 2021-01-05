@@ -38,6 +38,9 @@ import {
     COMMENT_REQUEST,
     COMMENT_SUCCESS,
     COMMENT_FAILURE,
+    LIKE_REQUEST,
+    LIKE_SUCCESS,
+    LIKE_FAILURE,
 } from '../Action/actionIndex'
 
 import { initialState } from '../State/State'
@@ -58,13 +61,16 @@ export const initialStateReducer = (state = initialState, action) => {
         case CHANGE_PASSWORD_REQUEST: return { ...state, loading: true }
         case UPDATE_PROFILE_REQUEST: return { ...state, loading: true }
         case COMMENT_REQUEST: return { ...state, loading: true }
+        case LIKE_REQUEST: return { ...state, loading: true }
 
         case LOGIN_SUCCESS:
+            console.log("action", action.payload);
             state.Login = {
                 ...state.Login,
-                LoginToken: action.payload,
+                LoginData: action.payload,
             }
             localStorage.setItem('loginTokenFromApi', JSON.stringify(action.payload !== undefined && action.payload.token !== false && action.payload.token))
+            localStorage.setItem('loginData', JSON.stringify(action.payload !== undefined && action.payload.token !== false && action.payload))
             return state
         case SUCCESS:
             state = { ...state, loading: false, error: '', }
@@ -150,6 +156,13 @@ export const initialStateReducer = (state = initialState, action) => {
                 ResponseStatus: action.payload,
             }
             return state
+        case LIKE_SUCCESS:
+            state = { ...state, loading: false, error: '', }
+            state.Likes = {
+                ...state.Likes,
+                ResponseStatus: action.payload,
+            }
+            return state
 
         case FAILURE: return { ...state, loading: false, LoginToken: '', error: action.payload }
         case LOGIN_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
@@ -164,6 +177,7 @@ export const initialStateReducer = (state = initialState, action) => {
         case CHANGE_PASSWORD_FAILURE: return { ...state, loading: false, ReturnCode: '', error: action.payload }
         case UPDATE_PROFILE_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
         case COMMENT_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
+        case LIKE_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
 
         default: return state;
     }

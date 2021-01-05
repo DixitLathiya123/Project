@@ -6,7 +6,7 @@ export const initialState = {
         ResponseStatus:'',
     },
     Login:{
-        LoginToken:'',
+        LoginData:[],
         LoginStatus:'',
     },
     countries:{
@@ -40,6 +40,9 @@ export const initialState = {
         ResponseStatus:'',
     },
     comments:{
+        ResponseStatus:'',
+    },
+    Likes:{
         ResponseStatus:'',
     }
 }
