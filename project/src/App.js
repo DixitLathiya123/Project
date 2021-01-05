@@ -1,5 +1,5 @@
-import './App.css';
-import Routes from './Routes';
+import './Assets/Css/App.css';
+import Routes from './Routes/Routes';
 import store from './Store/Store'
 import 'antd/dist/antd.css'
 import { Provider } from 'react-redux';
