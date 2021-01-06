@@ -3,7 +3,7 @@ import {
     getAllBlogReducer,
     getBlogByIdReducer,
     initialStateReducer
-} from '../Reducer/reducerIndex'
+} from '../reducer/reducerIndex'
 
 const rootreducer = combineReducers({
     initialState: initialStateReducer,

@@ -4,10 +4,10 @@ import { Formik, Form } from 'formik'
 import { Button } from 'react-bootstrap'
 import { ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux'
-import { forgetPassword } from '../../Action/actionIndex'
-
 import Card from 'react-bootstrap/Card'
-import {Header,FormikControl} from '../../Components/componentIndex'
+
+import { forgetPassword } from '../../action/actionIndex'
+import {Header,FormikControl} from '../../components/componentIndex'
 
 function Forgot() {
 

@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import Card from 'react-bootstrap/Card'
 
-import {HeaderAndSidebar,FormikControl} from '../../Components/componentIndex'
-import { changePassword } from '../../Action/actionIndex';
+import {HeaderAndSidebar,FormikControl} from '../../components/componentIndex'
+import { changePassword } from '../../action/actionIndex';
 
 function ResetPassword() {
     const history = useHistory()

@@ -2,8 +2,8 @@ import {
     GET_ALL_BLOG_SUCCESS,
     GET_ALL_BLOG_REQUEST,
     GET_ALL_BLOG_FAILURE,
-} from '../Action/actionIndex'
-import { getAllBlog } from '../State/State'
+} from '../action/actionIndex'
+import { getAllBlog } from '../state/State'
 
 //getAllBlog
 export const getAllBlogReducer = (state = getAllBlog, action) => {

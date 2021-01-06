@@ -5,12 +5,11 @@ import { Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { ToastContainer } from 'react-toastify';
 import { Link, useHistory } from 'react-router-dom';
-
 import Card from 'react-bootstrap/Card'
-import { userGoingForLogin } from '../../Action/actionIndex'
-import 'react-toastify/dist/ReactToastify.css';
-import {Header,FormikControl} from '../../Components/componentIndex'
-import { isAuthenticated } from '../../Routes/Auth'
+
+import { userGoingForLogin } from '../../action/actionIndex'
+import {Header,FormikControl} from '../../components/componentIndex'
+import { isAuthenticated } from '../../routes/Auth'
 
 function Login(props) {
     const history = useHistory();

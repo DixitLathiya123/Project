@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import { headerWithToken } from '../Services/header'
+import { headerWithToken } from '../services/header'
 
 export const COMMENT_REQUEST = "COMMENT_REQUEST"
 export const COMMENT_SUCCESS = "COMMENT_SUCCESS"

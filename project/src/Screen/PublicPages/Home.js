@@ -8,13 +8,13 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Loader from 'react-loader-spinner'
 
-import { isEmpty } from '../../Services/isEmpty'
-import { isAuthenticated } from '../../Routes/Auth'
-import {Header,FormikControl, Slider} from '../../Components/componentIndex'
-import { getAllBlog ,userGoingForLogin} from '../../Action/actionIndex'
-import Like from '../../Assets/Image/likeImage.png'
-import disLike from '../../Assets/Image/dislike.png'
-import comment from '../../Assets/Image/comment.png'
+import { isEmpty } from '../../services/isEmpty'
+import { isAuthenticated } from '../../routes/Auth'
+import {Header,FormikControl, Slider} from '../../components/componentIndex'
+import { getAllBlog ,userGoingForLogin} from '../../action/actionIndex'
+import Like from '../../assets/Image/likeImage.png'
+import disLike from '../../assets/Image/dislike.png'
+import comment from '../../assets/Image/comment.png'
 
 
 function Home(props) {
@@ -66,7 +66,7 @@ function Home(props) {
                                     className="blogimage"
                                     hoverable
                                     style={{ width: 300 }}
-                                    cover={<img alt="example" src="https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png" />}
+                                    cover={<img alt="example" height="250px" src={process.env.REACT_APP_API + "/" + item.blogImagePath} />}
                                 >
                                     <Meta className="blogContent" title={item.blogTitle} description={item.blogContent} />
                                     <div className="row social">

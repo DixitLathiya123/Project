@@ -2,8 +2,8 @@ import {
     GET_BLOG_BY_ID_REQUEST,
     GET_BLOG_BY_ID_SUCCESS,
     GET_BLOG_BY_ID_FAILURE,
-} from '../Action/actionIndex'
-import { getBlogById } from '../State/State'
+} from '../action/actionIndex'
+import { getBlogById } from '../state/State'
 
 //get blog by id
 export const getBlogByIdReducer = (state = getBlogById, action) => {

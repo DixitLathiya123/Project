@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Formik, Form } from "formik";
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Card from "react-bootstrap/Card";
 
-import { HeaderAndSidebar, FormikControl } from '../../Components/componentIndex'
+import { HeaderAndSidebar, FormikControl } from '../../components/componentIndex'
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserById, getAllCountry, getAllstate, updateProfile } from '../../Action/actionIndex';
+import { getUserById, getAllCountry, getAllstate, updateProfile } from '../../action/actionIndex';
 import * as Yup from "yup";
-import { isEmpty } from '../../Services/isEmpty';
+import { isEmpty } from '../../services/isEmpty';
 
 function UpdateProfile() {
     const dispatch = useDispatch()

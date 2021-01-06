@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { headerWithOutToken } from '../Services/header'
+import { headerWithOutToken } from '../services/header'
 
 //getAllBlog
 export const GET_ALL_BLOG_REQUEST = "GET_ALL_BLOG_REQUEST"

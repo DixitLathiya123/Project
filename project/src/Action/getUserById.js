@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { headerWithToken} from '../Services/header'
+import { headerWithToken } from '../services/header'
 
 //get user by id
 export const GET_USER_BY_ID_REQUEST = "GET_USER_BY_ID_REQUEST"
@@ -26,7 +26,6 @@ export const getUserByIdFailure = (error) => {
     }
 }
 export const getUserById = () => {
-
     return (dispatch) => {
         dispatch(getUserByIdRequest())
         axios.get(`${process.env.REACT_APP_API}/api/getUserById`, headerWithToken())

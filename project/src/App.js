@@ -1,6 +1,6 @@
-import './Assets/Css/App.css';
-import Routes from './Routes/Routes';
-import store from './Store/Store'
+import './assets/Css/App.css';
+import Routes from './routes/Routes';
+import store from './store/Store'
 import 'antd/dist/antd.css'
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';

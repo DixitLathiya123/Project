@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import { headerWithToken } from '../Services/header'
+import { headerWithToken } from '../services/header'
 
 //get user by id
 export const DISLIKE_REQUEST = "DISLIKE_REQUEST"

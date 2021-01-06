@@ -6,11 +6,11 @@ import { ToastContainer } from 'react-toastify';
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { forgetToNewPassword } from '../../Action/actionIndex'
+import { forgetToNewPassword } from '../../action/actionIndex'
 import Card from 'react-bootstrap/Card'
-import {Header,FormikControl} from '../../Components/componentIndex'
+import {Header,FormikControl} from '../../components/componentIndex'
 import 'react-toastify/dist/ReactToastify.css';
-import { isAuthenticated } from '../../Routes/Auth'
+import { isAuthenticated } from '../../routes/Auth'
 
 function ForgetToNew() {
     const history = useHistory()

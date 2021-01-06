@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Carousel} from 'react-bootstrap'
-import s1 from '../../Assets/Image/SliderImage/Image1.jpg'
-import s2 from '../../Assets/Image/SliderImage/Image2.jpg'
-import s3 from '../../Assets/Image/SliderImage/Image4.jpg'
+import s1 from '../../assets/Image/SliderImage/Image1.jpg'
+import s2 from '../../assets/Image/SliderImage/Image2.jpg'
+import s3 from '../../assets/Image/SliderImage/Image4.jpg'
 
 function Slider() {
     const [index, setIndex] = useState(0);

@@ -1,5 +1,5 @@
 import React from 'react'
-import {HeaderAndSidebar} from '../../Components/componentIndex'
+import {HeaderAndSidebar} from '../../components/componentIndex'
 
 
 function TableView() {

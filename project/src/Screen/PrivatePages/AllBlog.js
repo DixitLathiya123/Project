@@ -3,9 +3,9 @@ import { Card } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner'
 
-import { isEmpty } from '../../Services/isEmpty'
-import { HeaderAndSidebar } from '../../Components/componentIndex';
-import { getAllBlog, singleBlog } from '../../Action/actionIndex';
+import { isEmpty } from '../../services/isEmpty'
+import { HeaderAndSidebar } from '../../components/componentIndex';
+import { getAllBlog } from '../../action/actionIndex';
 import { useHistory } from 'react-router-dom';
 
 function AllBlog() {

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import { headerWithToken } from '../Services/header'
+import { headerWithToken } from '../services/header'
 
 //change password
 export const CHANGE_PASSWORD_REQUEST = "CHANGE_PASSWORD_REQUEST"

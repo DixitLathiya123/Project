@@ -6,10 +6,10 @@ import { Button } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card'
 import { useDispatch } from 'react-redux'
 
-import {Header,FormikControl} from '../../Components/componentIndex'
-import { isAuthenticated } from '../../Routes/Auth'
-import { userSendContact } from '../../Action/actionIndex'
-import { isEmpty } from '../../Services/isEmpty'
+import {Header,FormikControl} from '../../components/componentIndex'
+import { isAuthenticated } from '../../routes/Auth'
+import { userSendContact } from '../../action/actionIndex'
+import { isEmpty } from '../../services/isEmpty'
 
 function Contact() {
     const history = useHistory()

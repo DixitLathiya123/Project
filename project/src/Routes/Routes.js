@@ -14,10 +14,10 @@ import {
     Home,
     Login,
     Register,
-} from '../Screen/screenIndex'
+} from '../screen/screenIndex'
 
-import PrivateRouter from '../Routes/PrivateRouter'
-import {Footer} from '../Components/componentIndex'
+import PrivateRouter from './PrivateRouter'
+import {Footer} from '../components/componentIndex'
 import LandingPage from '../LandingPage'
 
 function Routes() {

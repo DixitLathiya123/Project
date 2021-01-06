@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { isAuthenticated } from './Routes/Auth'
+import { isAuthenticated } from './routes/Auth'
 
 function LandingPage() {
     return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { isEmpty } from '../../Services/isEmpty';
+import { isEmpty } from '../../services/isEmpty';
 
 function TextError(props) {
     return (

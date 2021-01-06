@@ -4,15 +4,14 @@ import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-
 import Card from "react-bootstrap/Card";
 import Recaptcha from "react-google-recaptcha";
 import * as Yup from "yup";
 
-import {Header,FormikControl} from '../../Components/componentIndex'
-import { isAuthenticated } from '../../Routes/Auth'
-import { userGoingForRegister, getAllCountry, getAllstate } from "../../Action/actionIndex";
-import { isEmpty } from "../../Services/isEmpty";
+import {Header,FormikControl} from '../../components/componentIndex'
+import { isAuthenticated } from '../../routes/Auth'
+import { userGoingForRegister, getAllCountry, getAllstate } from "../../action/actionIndex";
+import { isEmpty } from "../../services/isEmpty";
 
 const option = [
     { key: "Select Course", value: "" },

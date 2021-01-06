@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import { headerForFormData} from '../Services/header'
+import { headerForFormData} from '../services/header'
 
 //createBlog
 export const CREATE_BLOG_REQUEST = "CREATE_BLOG_REQUEST"

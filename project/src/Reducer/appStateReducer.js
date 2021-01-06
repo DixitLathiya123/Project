@@ -44,9 +44,9 @@ import {
     DISLIKE_REQUEST,
     DISLIKE_SUCCESS,
     DISLIKE_FAILURE,
-} from '../Action/actionIndex'
+} from '../action/actionIndex'
 
-import { initialState } from '../State/State'
+import { initialState } from '../state/State'
 
 //allStates
 export const initialStateReducer = (state = initialState, action) => {

@@ -8,10 +8,10 @@ import Loader from 'react-loader-spinner'
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-bootstrap/Modal'
 
-import { isEmpty } from '../../Services/isEmpty'
-import deleteButton from '../../Assets/Image/delete.png'
-import {HeaderAndSidebar,FormikControl} from '../../Components/componentIndex'
-import { createBlog, deleteBlog, getBlogById, singleBlog, } from '../../Action/actionIndex';
+import { isEmpty } from '../../services/isEmpty'
+import deleteButton from '../../assets/Image/delete.png'
+import {HeaderAndSidebar,FormikControl} from '../../components/componentIndex'
+import { createBlog, deleteBlog, getBlogById, } from '../../action/actionIndex';
 
 function Dashbord() {
     const { Meta } = Card;

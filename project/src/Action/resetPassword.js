@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify';
-import {  headerWithOutToken } from '../Services/header'
+import {  headerWithOutToken } from '../services/header'
 
 //newPassword
 export const FORGET_TO_NEWREQUEST = "FORGET_TO_NEWREQUEST"

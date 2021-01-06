@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {  headerWithOutToken } from '../Services/header'
+import {  headerWithOutToken } from '../services/header'
 
 //country
 export const COUNTRY_REQUEST = "COUNTRY_REQUEST"
