@@ -26,7 +26,6 @@ export const getAllBlogFailure = (error) => {
     }
 }
 export const getAllBlog = () => {
-
     return (dispatch) => {
         dispatch(getAllBlogRequest())
         axios.get(`${process.env.REACT_APP_API}/api/getAllBlog`,headerWithOutToken())

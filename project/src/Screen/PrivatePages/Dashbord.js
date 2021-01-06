@@ -11,7 +11,7 @@ import Modal from 'react-bootstrap/Modal'
 import { isEmpty } from '../../Services/isEmpty'
 import deleteButton from '../../Assets/Image/delete.png'
 import {HeaderAndSidebar,FormikControl} from '../../Components/componentIndex'
-import { createBlog, deleteBlog, getBlogById, } from '../../Action/actionIndex';
+import { createBlog, deleteBlog, getBlogById, singleBlog, } from '../../Action/actionIndex';
 
 function Dashbord() {
     const { Meta } = Card;
@@ -86,11 +86,13 @@ function Dashbord() {
                                             <img
                                                 height="250px"
                                                 alt="example"
-                                                onClick={() => history.push({
-                                                    pathname: "/singleBlog",
-                                                    state: item
-                                                }
-                                                )}
+                                                onClick={() => {
+                                                    localStorage.setItem('singleBlogId',item._id)
+                                                    setTimeout(() => {
+                                                        history.push("/singleBlog")
+                                                    }, 1000);
+                                                }}
+
                                                 src={process.env.REACT_APP_API +"/"+item.blogImagePath}
                                             />
                                         }

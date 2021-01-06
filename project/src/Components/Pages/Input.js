@@ -8,7 +8,7 @@ function Input(props) {
         <>
             <div className="form-group input">
                 <label htmlFor={name}><b>{lable} </b></label>
-                <Field className="inputbox" id={name} name={name} {...rest} />
+                <Field className="inputbox" id={name} name={name}  {...rest}/>
                <ErrorMessage name={name} component={TextError} />
             </div>
         </>

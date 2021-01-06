@@ -28,10 +28,12 @@ export const updateProfileFailure = (error) => {
     }
 }
 export const updateProfile = (data, onSubmitProps) => {
+    console.log(data);
     return (dispatch) => {
         dispatch(updateProfileRequest())
-        axios.post(`${process.env.REACT_APP_API}/api/updateProfile`, data, headerWithToken())
+        axios.put(`${process.env.REACT_APP_API}/api/updateProfile`, data, headerWithToken())
             .then((Response) => {
+                console.log(Response);
                 const data = Response.data
                 dispatch(updateProfileSuccess(data))
                 onSubmitProps.resetForm();
@@ -45,6 +47,7 @@ export const updateProfile = (data, onSubmitProps) => {
                 }
             })
             .catch((error) => {
+                console.log(error);
                 const errors = error.message
                 dispatch(updateProfileFailure(errors))
             })

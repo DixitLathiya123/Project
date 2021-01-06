@@ -38,7 +38,7 @@ function Routes() {
                     <PrivateRouter exact path="/update" component={UpdateProfile} />
                     <PrivateRouter exact path="/table" component={TableView} />
                     <PrivateRouter exact path="/singleBlog" component={SingleBlog} />
-                    <PrivateRouter exact path="/resetPassword" component={ResetPassword} />
+                    <PrivateRouter exact path="/changePassword" component={ResetPassword} />
                     <Route exact path="*" component={Error404} />
                 </Switch>
                 <Footer />

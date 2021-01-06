@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from 'react-loader-spinner'
 
 import { isEmpty } from '../../Services/isEmpty'
-import {HeaderAndSidebar} from '../../Components/componentIndex';
-import { getAllBlog } from '../../Action/actionIndex';
+import { HeaderAndSidebar } from '../../Components/componentIndex';
+import { getAllBlog, singleBlog } from '../../Action/actionIndex';
 import { useHistory } from 'react-router-dom';
 
 function AllBlog() {
@@ -16,7 +16,6 @@ function AllBlog() {
     }, [])
 
     const Blog = useSelector(state => state.getAllBlog.Blogs.blogList)
-    console.log(Blog);
     const { Meta } = Card;
 
     return (
@@ -40,15 +39,17 @@ function AllBlog() {
                                             height="250px"
                                             alt="example"
                                             src={process.env.REACT_APP_API + "/" + item.blogImagePath}
-                                            onClick={() => history.push({
-                                                pathname: "/singleBlog",
-                                                state: item
-                                            }
-                                            )}
+                                            onClick={() => {
+                                                localStorage.setItem('singleBlogId', item._id)
+                                                setTimeout(() => {
+                                                    history.push("/singleBlog")
+                                                }, 1000);
+                                            }}
                                         />
                                     }
                                 >
                                     <Meta className="blogContent" title={item.blogTitle} description={item.blogContent} />
+                                    
                                 </Card>
                             </>
                         )

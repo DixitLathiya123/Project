@@ -44,7 +44,10 @@ export const initialState = {
     },
     Likes:{
         ResponseStatus:'',
-    }
+    },
+    DisLikes:{
+        ResponseStatus:''
+    },
 }
 
 export const getAllBlog ={

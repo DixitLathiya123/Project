@@ -52,7 +52,7 @@ function ResetPassword() {
                                         (formik) => {
                                             return (
                                                 <Form>
-                                                    <h1 align="center">Reset Password</h1>
+                                                    <h1 align="center">Change Password</h1>
                                                     <FormikControl
                                                         control="input"
                                                         type="text"

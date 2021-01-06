@@ -1,9 +1,11 @@
 import React from 'react'
 import { Field, ErrorMessage } from 'formik'
 import TextError from './TextError'
+import { isEmpty } from '../../Services/isEmpty'
 
 function Checkbox(props) {
-    const { lable, name, options, ...rest } = props
+    const { lable, name, options,data, ...rest } = props
+
     return (
         <div className="form-group">
             <label htmlFor={name}>{lable}</label>
@@ -20,7 +22,7 @@ function Checkbox(props) {
                                                 id={item.value}
                                                 {...field}
                                                 value={item.value}
-                                                checked={field.value.includes(item.value)}
+                                                checked={ !isEmpty(field.value)  && field.value.includes(item.value) || !isEmpty(data) && data.includes(item.value)}
                                             />
                                             <label htmlFor={item.value}>&nbsp;{item.key}</label>
                                         </div>
