@@ -49,7 +49,7 @@ function Home(props) {
 
     const onSubmit = values => dispatch(userGoingForLogin(values, props))
     return (
-        <div>
+        <div >
             <Header />
             <Slider />
             <div className="row allblog">

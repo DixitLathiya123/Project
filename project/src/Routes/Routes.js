@@ -22,7 +22,6 @@ import LandingPage from '../LandingPage'
 
 function Routes() {
     return (
-        <div>
             <Router>
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
@@ -43,7 +42,6 @@ function Routes() {
                 </Switch>
                 <Footer />
             </Router>
-        </div>
     )
 }
 

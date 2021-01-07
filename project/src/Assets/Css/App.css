@@ -2,6 +2,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+  background-color: black !important; 
 }
 
 input::-webkit-outer-spin-button,
@@ -34,6 +35,7 @@ input::-webkit-inner-spin-button {
   margin-top: 75px;
   border-radius: 10px;
   width: 80%;
+  background-color:#e2e8f0;
 }
 
 .cardLogin {
@@ -138,7 +140,6 @@ code {
 }
 
 .navbar {
-  background-color: #4ea6ba;
   width: 100%;
   height: 80px;
   display: flex;
@@ -210,10 +211,6 @@ code {
 
 span {
   margin-left: 16px;
-}
-
-.cardbody {
-  padding: 0px !important;
 }
 .forgot {
   display: flex;
@@ -306,8 +303,18 @@ span {
   right: 0px;
   margin: 5px;
 }
-.blogContent{
+.blogContent {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+.logoSidebar {
+  display: flex;
+  justify-content: center;
+  margin: -15%;
+  margin-top: 10%;
+}
+.design {
+  background-color: black;
+  background-image: url('../Image/loginImage.png') !important;
 }

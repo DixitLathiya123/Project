@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import { Layout, Menu } from 'antd';
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import Popover from 'react-bootstrap/Popover'
@@ -40,6 +40,9 @@ export const HeaderAndSidebar = ({ children }, props) => {
     return (
         <Layout style={{ minHeight: '100vh' }} >
             <Sider collapsible collapsed={state} onCollapse={() => { setState(!state) }} >
+                <div className="logoSidebar">
+                    <img src={img.profileImg} class="img-circle" alt="Avatar" width="50" height="50" />
+                </div>
                 <Menu theme="dark" s mode="inline" >
                     {
                         !isEmpty(SidebarData()) &&

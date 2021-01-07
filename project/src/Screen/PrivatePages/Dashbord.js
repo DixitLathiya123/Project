@@ -10,7 +10,7 @@ import Modal from 'react-bootstrap/Modal'
 
 import { isEmpty } from '../../services/isEmpty'
 import deleteButton from '../../assets/Image/delete.png'
-import {HeaderAndSidebar,FormikControl} from '../../components/componentIndex'
+import { HeaderAndSidebar, FormikControl } from '../../components/componentIndex'
 import { createBlog, deleteBlog, getBlogById, } from '../../action/actionIndex';
 
 function Dashbord() {
@@ -24,41 +24,51 @@ function Dashbord() {
 
     const [selectedFile, setselectedFile] = useState()
 
-    useEffect(() => {
-        dispatch(getBlogById())
-    }, [])
     const blogById = useSelector(state => state.getBlogById.blogById.blog)
-
+    
     const deleteBlogById = (deleteId) => {
         dispatch(deleteBlog(deleteId))
     }
-
+    const [img, setImg] = useState()
+    
     const initialValues = {
         blogTitle: '',
         blogContent: '',
         file: selectedFile
     }
-
+    
     const validationSchema = Yup.object({
         blogTitle: Yup.string().required('Blog Title Required*'),
         blogContent: Yup.string().required('Blog Content Required*'),
     })
-
+    
+    useEffect(() => {
+        dispatch(getBlogById())
+    }, [])
     const onSubmit = (values, onSubmitProps) => {
         let formData = new FormData();
         formData.append('blogTitle', values.blogTitle);
         formData.append('blogContent', values.blogContent);
         formData.append('file', selectedFile);
-        
+
         dispatch(createBlog(formData, onSubmitProps))
+        handleClose()
         setTimeout(() => {
             dispatch(getBlogById())
-            handleClose()
         }, 2000);
     }
     const fileChangeHandler = (e) => {
         setselectedFile(e.target.files[0])
-    } 
+        const reader = new FileReader()
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setImg(reader.result)
+            }
+        }
+        if (e.target.files[0]) {
+            reader.readAsDataURL(e.target.files[0])
+        }
+    }
 
     return (
         < div >
@@ -87,13 +97,13 @@ function Dashbord() {
                                                 height="250px"
                                                 alt="example"
                                                 onClick={() => {
-                                                    localStorage.setItem('singleBlogId',item._id)
+                                                    localStorage.setItem('singleBlogId', item._id)
                                                     setTimeout(() => {
                                                         history.push("/singleBlog")
                                                     }, 1000);
                                                 }}
 
-                                                src={process.env.REACT_APP_API +"/"+item.blogImagePath}
+                                                src={process.env.REACT_APP_API + "/" + item.blogImagePath}
                                             />
                                         }
                                     >
@@ -135,7 +145,6 @@ function Dashbord() {
                                             (formik) => {
                                                 return (
                                                     <Form>
-                                                        <h1 align="center">Create Blog</h1>
                                                         <FormikControl
                                                             control="input"
                                                             type="text"
@@ -155,8 +164,10 @@ function Dashbord() {
                                                             type="file"
                                                             lable="Blog Image*"
                                                             name="file"
-                                                            onChange = {(e) => fileChangeHandler(e)}
+                                                            onChange={(e) => fileChangeHandler(e)}
                                                         />
+
+                                                        {img && <img src={img} width="100" height="100" />}
 
                                                         <div className="btndiv">
                                                             <Button className="button" type="submit" variant="info" >Create</Button>

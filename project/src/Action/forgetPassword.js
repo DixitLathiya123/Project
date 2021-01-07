@@ -27,20 +27,24 @@ export const forgetFailure = (error) => {
     }
 }
 export const forgetPassword = (email) => {
-
     return (dispatch) => {
         dispatch(forgetRequest())
         axios.post(`${process.env.REACT_APP_API}/api/forgetPassword`, email, headerWithOutToken())
             .then((Response) => {
+                console.log(Response);
                 const email = Response.data
                 dispatch(forgetSuccess(email))
-                if (email.ReturnCode === 1) {
+                if (email.ReturnCode !== 1) {
                     if (email.message !== "") {
-                        toast.success(email.message)
+                        toast.error(email.message)
                     }
+                }
+                else{
+                    toast.success(email.message)
                 }
             })
             .catch((error) => {
+                console.log(error);
                 const errors = error.message
                 dispatch(forgetFailure(errors))
             })

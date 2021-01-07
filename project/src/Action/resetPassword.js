@@ -32,6 +32,7 @@ export const forgetToNewPassword = (data) => {
         dispatch(forgetToNewRequest())
         axios.post(`${process.env.REACT_APP_API}/api/resetPassword`, data,headerWithOutToken())
             .then((Response) => {
+                console.log(Response);
                 const data = Response.data
                 dispatch(forgetToNewSuccess(data))
                 if (data.ReturnCode === 1) {
@@ -41,6 +42,7 @@ export const forgetToNewPassword = (data) => {
                 }
             })
             .catch((error) => {
+                console.log(error);
                 const errors = error.message
                 dispatch(forgetToNewFailure(errors))
             })

@@ -20,7 +20,6 @@ function UpdateProfile() {
     }, [])
 
     const updateData = useSelector(state => state.initialState.getUserById.blogById && state.initialState.getUserById.blogById.data && state.initialState.getUserById.blogById.data[0])
-    console.log(updateData);
     const CountryData = useSelector(state => state.initialState.countries.CountryData)
     const StatesData = useSelector(state => state.initialState.states.StateData)
 
@@ -37,16 +36,16 @@ function UpdateProfile() {
     ];
 
     const initialValues = {
-        name:!isEmpty(updateData) && updateData.name,
-        phoneNo:!isEmpty(updateData) && updateData.phoneNo,
-        pinCode: !isEmpty(updateData) &&updateData.pinCode,
-        email:!isEmpty(updateData) && updateData.email,
-        course:!isEmpty(updateData) && updateData.course,
-        city:!isEmpty(updateData) && updateData.city,
-        state: !isEmpty(updateData) &&updateData.state,
-        country:!isEmpty(updateData) && updateData.country,
-        address:!isEmpty(updateData) && updateData.address,
-        skill:!isEmpty(updateData) && updateData.skill,
+        name: !isEmpty(updateData) && updateData.name,
+        phoneNo: !isEmpty(updateData) && updateData.phoneNo,
+        pinCode: !isEmpty(updateData) && updateData.pinCode,
+        email: !isEmpty(updateData) && updateData.email,
+        course: !isEmpty(updateData) && updateData.course,
+        city: !isEmpty(updateData) && updateData.city,
+        state: !isEmpty(updateData) && updateData.state,
+        country: !isEmpty(updateData) && updateData.country,
+        address: !isEmpty(updateData) && updateData.address,
+        skill: !isEmpty(updateData) && updateData.skill,
     };
 
     const validationSchema = Yup.object({
@@ -106,113 +105,125 @@ function UpdateProfile() {
                 <div className="form">
                     <Card className="card">
                         <Card.Body className="cardbody">
-                            {
-                                !isEmpty(updateData) &&
-                                <Formik
-                                    initialValues={initialValues}
-                                    validationSchema={validationSchema}
-                                    onSubmit={onSubmit}
-                                    enableReinitialize
-                                >
-                                    {(formik) => {
-                                        return (
+                            <div className="row">
+                                <div className="col-12">
+                                    <h1 align="center">Update Profile</h1>
+                                    {
+                                        !isEmpty(updateData) &&
+                                        <Formik
+                                            initialValues={initialValues}
+                                            validationSchema={validationSchema}
+                                            onSubmit={onSubmit}
+                                            enableReinitialize
+                                        >
+                                            {(formik) => {
+                                                return (
 
-                                            <Form className="formUpdate">
-                                                <div >
-                                                    <h1 align="center">Update Profile</h1>
-                                                    <FormikControl
-                                                        control="input"
-                                                        type="text"
-                                                        lable="Name*"
-                                                        name="name"
-                                                        value={formik.values.name}
-                                                        onChange={formik.handleChange}
-                                                    />
-                                                    <FormikControl
-                                                        control="input"
-                                                        type="email"
-                                                        lable="Email*"
-                                                        name="email"
-                                                        value={formik.values.email}
-                                                    />
-                                                    <FormikControl
-                                                        control="input"
-                                                        type="text"
-                                                        lable="PhoneNo*"
-                                                        name="phoneNo"
-                                                        value={formik.values.phoneNo}
-                                                    />
-                                                    <FormikControl
-                                                        control="select"
-                                                        lable="Select Course*"
-                                                        name="course"
-                                                        option={option}
-                                                        value={formik.values.course}
-                                                    />
-                                                    <FormikControl
-                                                        control="country"
-                                                        lable="Select Country*"
-                                                        name="country"
-                                                        option={CountryData}
-                                                        validate={validateCountry}
-                                                        value={formik.values.country}
-                                                    />
-                                                    <FormikControl
-                                                        control="state"
-                                                        lable="Select State*"
-                                                        name="state"
-                                                        option={StatesData}
-                                                        validate={validateState}
-                                                        value={formik.values.state}
-                                                    />
-                                                    <FormikControl
-                                                        control="input"
-                                                        type="text"
-                                                        lable="City*"
-                                                        name="city"
-                                                        value={formik.values.city}
-                                                    />
-                                                    <FormikControl
-                                                        control="checkbox"
-                                                        lable="Skill*"
-                                                        name="skill"
-                                                        validate={validateSkills}
-                                                        options={checkBoxOptions}
-                                                        data={formik.values.skill}
-                                                    />
-                                                    <FormikControl
-                                                        control="input"
-                                                        type="text"
-                                                        lable="Pincode*"
-                                                        name="pinCode"
-                                                        value={formik.values.pinCode}
-                                                    />
+                                                    <Form className="formUpdate">
+                                                        <div className="row">
+                                                            <div className="row">
+                                                                <div className="col-6">
+                                                                    <FormikControl
+                                                                        control="input"
+                                                                        type="text"
+                                                                        lable="Name*"
+                                                                        name="name"
+                                                                        value={formik.values.name}
+                                                                        onChange={formik.handleChange}
+                                                                    />
+                                                                    <FormikControl
+                                                                        control="input"
+                                                                        type="email"
+                                                                        lable="Email*"
+                                                                        name="email"
+                                                                        value={formik.values.email}
+                                                                    />
+                                                                    <FormikControl
+                                                                        control="input"
+                                                                        type="text"
+                                                                        lable="PhoneNo*"
+                                                                        name="phoneNo"
+                                                                        value={formik.values.phoneNo}
+                                                                    />
+                                                                    <FormikControl
+                                                                        control="select"
+                                                                        lable="Select Course*"
+                                                                        name="course"
+                                                                        option={option}
+                                                                        value={formik.values.course}
+                                                                    />
+                                                                    <FormikControl
+                                                                        control="country"
+                                                                        lable="Select Country*"
+                                                                        name="country"
+                                                                        option={CountryData}
+                                                                        validate={validateCountry}
+                                                                        value={formik.values.country}
+                                                                    />
+                                                                </div>
+                                                                <div className="col-6">
+                                                                    <FormikControl
+                                                                        control="state"
+                                                                        lable="Select State*"
+                                                                        name="state"
+                                                                        option={StatesData}
+                                                                        validate={validateState}
+                                                                        value={formik.values.state}
+                                                                    />
+                                                                    <FormikControl
+                                                                        control="input"
+                                                                        type="text"
+                                                                        lable="City*"
+                                                                        name="city"
+                                                                        value={formik.values.city}
+                                                                    />
+                                                                    <FormikControl
+                                                                        control="checkbox"
+                                                                        lable="Skill*"
+                                                                        name="skill"
+                                                                        validate={validateSkills}
+                                                                        options={checkBoxOptions}
+                                                                        data={formik.values.skill}
+                                                                    />
+                                                                    <FormikControl
+                                                                        control="input"
+                                                                        type="text"
+                                                                        lable="Pincode*"
+                                                                        name="pinCode"
+                                                                        value={formik.values.pinCode}
+                                                                    />
 
-                                                    <FormikControl
-                                                        control="textarea"
-                                                        lable="Address*"
-                                                        name="address"
-                                                        value={formik.values.address}
-                                                    />
-                                                    <div className="text-center">
-                                                        <Button
-                                                            className="button"
-                                                            type="submit"
-                                                            variant="success"
-                                                            disabled={!formik.isValid}
-                                                        >
-                                                            Update
-                                                 </Button>
-                                                        <Button className="button" type="reset" variant="info">
-                                                            Reset
-                                            </Button>
-                                                    </div>
-                                                </div>
-                                            </Form>
-                                        );
-                                    }}
-                                </Formik>
-                            }
+                                                                    <FormikControl
+                                                                        control="textarea"
+                                                                        lable="Address*"
+                                                                        name="address"
+                                                                        value={formik.values.address}
+                                                                    />
+                                                                </div>
+                                                                <div className="row" style={{ 'width': '100%' }}>
+                                                                    <div className="col-12" align="center" >
+                                                                        <Button
+                                                                            className="button"
+                                                                            type="submit"
+                                                                            variant="success"
+                                                                            disabled={!formik.isValid}
+                                                                        >
+                                                                            Update
+                                                                        </Button>
+                                                                        {/* <Button className="button" type="reset" variant="info">
+                                                                            Reset
+                                                                        </Button> */}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </Form>
+                                                );
+                                            }}
+                                        </Formik>
+                                    }
+                                </div>
+                            </div>
                         </Card.Body>
                     </Card>
                 </div>
