@@ -44,6 +44,9 @@ import {
     DISLIKE_REQUEST,
     DISLIKE_SUCCESS,
     DISLIKE_FAILURE,
+    DOWNLOAD_REQUEST,
+    DOWNLOAD_SUCCESS,
+    DOWNLOAD_FAILURE,
 } from '../action/actionIndex'
 
 import { initialState } from '../state/State'
@@ -66,6 +69,7 @@ export const initialStateReducer = (state = initialState, action) => {
         case COMMENT_REQUEST: return { ...state, loading: true }
         case LIKE_REQUEST: return { ...state, loading: true }
         case DISLIKE_REQUEST: return { ...state, loading: true }
+        case DOWNLOAD_REQUEST: return { ...state, loading: true }
 
         case LOGIN_SUCCESS:
             state.Login = {
@@ -173,6 +177,13 @@ export const initialStateReducer = (state = initialState, action) => {
                 ResponseStatus: action.payload,
             }
             return state
+        case DOWNLOAD_SUCCESS:
+            state = { ...state, loading: false, error: '', }
+            state.download = {
+                ...state.download,
+                ResponseStatus: action.payload,
+            }
+            return state
        
         case FAILURE: return { ...state, loading: false, LoginToken: '', error: action.payload }
         case LOGIN_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
@@ -189,6 +200,7 @@ export const initialStateReducer = (state = initialState, action) => {
         case COMMENT_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
         case LIKE_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
         case DISLIKE_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
+        case DOWNLOAD_FAILURE: return { ...state, loading: false, ResponseStatus: '', error: action.payload }
 
         default: return state;
     }

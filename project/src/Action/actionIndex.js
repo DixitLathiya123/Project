@@ -115,6 +115,12 @@ import {
     DISLIKE_FAILURE,
     blogDisLike
 } from './disLikeApi'
+import {
+    DOWNLOAD_REQUEST,
+    DOWNLOAD_SUCCESS,
+    DOWNLOAD_FAILURE,
+    download
+} from './download'
 
 export {
     REQUEST,
@@ -168,6 +174,9 @@ export {
     DISLIKE_REQUEST,
     DISLIKE_SUCCESS,
     DISLIKE_FAILURE,
+    DOWNLOAD_REQUEST,
+    DOWNLOAD_SUCCESS,
+    DOWNLOAD_FAILURE,
     changePassword,
     comment,
     userSendContact,
@@ -184,5 +193,6 @@ export {
     getAllstate,
     updateProfile,
     blogLike,
-    blogDisLike
+    blogDisLike,
+    download,
 }

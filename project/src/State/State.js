@@ -48,6 +48,9 @@ export const initialState = {
     DisLikes:{
         ResponseStatus:''
     },
+    download:{
+        ResponseStatus:'',
+    },
 }
 
 export const getAllBlog ={

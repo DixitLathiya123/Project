@@ -5,8 +5,9 @@ import Loader from 'react-loader-spinner'
 
 import { isEmpty } from '../../services/isEmpty'
 import { HeaderAndSidebar } from '../../components/componentIndex';
-import { getAllBlog } from '../../action/actionIndex';
+import { getAllBlog,download } from '../../action/actionIndex';
 import { useHistory } from 'react-router-dom';
+import downloadImage from '../../assets/Image/downloadImage.png'
 
 function AllBlog() {
     const history = useHistory()
@@ -48,8 +49,20 @@ function AllBlog() {
                                         />
                                     }
                                 >
-                                    <Meta className="blogContent" title={item.blogTitle} description={item.blogContent} />
-                                    
+                                    <div className="row">
+                                        <div className="col-8">
+                                            <Meta className="blogContent" title={item.blogTitle} description={item.blogContent} />
+                                        </div>
+                                        <div className="col-4">
+                                            <div className="row ">
+                                                <div className="deleteButton">
+                                                    <img src={downloadImage} alt="delete" height="100%" width="50%" onClick={()=>{dispatch(download(item.blogImagePath))}} />
+                                                    {/* download/file-1610015573140.jpg */}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </Card>
                             </>
                         )

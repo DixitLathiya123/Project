@@ -26,7 +26,6 @@ function SingleBlog(props) {
     
     const getAllBlogs = useSelector(state => state.getAllBlog.Blogs.blogList)
     const singleDataBlog = getAllBlogs && getAllBlogs.filter(item => item._id === singleBlogId)
-    console.log(singleDataBlog);
     const loginDataFromApi = JSON.parse(localStorage.getItem('loginData'))
     const loginData = loginDataFromApi.data
     const LikedBlog = singleDataBlog && singleDataBlog[0].blogLike.includes(loginData[0]._id)
