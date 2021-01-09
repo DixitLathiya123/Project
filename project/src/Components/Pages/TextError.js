@@ -2,6 +2,7 @@ import React from 'react'
 import { isEmpty } from '../../services/isEmpty';
 
 function TextError(props) {
+    console.log(props);
     return (
         <>
             {
@@ -10,7 +11,7 @@ function TextError(props) {
                         {props.children}
                     </p>
                 :
-                <p>false&nbsp;</p>
+                <p>&nbsp;</p>
             }
         </>
     )

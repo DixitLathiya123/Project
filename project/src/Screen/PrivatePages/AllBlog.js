@@ -56,8 +56,7 @@ function AllBlog() {
                                         <div className="col-4">
                                             <div className="row ">
                                                 <div className="deleteButton">
-                                                    <img src={downloadImage} alt="delete" height="100%" width="50%" onClick={()=>{dispatch(download(item.blogImagePath))}} />
-                                                    {/* download/file-1610015573140.jpg */}
+                                                    <img src={downloadImage} alt="download" height="100%" width="50%" onClick={()=>{dispatch(download(item.blogImagePath))}} />
                                                 </div>
                                             </div>
                                         </div>

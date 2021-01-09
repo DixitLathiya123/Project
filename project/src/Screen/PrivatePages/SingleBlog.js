@@ -28,8 +28,8 @@ function SingleBlog(props) {
     const singleDataBlog = getAllBlogs && getAllBlogs.filter(item => item._id === singleBlogId)
     const loginDataFromApi = JSON.parse(localStorage.getItem('loginData'))
     const loginData = loginDataFromApi.data
-    const LikedBlog = singleDataBlog && singleDataBlog[0].blogLike.includes(loginData[0]._id)
-    const DisLikedBlog = singleDataBlog && singleDataBlog[0].blogDislike.includes(loginData[0]._id)
+    const LikedBlog = singleDataBlog && singleDataBlog[0] && singleDataBlog[0].blogLike && singleDataBlog[0].blogLike.includes(loginData[0]._id)
+    const DisLikedBlog = singleDataBlog && singleDataBlog[0] && singleDataBlog[0].blogDislike && singleDataBlog[0].blogDislike.includes(loginData[0]._id)
 
     const initialValues = {
         blogComment: []
